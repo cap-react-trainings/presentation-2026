@@ -2,6 +2,12 @@ import React, { ReactNode } from "react";
 
 interface SlideProps {
     children: ReactNode;
+    /**
+     * The isMain attributes toggles between the main
+     * page styling (Capgemini spade background and
+     * white font) and the normal, basic page styling
+     * (white background, black font).
+     */
     isMain?: boolean;
 }
 
