@@ -6,6 +6,7 @@ const App: React.FC = () => {
     return (
         <RevealWrapper>
             <ExampleChapter />
+            {/* more Chapters to come here... */}
         </RevealWrapper>
     );
 };
