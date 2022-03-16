@@ -19,6 +19,7 @@ const RevealWrapper: React.FC<RevealWrapperProps> = (props: RevealWrapperProps) 
     useEffect(() => {
         const deck = new Reveal({
             plugins: [RevealHighlight, SpeakerNotes],
+            slideNumber: true,
         });
         deck.initialize();
     }, []);

@@ -7,6 +7,12 @@ code {
     text-align: left;
 }
 
+.reveal .slide-number {
+    left: 8px;
+    font-size: 18px;
+    right: unset;
+}
+
 /*
 Zenburn style from voldmar.ru (c) Vladimir Epifanov <voldmar@voldmar.ru>
 based on dark.css by Ivan Sagalaev
