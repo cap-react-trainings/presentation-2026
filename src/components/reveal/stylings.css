@@ -5,6 +5,8 @@
 
 code {
     text-align: left;
+    border-radius: 4px;
+    background-color: #3f3f3f;
 }
 
 .reveal .slide-number {
@@ -29,7 +31,7 @@ based on dark.css by Ivan Sagalaev
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-tag {
-    color: #e3ceab;
+    color: #f7b648;
 }
 
 .hljs-template-tag {
@@ -37,17 +39,17 @@ based on dark.css by Ivan Sagalaev
 }
 
 .hljs-number {
-    color: #8cd0d3;
+    color: #6bc9ce;
 }
 
 .hljs-variable,
 .hljs-template-variable,
 .hljs-attribute {
-    color: #efdcbc;
+    color: #f7b648;
 }
 
 .hljs-literal {
-    color: #efefaf;
+    color: #f8f8a3;
 }
 
 .hljs-subst {
@@ -66,21 +68,21 @@ based on dark.css by Ivan Sagalaev
 .hljs-symbol,
 .hljs-bullet,
 .hljs-link {
-    color: #dca3a3;
+    color: #05fdfd;
 }
 
 .hljs-deletion,
 .hljs-string,
 .hljs-built_in,
 .hljs-builtin-name {
-    color: #cc9393;
+    color: #d458a1;
 }
 
 .hljs-addition,
 .hljs-comment,
 .hljs-quote,
 .hljs-meta {
-    color: #7f9f7f;
+    color: #a4f844;
 }
 
 .hljs-emphasis {
