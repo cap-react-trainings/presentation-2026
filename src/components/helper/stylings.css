@@ -1,0 +1,88 @@
+.app {
+  font-family: sans-serif;
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.react {
+  width: 50px;
+  height: 125px;
+  border: 5px solid #61dafb;
+  border-radius: 50%;
+  background: transparent;
+  transform: rotate(90deg);
+  animation: 15s infinite linear spin;
+}
+
+.react::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 125px;
+  border: 5px solid #61dafb;
+  border-radius: 50%;
+  background: transparent;
+  transform: rotate(60deg);
+  top: -5px;
+  right: -5px;
+}
+.react::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 125px;
+  border: 5px solid #61dafb;
+  border-radius: 50%;
+  background: transparent;
+  transform: rotate(120deg);
+  top: -5px;
+  right: -5px;
+}
+.dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 58px;
+  border-radius: 50%;
+  background-color: #61dafb;
+}
+
+.dot::before {
+  content: '';
+  position: absolute;
+  background: transparent;
+  border: 3px solid #fff;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  top: -68px;
+  right: -69px;
+  box-shadow: 0 0 0 0 rgb(97, 218, 251);
+  animation: 3s infinite linear pulse;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(97, 218, 251, 0.4);
+  }
+  30% {
+    box-shadow: 0 0 0 25px rgba(97, 218, 251, 0);
+  }
+  70% {
+    box-shadow: 0 0 0 0 rgba(97, 218, 251, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(97, 218, 251, 0);
+  }
+}

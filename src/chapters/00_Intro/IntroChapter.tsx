@@ -1,0 +1,20 @@
+import React from 'react';
+import ReactLogo from '../../components/helper/ReactLogo';
+import Slide from '../../components/reveal/Slide';
+
+const IntroChapter: React.FC = () => {
+  return (
+    <>
+      <Slide isMain>
+        <h2>Capgemini</h2>
+        <h2>React Training</h2>
+        <div style={{ marginTop: 50 }}>
+          <ReactLogo />
+        </div>
+        <aside className='notes'>Intro Notes.</aside>
+      </Slide>
+    </>
+  );
+};
+
+export default IntroChapter;
