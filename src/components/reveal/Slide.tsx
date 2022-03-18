@@ -9,14 +9,17 @@ interface SlideProps {
    * (white background, black font).
    */
   isMain?: boolean;
+  dataAutoAnimate?: boolean;
 }
 
 const Slide: React.FC<SlideProps> = (props: SlideProps) => {
   return (
     <section
       data-background-image={props.isMain ? '/bg1.svg' : undefined}
+      data-background-transition={props.isMain ? 'slide' : undefined}
       // @ts-expect-error not assignable to css props
       style={props.isMain ? { '--r-heading-color': 'white', color: 'white' } : {}}
+      data-auto-animate={props.dataAutoAnimate}
     >
       {props.children}
     </section>

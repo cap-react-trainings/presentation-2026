@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import Reveal from 'reveal.js';
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/theme/simple.css';
@@ -19,7 +19,8 @@ const RevealWrapper: React.FC<RevealWrapperProps> = (props: RevealWrapperProps) 
   useEffect(() => {
     const deck = new Reveal({
       plugins: [RevealHighlight, SpeakerNotes],
-      slideNumber: true
+      slideNumber: true,
+      history: true
     });
     deck.initialize();
   }, []);
