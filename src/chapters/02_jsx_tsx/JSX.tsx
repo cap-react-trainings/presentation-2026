@@ -50,6 +50,10 @@ const JSX: React.FC = () => {
   return (
     <Slide>
       <Slide isMain>
+        <h2>2. JSX / TSX</h2>
+        <p>Templating with JavaScript</p>
+      </Slide>
+      <Slide>
         <h2>JSX / TSX</h2>
         <p className='fragment'>syntax extension to JavaScript</p>
         <p className='fragment'>describe what the UI looks like</p>

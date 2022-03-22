@@ -1,9 +1,13 @@
 import React from 'react';
 import './stylings.css';
 
-const ReactLogo: React.FC = () => {
+interface ReactLogoProps {
+  scale?: number;
+}
+
+const ReactLogo: React.FC<ReactLogoProps> = ({ scale = 1 }: ReactLogoProps) => {
   return (
-    <div className='app'>
+    <div className='app' data-id='logo' style={{ transform: 'scale(' + scale + ')' }}>
       <div className='react' />
       <div className='dot' />
     </div>
