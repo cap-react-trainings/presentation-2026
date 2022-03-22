@@ -1,7 +1,7 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import Reveal from 'reveal.js';
 import 'reveal.js/dist/reveal.css';
-import 'reveal.js/dist/theme/simple.css';
+import 'reveal.js/dist/theme/black.css';
 import RevealHighlight from 'reveal.js/plugin/highlight/highlight.esm';
 import SpeakerNotes from 'reveal.js/plugin/notes/notes.esm';
 import './stylings.css';
@@ -10,6 +10,12 @@ interface RevealWrapperProps {
   children: ReactNode;
 }
 
+const options = {
+  plugins: [RevealHighlight, SpeakerNotes],
+  slideNumber: true,
+  history: true
+};
+
 /**
  * Main component for creating the reveal.js slideshow.
  *
@@ -17,11 +23,7 @@ interface RevealWrapperProps {
  */
 const RevealWrapper: React.FC<RevealWrapperProps> = (props: RevealWrapperProps) => {
   useEffect(() => {
-    const deck = new Reveal({
-      plugins: [RevealHighlight, SpeakerNotes],
-      slideNumber: true,
-      history: true
-    });
+    const deck = new Reveal(options);
     deck.initialize();
   }, []);
 
