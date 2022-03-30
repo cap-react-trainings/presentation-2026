@@ -64,6 +64,74 @@ const hash = `<HashRouter
 </HashRouter>;
 `;
 
+const paramClass = `class Routing {
+  page: string
+
+  // make this page observable (depends on your way to do it)
+
+  setRoutingFromUrl(): void {
+    const queryParams = new URLSearchParams(window.location.search);
+    const page = queryParams.get('page');
+  }
+
+  setRouting(page: string): void {
+    setPage(page);
+    let params = new URLSearchParams(window.location.search);
+
+    params.set('page', page);
+
+    let url = window.location + params;
+
+    window.location.replace(url);
+  }
+
+  private setPage(newPage: string): void {
+    this.page = newPage;
+  }
+}
+`;
+
+const paramRoutes = `
+useEffect(() => {
+  Routing.setRoutingFromUrl()
+}, [])
+
+return (
+  {Routing.page === 'about' && <About /> }
+  {Routing.page === 'users' && <Users /> }
+  {Routing.page === '' && <Home /> }
+)
+`;
+
+const browserGuards = `import { GuardProvider, GuardedRoute } from 'react-router-guards';
+import { getIsLoggedIn } from 'utils';
+
+const requireLogin = (to, from, next) => {
+  if (to.meta.auth) {
+    if (getIsLoggedIn()) {
+      next();
+    }
+    next.redirect('/login');
+  } else {
+    next();
+  }
+};
+
+const App = () => (
+  <BrowserRouter>
+    <GuardProvider guards={[requireLogin]} loading={Loading} error={NotFound}>
+      <Switch>
+        <GuardedRoute path="/login" exact component={Login} />
+        <GuardedRoute path="/" exact component={Home} meta={{ auth: true }} />
+      </Switch>
+    </GuardProvider>
+  </BrowserRouter>
+);
+`;
+
+const paramGuard = `To be done
+`;
+
 const RoutingChapter: React.FC = () => {
   return (
     <>
@@ -153,19 +221,60 @@ const RoutingChapter: React.FC = () => {
         <Slide>
           <h2>Parameter Routing</h2>
           <p className='fragment'>The most akward one :D</p>
+          <p className='fragment'>
+            Basically: Instead of domain.com/test/1 or domain.com/#/test/1 we will have something like domain.com/?pages=test&pages=1 or
+            domain.com/?page=test&id=1
+          </p>
+        </Slide>
+        <Slide>
+          <p>We need to build our own routing. So forget about the react-dom-router ;)</p>
+          <p className='fragment'>
+            We will need to use a state management. Wheter it is mobx, context or redux. We need to store our routing somewhere
+          </p>
+        </Slide>
+        <Slide>
+          <p className='fragment'>We will start by declaring a routing class</p>
+          <pre className='fragment'>
+            <code data-trim data-noescape data-line-numbers>
+              {paramClass}
+            </code>
+          </pre>
+        </Slide>
+
+        <Slide>
+          <p>Also we need to restructure our main to the following</p>
+          <pre className='fragment'>
+            <code data-trim data-noescape data-line-numbers>
+              {paramRoutes}
+            </code>
+          </pre>
         </Slide>
 
         <Slide>
           <h2>Guards</h2>
-          <p className='fragment'>The most akward one :D</p>
+          <p className='fragment'>One special, but important part.</p>
+          <p className='fragment'>Guards are for securing routes.</p>
+          <p className='fragment'>Whether you are allowed to ENTER or</p>
+          <p className='fragment'>to LEAVE the page</p>
+          <p className='fragment'>
+            react-dom-router has a community package for that. Our own Parameter Routing needs to do it by itself :D{' '}
+          </p>
         </Slide>
         <Slide>
-          <h2>Normal Guards</h2>
-          <p className='fragment'>The most akward one :D</p>
+          <p>Browser Router</p>
+          <pre className='fragment'>
+            <code data-trim data-noescape data-line-numbers>
+              {browserGuards}
+            </code>
+          </pre>
         </Slide>
         <Slide>
-          <h2>Own Guard with mobX</h2>
-          <p className='fragment'>The most akward one :D</p>
+          <p>Parameter Router</p>
+          <pre className='fragment'>
+            <code data-trim data-noescape data-line-numbers>
+              {paramGuard}
+            </code>
+          </pre>
         </Slide>
 
         <Slide>
