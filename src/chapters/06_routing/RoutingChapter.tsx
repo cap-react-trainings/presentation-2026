@@ -129,7 +129,7 @@ const App = () => (
 );
 `;
 
-const paramGuard = `To be done
+const paramGuard = `We need the interceptor, the continue and the routing triggered
 `;
 
 const RoutingChapter: React.FC = () => {
