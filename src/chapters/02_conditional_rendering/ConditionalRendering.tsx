@@ -1,4 +1,5 @@
 import React from 'react';
+import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Slide from '../../components/reveal/Slide';
 
 const sayHiComponent = `
@@ -76,16 +77,17 @@ const users3 = `
     )
   }`;
 
-const ConditionalRendering: React.FC = () => {
+const ConditionalRenderingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
-    <Slide>
-      <Slide isMain>
-        <h2>Conditional Rendering</h2>
+    <Chapter
+      {...props}
+      subtitle={
         <ul>
           <li>rendering different components</li>
           <li>inline conditions</li>
         </ul>
-      </Slide>
+      }
+    >
       <Slide>
         <h2>Component uses different return statements</h2>
         <pre className='fragment'>
@@ -132,8 +134,8 @@ const ConditionalRendering: React.FC = () => {
           </code>
         </pre>
       </Slide>
-    </Slide>
+    </Chapter>
   );
 };
 
-export default ConditionalRendering;
+export default ConditionalRenderingChapter;

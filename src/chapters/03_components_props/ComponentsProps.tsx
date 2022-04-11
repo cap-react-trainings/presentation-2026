@@ -1,4 +1,5 @@
 import React from 'react';
+import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Slide from '../../components/reveal/Slide';
 
 const fnExample = `const Welcome: React.FC = (props: Pros) {
@@ -110,13 +111,9 @@ const styledComponent = `
       </>)}
   `;
 
-const ComponentsProps: React.FC = () => {
+const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
-    <Slide>
-      <Slide isMain>
-        <h2>Components in React</h2>
-        <p>JavaScript functions, accept Props and return React Elements (JSX)</p>
-      </Slide>
+    <Chapter {...props} subtitle={<p>JavaScript functions, accept Props and return React Elements (JSX)</p>}>
       <Slide>
         <h2>Class Components vs. Functional Components</h2>
         <pre className='fragment'>
@@ -139,7 +136,7 @@ const ComponentsProps: React.FC = () => {
           <li>nowadays: hardly any usage of class components</li>
           <li>functional components are easier to read and test, less code, better preformance</li>
         </ul>
-        <a href='https://www.twilio.com/blog/react-choose-functional-components' target='_blank' className='fragment'>
+        <a href='https://www.twilio.com/blog/react-choose-functional-components' target='_blank' className='fragment' rel='noreferrer'>
           Read this blog article in case of further interest
         </a>
       </Slide>
@@ -249,8 +246,8 @@ const ComponentsProps: React.FC = () => {
           </code>
         </pre>
       </Slide>
-    </Slide>
+    </Chapter>
   );
 };
 
-export default ComponentsProps;
+export default ComponentsChapter;

@@ -1,4 +1,5 @@
 import React from 'react';
+import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Slide from '../../components/reveal/Slide';
 
 const example = `const element = <h1>Welcome to React!</h1>`;
@@ -46,13 +47,9 @@ const children = `const element = (
   )
   `;
 
-const JSX: React.FC = () => {
+const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
-    <Slide>
-      <Slide isMain>
-        <h2>2. JSX / TSX</h2>
-        <p>Templating with JavaScript</p>
-      </Slide>
+    <Chapter {...props} subtitle={<p>Templating with JavaScript</p>}>
       <Slide>
         <h2>JSX / TSX</h2>
         <p className='fragment'>syntax extension to JavaScript</p>
@@ -133,8 +130,8 @@ const JSX: React.FC = () => {
           <li>JavaScript can be used inside JSX</li>
         </ul>
       </Slide>
-    </Slide>
+    </Chapter>
   );
 };
 
-export default JSX;
+export default JsxChapter;

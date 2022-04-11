@@ -1,3 +1,5 @@
+import React from 'react';
+import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Slide from '../../components/reveal/Slide';
 
 const useState = `
@@ -123,11 +125,11 @@ const useQueryBooks = `
   )
   `;
 
-const DatabindingHooks: React.FC = () => {
+const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
-    <Slide>
-      <Slide isMain>
-        <h2>Hooks and Databinding</h2>
+    <Chapter
+      {...props}
+      subtitle={
         <ul>
           <li>Hooks</li>
           <li>Databinding</li>
@@ -135,7 +137,8 @@ const DatabindingHooks: React.FC = () => {
           <li>Custom Hooks</li>
           <li>useQuery-Hook</li>
         </ul>
-      </Slide>
+      }
+    >
       <Slide>
         <h2>Hooks</h2>
         <p>work with React state and lifecycle features from function components</p>
@@ -255,8 +258,8 @@ const DatabindingHooks: React.FC = () => {
           </code>
         </pre>
       </Slide>
-    </Slide>
+    </Chapter>
   );
 };
 
-export default DatabindingHooks;
+export default DatabindingHooksChapter;

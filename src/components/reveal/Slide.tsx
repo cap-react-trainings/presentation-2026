@@ -10,6 +10,7 @@ interface SlideProps {
    */
   isMain?: boolean;
   dataAutoAnimate?: boolean;
+  id?: string;
 }
 
 const Slide: React.FC<SlideProps> = (props: SlideProps) => {
@@ -20,6 +21,7 @@ const Slide: React.FC<SlideProps> = (props: SlideProps) => {
       // @ts-expect-error not assignable to css props
       style={props.isMain ? { '--r-heading-color': 'white', color: 'white' } : {}}
       data-auto-animate={props.dataAutoAnimate}
+      id={props.id || ''}
     >
       {props.children}
     </section>
