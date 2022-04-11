@@ -1,5 +1,5 @@
 import React from 'react';
-import Chapter from '../../components/helper/Chapter';
+import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Slide from '../../components/reveal/Slide';
 
 const snippet = `
@@ -9,16 +9,15 @@ const snippet = `
 </Slide>
         `;
 
-const ExampleChapter: React.FC = () => {
+const ExampleChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
     <Chapter
-      index={0}
-      title='Tolle Präsentation'
+      {...props}
       subtitle={
-        <>
-          <p>Beispiel einer Hauptseite (isMain=true).</p>
-          <aside className='notes'>Shhh, these are your private notes 📝</aside>
-        </>
+        <ul>
+          <li>rendering different components</li>
+          <li>inline conditions</li>
+        </ul>
       }
     >
       <Slide>

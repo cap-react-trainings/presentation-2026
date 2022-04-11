@@ -1,15 +1,15 @@
-import JsxChapter from './chapters/01_jsx_tsx/JSX';
-import ExampleChapter from './chapters/99_example/ExampleChapter';
+import JsxChapter from './chapters/jsx_tsx/JSX';
+import ExampleChapter from './chapters/z_example/ExampleChapter';
 import RevealWrapper from './components/reveal/RevealWrapper';
 import React from 'react';
-import IntroChapter from './chapters/00_Intro/IntroChapter';
-import ContextChapter from './chapters/05_context/ContextChapter';
-import FormsChapter from './chapters/07_forms/FormsChapter';
-import ConditionalRenderingChapter from './chapters/02_conditional_rendering/ConditionalRendering';
-import ComponentsChapter from './chapters/03_components_props/ComponentsProps';
-import DatabindingHooksChapter from './chapters/04_databinding/DatabindingHooks';
-import ComparisonChapter from './chapters/01_comparison/ComparisonChapter';
-import TableOfContents from './chapters/00_Intro/TableOfContents';
+import IntroChapter from './chapters/a_Intro/IntroChapter';
+import ContextChapter from './chapters/context/ContextChapter';
+import FormsChapter from './chapters/forms/FormsChapter';
+import ConditionalRenderingChapter from './chapters/conditional_rendering/ConditionalRendering';
+import ComponentsChapter from './chapters/components_props/ComponentsProps';
+import DatabindingHooksChapter from './chapters/databinding/DatabindingHooks';
+import ComparisonChapter from './chapters/comparison/ComparisonChapter';
+import TableOfContents from './chapters/a_Intro/TableOfContents';
 
 const App: React.FC = () => {
   const chapter = [
@@ -67,7 +67,7 @@ const App: React.FC = () => {
     <RevealWrapper>
       <IntroChapter />
       <TableOfContents chapter={chapter} />
-      {/* <ExampleChapter /> */}
+      <ExampleChapter title='Example' index={0} />
       {chapter.map((chapter, index) => (
         <chapter.component key={index} title={chapter.title} index={index + 1} />
       ))}
