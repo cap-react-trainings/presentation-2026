@@ -10,6 +10,7 @@ import ComponentsChapter from './chapters/components_props/ComponentsProps';
 import DatabindingHooksChapter from './chapters/databinding/DatabindingHooks';
 import ComparisonChapter from './chapters/comparison/ComparisonChapter';
 import TableOfContents from './chapters/a_Intro/TableOfContents';
+import TestingChapter from './chapters/testing/TestingChapter';
 
 const App: React.FC = () => {
   const chapter = [
@@ -37,22 +38,22 @@ const App: React.FC = () => {
       title: 'Context',
       component: ContextChapter
     },
-    // {
-    //   title: 'jo',
-    //   component: RoutingChapter
-    // },
+    {
+      title: 'Routing',
+      component: ContextChapter
+    },
     {
       title: 'Forms',
       component: FormsChapter
-    } //,
+    },
     // {
     //   title: 'jo',
     //   component: PerformanceChapter
     // },
-    // {
-    //   title: 'jo',
-    //   component: TestingChapter
-    // },
+    {
+      title: 'Testing',
+      component: TestingChapter
+    } //,
     // {
     //   title: 'jo',
     //   component: StorybookChapter
@@ -67,7 +68,7 @@ const App: React.FC = () => {
     <RevealWrapper>
       <IntroChapter />
       <TableOfContents chapter={chapter} />
-      <ExampleChapter title='Example' index={0} />
+      {/* <ExampleChapter title='Example' index={0} /> */}
       {chapter.map((chapter, index) => (
         <chapter.component key={index} title={chapter.title} index={index + 1} />
       ))}
