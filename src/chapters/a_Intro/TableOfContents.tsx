@@ -14,7 +14,9 @@ const TableOfContents: React.FC<TableOfContentsProps> = (props: TableOfContentsP
       <ol>
         {props.chapter.map((chapter, index) => (
           <li key={index}>
-            <a href={`#/chapter${index + 1}`}>{chapter.title}</a>
+            <a href={`#/chapter${index + 1}`} style={{ color: 'white' }}>
+              {chapter.title}
+            </a>
           </li>
         ))}
       </ol>
