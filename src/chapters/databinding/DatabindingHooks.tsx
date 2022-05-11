@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Slide from '../../components/reveal/Slide';
@@ -123,6 +124,22 @@ const useQueryBooks = `
     : error ? <p>Error: {error.message}</p>
     : <BookList books={data} />}
   )
+  `;
+
+const ObservableMobX = `
+  export class Test {
+    continue: boolean | undefined = undefined;
+
+    constructor() {
+      makeAutoObservable(this)
+    }
+
+    someFunction = () => {
+      const disposer = observe(this, 'continue', change => {
+        console.log(change.newValue)
+      })
+    }
+  }
   `;
 
 const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
@@ -255,6 +272,21 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <pre className='fragment'>
           <code data-trim data-noescape data-line-numbers>
             {useQueryBooks}
+          </code>
+        </pre>
+      </Slide>
+      <Slide>
+        <h2>Angular Excursus: Observable vs State</h2>
+        <p className='fragment'>When coming from Angular it is often asked what happend to the Observables</p>
+        <p className='fragment'>
+          You just simply don't need them :) The state listening in a useEffect for example is like a simple pipe in Angular
+        </p>
+        <p className='fragment'>However it is possible to have "real" subscribe with mobx for example.</p>
+      </Slide>
+      <Slide>
+        <pre>
+          <code data-trim data-noescape data-line-numbers>
+            {ObservableMobX}
           </code>
         </pre>
       </Slide>
