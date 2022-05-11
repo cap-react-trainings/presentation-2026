@@ -11,6 +11,7 @@ import DatabindingHooksChapter from './chapters/databinding/DatabindingHooks';
 import ComparisonChapter from './chapters/comparison/ComparisonChapter';
 import TableOfContents from './chapters/a_Intro/TableOfContents';
 import TestingChapter from './chapters/testing/TestingChapter';
+import RoutingChapter from './chapters/06_routing/RoutingChapter';
 
 const App: React.FC = () => {
   const chapter = [
@@ -40,7 +41,7 @@ const App: React.FC = () => {
     },
     {
       title: 'Routing',
-      component: ContextChapter
+      component: RoutingChapter
     },
     {
       title: 'Forms',
