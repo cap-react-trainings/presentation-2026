@@ -1,4 +1,5 @@
 import React from 'react';
+import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Slide from '../../components/reveal/Slide';
 
 const example = `const element = <h1>Welcome to React!</h1>`;
@@ -46,13 +47,9 @@ const children = `const element = (
   )
   `;
 
-const JSX: React.FC = () => {
+const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
-    <Slide>
-      <Slide isMain>
-        <h2>2. JSX / TSX</h2>
-        <p>Templating with JavaScript</p>
-      </Slide>
+    <Chapter {...props} subtitle={<p>Templating with JavaScript</p>}>
       <Slide>
         <h2>JSX / TSX</h2>
         <p className='fragment'>syntax extension to JavaScript</p>
@@ -61,7 +58,7 @@ const JSX: React.FC = () => {
         <p className='fragment'>produces React elements</p>
         <p className='fragment'>TSX enhances JSX in terms of type checking</p>
         <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers='1,4'>
+          <code data-trim data-noescape data-line-numbers>
             {example}
           </code>
         </pre>
@@ -69,7 +66,7 @@ const JSX: React.FC = () => {
       <Slide>
         <h2>Type assertions with the as operator</h2>
         <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers='1,4'>
+          <code data-trim data-noescape data-line-numbers>
             {asSnippet}
           </code>
         </pre>
@@ -81,7 +78,7 @@ const JSX: React.FC = () => {
           <li>naming convention starts with lower case letter</li>
         </ul>
         <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers='1,4'>
+          <code data-trim data-noescape data-line-numbers>
             {intrinsicFragment}
           </code>
         </pre>
@@ -93,12 +90,12 @@ const JSX: React.FC = () => {
           <li>naming convention starts with capital letter</li>
         </ul>
         <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers='1,4'>
+          <code data-trim data-noescape data-line-numbers>
             {buttonFragment}
           </code>
         </pre>
         <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers='1,4'>
+          <code data-trim data-noescape data-line-numbers>
             {componentFragment}
           </code>
         </pre>
@@ -107,12 +104,12 @@ const JSX: React.FC = () => {
         <h2>Interfaces</h2>
         <p>define which properties need to be passed to you Component</p>
         <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers='1,4'>
+          <code data-trim data-noescape data-line-numbers>
             {buttonFragment2}
           </code>
         </pre>
         <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers='1,4'>
+          <code data-trim data-noescape data-line-numbers>
             {useButton2}
           </code>
         </pre>
@@ -120,7 +117,7 @@ const JSX: React.FC = () => {
       <Slide>
         <h2>JavaScript in Elements</h2>
         <pre>
-          <code data-trim data-noescape data-line-numbers='1,4'>
+          <code data-trim data-noescape data-line-numbers>
             {children}
           </code>
         </pre>
@@ -133,8 +130,8 @@ const JSX: React.FC = () => {
           <li>JavaScript can be used inside JSX</li>
         </ul>
       </Slide>
-    </Slide>
+    </Chapter>
   );
 };
 
-export default JSX;
+export default JsxChapter;

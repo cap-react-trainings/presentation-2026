@@ -1,22 +1,78 @@
-import JSX from './chapters/02_jsx_tsx/JSX';
-import ExampleChapter from './chapters/99_example/ExampleChapter';
+import JsxChapter from './chapters/jsx_tsx/JSX';
+import ExampleChapter from './chapters/z_example/ExampleChapter';
 import RevealWrapper from './components/reveal/RevealWrapper';
 import React from 'react';
-import IntroChapter from './chapters/00_Intro/IntroChapter';
-import ContextChapter from './chapters/05_context/ContextChapter';
-import FormsChapter from './chapters/07_forms/FormsChapter';
+import IntroChapter from './chapters/a_Intro/IntroChapter';
+import ContextChapter from './chapters/context/ContextChapter';
+import FormsChapter from './chapters/forms/FormsChapter';
+import ConditionalRenderingChapter from './chapters/conditional_rendering/ConditionalRendering';
+import ComponentsChapter from './chapters/components_props/ComponentsProps';
+import DatabindingHooksChapter from './chapters/databinding/DatabindingHooks';
+import ComparisonChapter from './chapters/comparison/ComparisonChapter';
+import TableOfContents from './chapters/a_Intro/TableOfContents';
+import TestingChapter from './chapters/testing/TestingChapter';
 import RoutingChapter from './chapters/06_routing/RoutingChapter';
 
 const App: React.FC = () => {
+  const chapter = [
+    {
+      title: 'Comparison of Frameworks',
+      component: ComparisonChapter
+    },
+    {
+      title: 'JSX & TSX',
+      component: JsxChapter
+    },
+    {
+      title: 'Conditional Rendering',
+      component: ConditionalRenderingChapter
+    },
+    {
+      title: 'Components',
+      component: ComponentsChapter
+    },
+    {
+      title: 'Hooks & Databinding',
+      component: DatabindingHooksChapter
+    },
+    {
+      title: 'Context',
+      component: ContextChapter
+    },
+    {
+      title: 'Routing',
+      component: RoutingChapter
+    },
+    {
+      title: 'Forms',
+      component: FormsChapter
+    },
+    // {
+    //   title: 'jo',
+    //   component: PerformanceChapter
+    // },
+    {
+      title: 'Testing',
+      component: TestingChapter
+    } //,
+    // {
+    //   title: 'jo',
+    //   component: StorybookChapter
+    // },
+    // {
+    //   title: 'jo',
+    //   component: ReactNativeChapter
+    // }
+  ];
+
   return (
     <RevealWrapper>
       <IntroChapter />
-      {/* <ExampleChapter /> */}
-      {/* more Chapters to come here... */}
-      <JSX />
-      <ContextChapter />
-      <RoutingChapter />
-      <FormsChapter />
+      <TableOfContents chapter={chapter} />
+      {/* <ExampleChapter title='Example' index={0} /> */}
+      {chapter.map((chapter, index) => (
+        <chapter.component key={index} title={chapter.title} index={index + 1} />
+      ))}
     </RevealWrapper>
   );
 };
