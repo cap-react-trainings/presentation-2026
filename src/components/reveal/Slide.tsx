@@ -22,6 +22,7 @@ const Slide: React.FC<SlideProps> = (props: SlideProps) => {
       style={props.isMain ? { '--r-heading-color': 'white', color: 'white' } : {}}
       data-auto-animate={props.dataAutoAnimate}
       id={props.id || ''}
+      {...props}
     >
       {props.children}
     </section>

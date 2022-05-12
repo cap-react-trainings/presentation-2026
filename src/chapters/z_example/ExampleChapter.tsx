@@ -38,6 +38,17 @@ const ExampleChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
           </code>
         </pre>
       </Slide>
+      <Slide>
+        <h2>Further Reads</h2>
+        <ul>
+          <li>
+            <a href='https://reactjs.org/docs/testing.html'>React Docs</a>
+          </li>
+          <li>
+            <a href='https://testing-library.com/docs/react-testing-library/intro'>React Testing Library</a>
+          </li>
+        </ul>
+      </Slide>
     </Chapter>
   );
 };

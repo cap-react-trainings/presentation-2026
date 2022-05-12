@@ -12,6 +12,7 @@ import ComparisonChapter from './chapters/comparison/ComparisonChapter';
 import TableOfContents from './chapters/a_Intro/TableOfContents';
 import TestingChapter from './chapters/testing/TestingChapter';
 import RoutingChapter from './chapters/06_routing/RoutingChapter';
+import StorybookChapter from './chapters/storybook/StorybookChapter';
 
 const App: React.FC = () => {
   const chapter = [
@@ -54,11 +55,11 @@ const App: React.FC = () => {
     {
       title: 'Testing',
       component: TestingChapter
+    },
+    {
+      title: 'Atomic Design & Storybook',
+      component: StorybookChapter
     } //,
-    // {
-    //   title: 'jo',
-    //   component: StorybookChapter
-    // },
     // {
     //   title: 'jo',
     //   component: ReactNativeChapter
