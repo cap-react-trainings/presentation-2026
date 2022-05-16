@@ -4,7 +4,7 @@ import Slide from '../../components/reveal/Slide';
 
 const sayHiComponent = `
   interface Props {
-    userName?: string;
+    userName?: string; // optional
   }
   const SayHi: React.FC = (props: Props) => {
     if (props.userName) {
@@ -41,7 +41,7 @@ const users = `
     return (
       <div>
         <h2>My fancy app</h2>
-       { users.legnth > 0 &&  // alternative: !!users.length
+       { users.length > 0 &&  // alternative: !!users.length
         <p>Your app is used by {users.length} users.</p>
       }
       </div>

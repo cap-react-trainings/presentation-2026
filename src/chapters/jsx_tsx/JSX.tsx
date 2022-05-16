@@ -3,14 +3,6 @@ import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Slide from '../../components/reveal/Slide';
 
 const example = `const element = <h1>Welcome to React!</h1>`;
-const asSnippet = `const example = foo as bar`;
-const intrinsicFragment = `declare namespace JSX {
-    interface IntrinsicElements {
-      myIntrinsicElement: any;
-    }
-  }
-  <myIntrinsicElement />; // ok
-  <elementNotDefinedInInterface />; // error`;
 
 const buttonFragment = `export default MyButton: React.FC = () => {
     return (
@@ -64,30 +56,11 @@ const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) =
         </pre>
       </Slide>
       <Slide>
-        <h2>Type assertions with the as operator</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {asSnippet}
-          </code>
-        </pre>
-      </Slide>
-      <Slide>
-        <h2>Intrinsic elements & Value based elements</h2>
+        <h2>JSX / TSX Elements</h2>
         <ul className='fragment'>
-          <li>intrinsic elements are looked up on a IntrinsicElements-interface which you need to define</li>
-          <li>naming convention starts with lower case letter</li>
-        </ul>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {intrinsicFragment}
-          </code>
-        </pre>
-      </Slide>
-      <Slide>
-        <h2>Intrinsic elements & Value based elements</h2>
-        <ul className='fragment'>
-          <li>value based elements are looked up by identifiers</li>
+          <li>elements are looked up by identifiers</li>
           <li>naming convention starts with capital letter</li>
+          <li>You can import them as a component in your app</li>
         </ul>
         <pre className='fragment'>
           <code data-trim data-noescape data-line-numbers>
@@ -102,7 +75,7 @@ const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) =
       </Slide>
       <Slide>
         <h2>Interfaces</h2>
-        <p>define which properties need to be passed to you Component</p>
+        <p>define which properties need to be passed to your component</p>
         <pre className='fragment'>
           <code data-trim data-noescape data-line-numbers>
             {buttonFragment2}
@@ -129,6 +102,9 @@ const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) =
           <li>empty tags may be closed immediatly with `{'/>'}`</li>
           <li>JavaScript can be used inside JSX</li>
         </ul>
+      </Slide>
+      <Slide>
+        <h2>💪 Exercise</h2>
       </Slide>
     </Chapter>
   );

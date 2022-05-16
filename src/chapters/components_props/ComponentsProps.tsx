@@ -13,20 +13,21 @@ const classExample = `class Welcome extends React.Component {
 }`;
 
 const bookList = `
-  const BookList: React.FC = () => {
+  function App = () => {
     const books: Book[] = [
       {id: 1, name: 'Moby Dick', author: 'Herman Melville'},
       {id: 2, name: 'Hamlet', author: 'Shakespeare'},]
     return (
-      <>
-       {books.map(book => (
+      <div>
+      <h1>Booklist</h1>
+       {books.map((book, index) => (
          // always define keys when looping, unique identifier for React DOM
-         <Book key={book.id} book={book} /> 
+         <Book key={index} book={book} /> 
        ))}
-      </>
+      </div>
     )
   }
-  export default BookList;
+  export default App;
 `;
 
 const book = `
@@ -97,7 +98,7 @@ const stylesAttribute = `
   }
 `;
 
-const npmI = `npm install --save styled-components`;
+const yarnAdd = `yarn add --save styled-components`;
 
 const styledComponent = `
   import styled from 'styled-components';
@@ -130,14 +131,16 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       </Slide>
       <Slide>
         <h2>Class Components vs. Functional Components</h2>
-        <p className='fragment'>Whats the differnce? When should I use which one?</p>
-        <ul className='fragment'>
+        <p className='fragment' style={{ fontSize: '2.2rem' }}>
+          Whats the differnce? When should I use which one?
+        </p>
+        <ul className='fragment' style={{ fontSize: '2.2rem' }}>
           <li>hisotrical reasons: no state-management / lifecycle hooks before 2019 in functional components</li>
           <li>nowadays: hardly any usage of class components</li>
           <li>functional components are easier to read and test, less code, better preformance</li>
         </ul>
         <a href='https://www.twilio.com/blog/react-choose-functional-components' target='_blank' className='fragment' rel='noreferrer'>
-          Read this blog article in case of further interest
+          🚀 understanding functional components vs class components
         </a>
       </Slide>
       <Slide>
@@ -146,11 +149,19 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <p className='fragment'>The Book component doesn't 'know' what to render so we need to pass the information</p>
       </Slide>
       <Slide>
-        <h2>Properties: Pass information down the component tree</h2>
+        <h2 style={{ fontSize: '2.5rem' }}>Properties: Pass information down the component tree</h2>
         <pre className='fragment'>
           <code data-trim data-noescape data-line-numbers>
             {bookList}
           </code>
+        </pre>
+        <pre className='fragment'>
+          <a
+            style={{ fontSize: '1.7rem', marginTop: 4 }}
+            href='https://github.com/cap-react-trainings/code-examples/blob/03-conditional-rendering-basic/react-training-codeexamples/src/App.tsx'
+          >
+            🚀 code example on GitHub
+          </a>
         </pre>
       </Slide>
       <Slide>
@@ -171,7 +182,7 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       </Slide>
       <Slide>
         <h2>Properties: desctructured vs not destructured</h2>
-        <ul>
+        <ul style={{ fontSize: '2rem' }}>
           <li className='fragment'>
             Pro: easier to apply default values
             <pre>
@@ -212,6 +223,14 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
             {stylesAttribute}
           </code>
         </pre>
+        <pre className='fragment'>
+          <a
+            style={{ fontSize: '1.7rem', marginTop: 4 }}
+            href='https://github.com/cap-react-trainings/code-examples/blob/03-conditional-rendering-basic/react-training-codeexamples/src/components/book/Book.tsx'
+          >
+            🚀 code example on GitHub
+          </a>
+        </pre>
       </Slide>
       <Slide>
         <h2>CSS in JS</h2>
@@ -237,7 +256,7 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <h2>CSS in JS - styled components</h2>
         <pre className='fragment'>
           <code data-trim data-noescape data-line-numbers>
-            {npmI}
+            {yarnAdd}
           </code>
         </pre>
         <pre className='fragment'>
@@ -245,6 +264,17 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
             {styledComponent}
           </code>
         </pre>
+        <pre className='fragment'>
+          <a
+            style={{ fontSize: '1.7rem', marginTop: 4 }}
+            href='https://github.com/cap-react-trainings/code-examples/blob/03-conditional-rendering-styled-components/react-training-codeexamples/src/components/book/Book.tsx'
+          >
+            🚀 code example on GitHub
+          </a>
+        </pre>
+      </Slide>
+      <Slide>
+        <h2>💪 Exercise</h2>
       </Slide>
     </Chapter>
   );

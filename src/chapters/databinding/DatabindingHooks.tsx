@@ -5,12 +5,12 @@ import Slide from '../../components/reveal/Slide';
 
 const useState = `
   const Numbers: React.FC = () => {
-    const [counter, setCounter] = useState<number>(0);
+    const [bookCounter, setBookCounter] = useState<number>(0);
 
     return (
-      <p>{counter}</p>
-      <button onClick={() => setCounter(counter + 1)}>
-        increase counter
+      <p>{bookCounter}</p>
+      <button onClick={() => setBookCounter(bookCounter + 1)}>
+        increase bookCounter
       </button>
     )
   }
@@ -35,23 +35,22 @@ const loadingState = `
   `;
 
 const booksByAuthor = `
-  const [author, setAuthor] = useState<Author>()
-  const [books, setBooks] = useState<Book[]>()
-  const authorOptions: Author[] = [{id: 1, name: "Shakespeare"}, {id: 2, name: "Melville"}]
+  const [currentBooks, setCurrentBooks] = useState<Book[]>()
+  const [selectedBook, setSelectedBook] = useState<Book>()
   useEffect(() => {
-    fetch('https://api.example.com/books?author={author.id}')
-      .then(response => response.json())
-      .then(data => {
-        setBooks(data)
-        setLoading(false)
-      })
-  }, [author])  // hook runs whenever the author changes
+    const booksByAuthor = props.books
+      .filter(book => book.author === props.author)
+    setCurrentBooks(booksByAuthor)
+    setSelectedBook(booksByAuthor[0])
+  }, [props.author]) // hook runs when props.author changes
 
   return(
     <>
-      <Select options={authorOptions} onChange={e => setAuthor(e.target.value)}/>
-      <p>Books by {author.name}</p>
-      <BookList books={books} />
+      <Select
+        options={currentBooks}
+        onChange={e => setSelectedBook(e.target.value)}/>
+      <p>Books by {props.author.name}</p>
+      <BookList books={currentBooks} />
     </>
   )
   `;
@@ -61,7 +60,7 @@ const subscribeToBooks = `
       BooksApi.subscribeToUpdates(props.user.id);
       /**
        * return function only runs once before 
-       * component's lifecycle is being destryed
+       * component's lifecycle is being destroyed
        */
       return () => {
         BooksApi.unsubscribeFromUpdates(props.user.id)
@@ -181,6 +180,17 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
             {useState}
           </code>
         </pre>
+        <pre className='fragment'>
+          <a
+            style={{ fontSize: '1.7rem', marginTop: 4 }}
+            href='https://github.com/cap-react-trainings/code-examples/blob/04-hooks-usestate/react-training-codeexamples/src/App.tsx'
+          >
+            🚀 code example on GitHub
+          </a>
+        </pre>
+      </Slide>
+      <Slide>
+        <h2>💪 Exercise</h2>
       </Slide>
       <Slide>
         <h2>useEffect-Hook</h2>
@@ -197,6 +207,14 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
           <code data-trim data-noescape data-line-numbers>
             {loadingState}
           </code>
+        </pre>
+        <pre className='fragment'>
+          <a
+            style={{ fontSize: '1.7rem', marginTop: 4 }}
+            href='https://github.com/cap-react-trainings/code-examples/blob/04-hooks-useEffect/react-training-codeexamples/src/App.tsx'
+          >
+            🚀 code example on GitHub
+          </a>
         </pre>
       </Slide>
       <Slide>
@@ -234,6 +252,9 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
             {useBooks}
           </code>
         </pre>
+      </Slide>
+      <Slide>
+        <h2>💪 Exercise</h2>
       </Slide>
       <Slide>
         <h2>Excursus: useQuery (React Query)</h2>
@@ -274,6 +295,14 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
             {useQueryBooks}
           </code>
         </pre>
+        <pre className='fragment'>
+          <a
+            style={{ fontSize: '1.7rem', marginTop: 4 }}
+            href='https://github.com/cap-react-trainings/code-examples/blob/04-hooks-use-query/react-training-codeexamples/src/components/book-list/BookList.tsx'
+          >
+            🚀 code example on GitHub
+          </a>
+        </pre>
       </Slide>
       <Slide>
         <h2>Angular Excursus: Observable vs State</h2>
@@ -289,6 +318,9 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
             {ObservableMobX}
           </code>
         </pre>
+      </Slide>
+      <Slide>
+        <h2>💪 Exercise</h2>
       </Slide>
     </Chapter>
   );
