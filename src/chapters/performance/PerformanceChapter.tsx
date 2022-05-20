@@ -218,6 +218,17 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           </code>
         </pre>
       </Slide>
+      <Slide>
+        <h2>Measure page performance</h2>
+        <ul>
+          <li className='fragment'>
+            <a href='https://pagespeed.web.dev/'>web vital</a> or Chrome DevTools 'Lighthouse'
+          </li>
+          <li className='fragment'>will analyze your performance on mobile and desktop</li>
+          <li className='fragment'>reveals painpoints you can work on</li>
+        </ul>
+        <aside className='notes'>do a short live session, show some insights</aside>
+      </Slide>
     </Chapter>
   );
 };
