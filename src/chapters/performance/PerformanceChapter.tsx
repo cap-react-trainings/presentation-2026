@@ -40,6 +40,47 @@ const lazyLoad = `
   )
 `;
 
+const lazyLoadRouter = `
+const About = React.lazy(() => import("./pages/About"));
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="about"
+        element={
+          <React.Suspense fallback={<>...</>}>
+            <About />
+          </React.Suspense>
+        }
+      />
+    <Routes>
+  )
+`;
+
+const batching = `
+  const App = () => {
+    const [additionCount, setAdditionCount] = useState(0);
+    const [subtractionCount, setSubtractionCount] = useState(0);
+    
+    console.log("Component Rendering");
+    ...
+  }
+`;
+
+const fetch = `
+const handleOnClickAsync = () => {
+  fetch(“https://jsonplaceholder.typicode.com/books/1").then(() => {
+    setAdditionCount(additionCount + 1);
+    setSubstractionCount(substractionCount — 1);
+  });
+};
+`;
+
+const createRoot = `
+ReactDOM.createRoot(document.getElementById('app'))
+  .render(<App /> );
+`;
+
 const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
     <Chapter {...props}>
@@ -47,6 +88,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <h2>Ways to improve the performance of your app:</h2>
         <ul>
           <li>avoiding wasted re-renders</li>
+          <li>Autoamtic Batching</li>
           <li>caching expensive operations</li>
           <li>lazy loading components</li>
         </ul>
@@ -171,13 +213,74 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         </aside>
       </Slide>
       <Slide>
-        <h2 style={{ fontSize: '2.5rem' }}>Typical pitfalls when detecting wasted rerenders</h2>
+        <h2>When to use React.memo()?</h2>
         <div className='fragment fade-in'>
-          <img style={{ width: '30%' }} src='slide-assets/react-memo.png' />
+          <ul>
+            <li>
+              <h3 style={{ fontSize: '2rem' }}>Pure functional Component</h3>
+              <p style={{ fontSize: '1.5rem' }}>Your Component is functional and given the same Props, always renders the same output.</p>
+            </li>
+            <li>
+              <h3 style={{ fontSize: '2rem' }}>Renders often</h3>
+            </li>
+            <li>
+              <h3 style={{ fontSize: '2rem' }}>Re-renders with the same Props</h3>
+              <p style={{ fontSize: '1.5rem' }}>Your Component is usually provided with the same props during re-rendering</p>
+            </li>
+            <li>
+              <h3 style={{ fontSize: '2rem' }}>Medium to big size</h3>
+              <p style={{ fontSize: '1.5rem' }}>Your component contains a decent amount of UI-Elements to reason Props equality check.</p>
+            </li>
+          </ul>
         </div>
 
         <a className='fragment' href='https://dmitripavlutin.com/use-react-memo-wisely/'>
           🚀 use React.memo() wisely
+        </a>
+      </Slide>
+      <Slide>
+        <h2 style={{ fontSize: '2.5rem' }}>Autoamtic Batching</h2>
+        <ul style={{ fontSize: '2rem' }}>
+          <li className='fragment'>New in React 18: Autoamted Batching</li>
+          <li className='fragment'>batching group state updates, native event handlers are batched as well</li>
+        </ul>
+        <pre className='fragment'>
+          <code data-trim data-noescape data-line-numbers>
+            {batching}
+          </code>
+        </pre>
+        <aside className='notes'>this batching example already works since React 17</aside>
+      </Slide>
+      <Slide>
+        <h2 style={{ fontSize: '2.5rem' }}>Automatic Batching</h2>
+        <ul style={{ fontSize: '2rem' }}>
+          <li className='fragment'>
+            Since React 18 this also works for state updates inside a context that is not associated with the browser, e.g. for fetch()
+          </li>
+        </ul>
+        <pre className='fragment'>
+          <code data-trim data-noescape data-line-numbers>
+            {fetch}
+          </code>
+        </pre>
+        <aside className='notes'>
+          this would rerender twice, because rerender would be triggered by both the state update AND the callback of fetch()
+        </aside>
+      </Slide>
+      <Slide>
+        <h2 style={{ fontSize: '2.5rem' }}>Automatic Batching</h2>
+        <ul className='fragment'>
+          <li className='fragment'>
+            By upgrading the render-method in index.tsx state updates in asynchronous function will cause only one re-rendering process
+          </li>
+        </ul>
+        <pre className='fragment'>
+          <code data-trim data-noescape data-line-numbers>
+            {createRoot}
+          </code>
+        </pre>
+        <a className='fragment' href='https://dmitripavlutin.com/use-react-memo-wisely/'>
+          🚀 read more about automatic batching
         </a>
       </Slide>
       <Slide>
@@ -219,6 +322,22 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           </code>
         </pre>
       </Slide>
+      <Slide>
+        <h2 style={{ fontSize: '2.5rem' }}>Lazy loading with React Router</h2>
+        <ul style={{ fontSize: '2rem' }}>
+          <li className='fragment'>lazy load individual route elements or portions of router hierarchy</li>
+          <li className='fragment'>
+            pages that are not required on the landing page can be split into seperate bundles, decreasing load time on initial page and
+            improving performance
+          </li>
+        </ul>
+        <pre className='fragment'>
+          <code data-trim data-noescape data-line-numbers>
+            {lazyLoadRouter}
+          </code>
+        </pre>
+      </Slide>
+
       <Slide>
         <h2>Measure page performance</h2>
         <ul>
