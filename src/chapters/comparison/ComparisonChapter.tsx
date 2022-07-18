@@ -33,11 +33,11 @@ export class AppComponent {
 `;
 
 const react = `
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 function App() {
   const [todos, setTodos] = useState([]);
-  const todoText = useRef();
+  const [todoText, setTodoText] = useState();
   useEffect(() => {
     const existingTodos = localStorage.getItem("todos");
     setTodos(existingTodos ? JSON.parse(existingTodos) : []);
@@ -47,8 +47,10 @@ function App() {
       <ul>
         {todos.map(todo => <li>{todo}</li>)}
       </ul>
-      <form onSubmit={() => {}}>
-        <input type="text" ref={todoText} />
+      <form onSubmit={() => console.log(...)}>
+        <input type="text"
+          value={todoText}
+          onChange={e => setTodoText(e.target.value)} />
         <input type="submit" value="Add Todo" />
       </form>
     </div>
@@ -270,12 +272,12 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <h2>Angular</h2>
         <div style={{ display: 'flex', justifyContent: 'center', fontSize: '2rem', gap: 10 }}>
           <pre>
-            <code data-trim data-noescape>
+            <code data-trim data-noescape data-line-numbers>
               {angularHtml}
             </code>
           </pre>
           <pre>
-            <code data-trim data-noescape>
+            <code data-trim data-noescape data-line-numbers>
               {angularTs}
             </code>
           </pre>
@@ -285,7 +287,7 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <h2>React</h2>
         <div style={{ fontSize: '2rem' }}>
           <pre>
-            <code data-trim data-noescape>
+            <code data-trim data-noescape data-line-numbers>
               {react}
             </code>
           </pre>
@@ -295,7 +297,7 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <h2>Vue</h2>
         <div style={{ fontSize: '2rem' }}>
           <pre>
-            <code data-trim data-noescape>
+            <code data-trim data-noescape data-line-numbers>
               {vue}
             </code>
           </pre>

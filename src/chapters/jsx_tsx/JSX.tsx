@@ -15,21 +15,6 @@ const componentFragment = `
     <MyButton /> // ok
     <MySuperSpecialButton /> // error
 `;
-const buttonFragment2 = `
-interface Props {
-    title: string;
-}
-export default MyButton: React.FC = ({props: Props}) => {
-    return (
-        <button>{props.title}</button>
-    )
-}`;
-
-const useButton2 = `
-<MyButton /> // error
-<MyButton title={2} /> / error
-<MyButton title='Hit me' /> //ok
-`;
 
 const children = `const element = (
     <div>
@@ -74,20 +59,6 @@ const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) =
         </pre>
       </Slide>
       <Slide>
-        <h2>Interfaces</h2>
-        <p>define which properties need to be passed to your component</p>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {buttonFragment2}
-          </code>
-        </pre>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {useButton2}
-          </code>
-        </pre>
-      </Slide>
-      <Slide>
         <h2>JavaScript in Elements</h2>
         <pre>
           <code data-trim data-noescape data-line-numbers>
@@ -100,7 +71,7 @@ const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) =
             JSX Elements can have mutlitple children but need <b>one</b> root element
           </li>
           <li>empty tags may be closed immediatly with `{'/>'}`</li>
-          <li>JavaScript can be used inside JSX</li>
+          <li>JavaScript can be used inside JSX ({`{}`})</li>
         </ul>
       </Slide>
       <Slide>

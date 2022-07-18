@@ -17,20 +17,15 @@ const useState = `
 `;
 
 const loadingState = `
-  const [loading, setLoading] = useState(true)
-  const [books, setBooks] = useState<Book>() // undefined in loading state
+  const [books, setBooks] = useState<Book>()
+
   useEffect(() => {
-    fetch('https://api.example.com/books')
-      .then(response => response.json())
-      .then(data => {
-        setBooks(data)
-        setLoading(false)
-      })
-  }, [])  // empty array means that effect will run only once
+    fetch(...)
+      .then(data => setBooks(data))
+  }, [])  // empty array = runs at initial render
 
   return (
-    {loading ? <p>Loading...</p>
-    : <BookList books={books} />}
+    <BookList books={books} />
   )
   `;
 
@@ -74,8 +69,7 @@ const useBooks = `
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-      fetch('https://api.example.com/books')
-        .then(response => response.json())
+      fetch(...)
         .then(data => {
           setBooks(data)
           setLoading(false)
@@ -83,6 +77,10 @@ const useBooks = `
     }, [])
     return {loading, books}
   }
+  `;
+
+const useBooksHook = `
+  const { loading, books } = useBooks()
   `;
 
 const fetchUsers = `
@@ -164,23 +162,23 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       <Slide>
         <h2>useState-Hook</h2>
         <ul>
-          <li className='fragment'>add React state to function components</li>
+          <li className='fragment'>add state management to function components</li>
           <li className='fragment'>component rerenders when state in hook changes</li>
           <li className='fragment'>syntax: array destructuring</li>
           <ul>
-            <li className='fragment'>first value is set to the first value of useState</li>
-            <li className='fragment'>second value is used to update the first</li>
+            <li className='fragment'>first value is set to the state value</li>
+            <li className='fragment'>second value is used to update the value</li>
           </ul>
         </ul>
       </Slide>
       <Slide>
         <h2>useState-Hook</h2>
-        <pre className='fragment'>
+        <pre className=''>
           <code data-trim data-noescape data-line-numbers>
             {useState}
           </code>
         </pre>
-        <pre className='fragment'>
+        <pre>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
             href='https://github.com/cap-react-trainings/code-examples/blob/04-hooks-usestate/react-training-codeexamples/src/App.tsx'
@@ -208,7 +206,7 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
             {loadingState}
           </code>
         </pre>
-        <pre className='fragment'>
+        <pre>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
             href='https://github.com/cap-react-trainings/code-examples/blob/04-hooks-useEffect/react-training-codeexamples/src/App.tsx'
@@ -220,7 +218,7 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       <Slide>
         <h2>useEffect-Hook: Dependency Array</h2>
         <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
+          <code data-trim data-noescape data-line-numbers='8'>
             {booksByAuthor}
           </code>
         </pre>
@@ -250,6 +248,9 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <pre className='fragment'>
           <code data-trim data-noescape data-line-numbers>
             {useBooks}
+          </code>
+          <code data-trim data-noescape data-line-numbers>
+            {useBooksHook}
           </code>
         </pre>
       </Slide>
@@ -295,7 +296,7 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
             {useQueryBooks}
           </code>
         </pre>
-        <pre className='fragment'>
+        <pre>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
             href='https://github.com/cap-react-trainings/code-examples/blob/04-hooks-use-query/react-training-codeexamples/src/components/book-list/BookList.tsx'
@@ -306,22 +307,24 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       </Slide>
       <Slide>
         <h2>Angular Excursus: Observable vs State</h2>
-        <p className='fragment'>When coming from Angular it is often asked what happend to the Observables</p>
+        <p className='fragment'>When coming from Angular it is often asked what happened to the Observables</p>
         <p className='fragment'>
           You just simply don't need them :) The state listening in a useEffect for example is like a simple pipe in Angular
         </p>
         <p className='fragment'>However it is possible to have "real" subscribe with mobx for example.</p>
       </Slide>
       <Slide>
+        <h2>mobx</h2>
         <pre>
           <code data-trim data-noescape data-line-numbers>
             {ObservableMobX}
           </code>
         </pre>
+        <p className=''>If you really really need it...</p>
       </Slide>
-      <Slide>
+      {/* <Slide>
         <h2>💪 Exercise</h2>
-      </Slide>
+      </Slide> */}
     </Chapter>
   );
 };

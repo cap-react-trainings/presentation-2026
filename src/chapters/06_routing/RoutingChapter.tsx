@@ -130,9 +130,6 @@ const App = () => (
 );
 `;
 
-const paramGuard = `We need the interceptor, the continue and the routing triggered
-`;
-
 const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
     <Chapter
@@ -149,7 +146,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <ul className='fragment'>
           <li>Browser Routing (Basic Routing)</li>
           <li>Hashrouting</li>
-          <li>Parameter Routing (little bit extra ;) )</li>
+          <li>Parameter Routing (little bit extra 🧐)</li>
         </ul>
         <p className='fragment' style={{ fontSize: '28px', fontStyle: 'italic' }}>
           Consider using Browser Routing most of the time. Hashrouting only if Browser Routing is encoded (Mircofrontend). Use Parameter
@@ -221,14 +218,14 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
 
       <Slide>
         <h2>Parameter Routing</h2>
-        <p className='fragment'>The most akward one :D</p>
+        <p className='fragment'>The most awkward one 😅</p>
         <p className='fragment'>
-          Basically: Instead of domain.com/test/1 or domain.com/#/test/1 we will have something like domain.com/?pages=test&pages=1 or
-          domain.com/?page=test&id=1
+          Basically: Instead of <i>domain.com/test/1</i> or <i>domain.com/#/test/1</i> we will have something like
+          <i>domain.com/?pages=test&pages=1</i> or <i>domain.com/?page=test&id=1</i>
         </p>
       </Slide>
       <Slide>
-        <p>We need to build our own routing. So forget about the react-dom-router ;)</p>
+        <p>We need to build our own routing. So forget about the react-dom-router 🥲</p>
         <p className='fragment'>
           We will need to use a state management. Wheter it is mobx, context or redux. We need to store our routing somewhere
         </p>
@@ -258,7 +255,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <p className='fragment'>Whether you are allowed to ENTER or</p>
         <p className='fragment'>to LEAVE the page</p>
         <p className='fragment'>
-          react-dom-router has a community package for that. Our own Parameter Routing needs to do it by itself :D{' '}
+          react-dom-router has a community package for that. Our own Parameter Routing needs to do it by itself 😄{' '}
         </p>
       </Slide>
       <Slide>
@@ -271,11 +268,8 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <p>Parameter Router</p>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {paramGuard}
-          </code>
-        </pre>
+        <p>We need the interceptor, the continue and the routing triggered</p>
+        {/* TODO */}
       </Slide>
 
       <Slide>

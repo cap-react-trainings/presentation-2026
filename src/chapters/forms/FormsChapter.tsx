@@ -21,7 +21,7 @@ const componentBased = `
 `;
 
 const hookBased = `
- const { register, handleSubmit, errors } = useForm();
+ const { register, handleSubmit, errors } = useForm<MyForm>();
  const onSubmit = (data) => console.log(data);
 
  return (
@@ -49,9 +49,6 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
           </li>
           <li>
             <a href='https://github.com/react-hook-form/react-hook-form'>React Hook Form</a>
-          </li>
-          <li>
-            <a href='https://github.com/final-form/react-final-form'>React Final Form</a>
           </li>
         </ul>
         <aside className='notes'>Depends on personal preference, used UI libs/frameworks and performance requirements.</aside>

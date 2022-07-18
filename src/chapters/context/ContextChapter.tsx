@@ -40,6 +40,18 @@ export const ThemeContext = React.createContext({
 });
 `;
 
+const updateFromChild2 = `
+const {theme, toggleTheme} = useContext(UserContext)
+
+return (
+  <div
+    style={{ background: theme.back }}
+    onClick={() => toggleTheme()}>
+    Click me
+  </div>
+)
+`;
+
 const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
     <Chapter
@@ -100,6 +112,11 @@ const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <pre className=''>
           <code data-trim data-noescape data-line-numbers>
             {updateFromChild}
+          </code>
+        </pre>
+        <pre className=''>
+          <code data-trim data-noescape data-line-numbers>
+            {updateFromChild2}
           </code>
         </pre>
       </Slide>

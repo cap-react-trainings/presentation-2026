@@ -26,12 +26,12 @@ const App: React.FC = () => {
       component: JsxChapter
     },
     {
-      title: 'Conditional Rendering',
-      component: ConditionalRenderingChapter
+      title: 'Components & Styling',
+      component: ComponentsChapter
     },
     {
-      title: 'Components',
-      component: ComponentsChapter
+      title: 'Conditional Rendering',
+      component: ConditionalRenderingChapter
     },
     {
       title: 'Hooks & Databinding',

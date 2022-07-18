@@ -99,9 +99,9 @@ const StorybookChapter: React.FC<GenericChapterProps> = (props: GenericChapterPr
           </li>
         </ul>
       </Slide>
-      <Slide>
+      {/* <Slide>
         <h2>💪 Exercise</h2>
-      </Slide>
+      </Slide> */}
     </Chapter>
   );
 };

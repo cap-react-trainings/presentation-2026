@@ -1,3 +1,4 @@
+import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Slide from '../../components/reveal/Slide';
 
@@ -105,7 +106,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           </code>
         </pre>
         <ul className='fragment'>
-          <li className='fragment'>new on click function is rendered eacht time parent rerenders</li>
+          <li className='fragment'>new on click function is rendered each time parent rerenders</li>
           <li className='fragment'>
             solution: <a href='https://reactjs.org/docs/hooks-reference.html#usecallback'>useCallback-hook</a>
           </li>
@@ -135,7 +136,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
             <a href='https://reactjs.org/docs/react-api.html#reactmemo'>React.memo</a>
           </li>
           <li className='fragment'>
-            In case React.memo as has useState, useReducer or useContext Hook in its implementation, it will still rerender on according
+            In case React.memo has useState, useReducer or useContext Hook in its implementation, it will still rerender on according
             changes
           </li>
         </ul>
@@ -228,6 +229,9 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           <li className='fragment'>reveals painpoints you can work on</li>
         </ul>
         <aside className='notes'>do a short live session, show some insights</aside>
+      </Slide>
+      <Slide>
+        <h2>FIN 🤪</h2>
       </Slide>
     </Chapter>
   );

@@ -19,7 +19,7 @@ const loginBtn = `export default LoginButton: React.FC = () => {
     return <button>Login</button>
 }`;
 
-const logoutBtn = `export default LoginButton: React.FC = () => {
+const logoutBtn = `export default LogoutButton: React.FC = () => {
     return <button>Logout</button>
 }`;
 
@@ -41,9 +41,9 @@ const users = `
     return (
       <div>
         <h2>My fancy app</h2>
-       { users.length > 0 &&  // alternative: !!users.length
-        <p>Your app is used by {users.length} users.</p>
-      }
+        {users.length > 0 && (
+          <p>Your app is used by {users.length} users.</p>
+        )}
       </div>
     )
   }
@@ -55,11 +55,11 @@ const users2 = `
     return (
       <div>
         <h2>My fancy app</h2>
-       { users.legnth > 0 ?
-        <p>Your app is used by {users.length} users.</p>
-        :
-        <p>No one is interested in you app :-( </p>
-      }
+        {users.length > 0 ? (
+          <p>Your app is used by {users.length} users.</p>
+        ) : (
+          <p>No one is interested in your app ☹️</p>
+        )}
       </div>
     )
   }`;
@@ -97,7 +97,7 @@ const ConditionalRenderingChapter: React.FC<GenericChapterProps> = (props: Gener
         </pre>
       </Slide>
       <Slide>
-        <h2>Conditionally assign component to varible</h2>
+        <h2>Conditionally assign component to variable</h2>
         <pre className='fragment'>
           <code data-trim data-noescape data-line-numbers>
             {loginBtn} <br />
