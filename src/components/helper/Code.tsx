@@ -11,8 +11,15 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import { useEffect, useRef } from 'react';
 
 interface CodeProps {
-  code: string;
+  children: string;
   language?: 'tsx';
+  /**
+   * Which lines to highlight in the code snippet, e.g.:
+   * - '5' (The 5th line)
+   * - '1-5' (Lines 1 through 5)
+   * - '1,4' (Line 1 and line 4)
+   * - '1-2, 5, 9-20' (Lines 1 through 2, line 5, lines 9 through 20)
+   */
   highlightedLines?: string;
   className?: string;
 }
@@ -30,12 +37,12 @@ const Code = (props: CodeProps) => {
         Prism.highlightElement(codeElement.current, false, e => console.log(e));
       }
     }, 0);
-  }, [props.code]);
+  }, [props.children]);
 
   return (
     <pre className={props.className} data-line={props.highlightedLines || ''}>
       <code ref={codeElement} className={`language-${props.language || 'tsx'} line-numbers`}>
-        {props.code}
+        {props.children}
       </code>
     </pre>
   );

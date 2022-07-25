@@ -32,7 +32,7 @@ const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) =
         <p className='fragment'>full power of JavaScript</p>
         <p className='fragment'>produces React elements</p>
         <p className='fragment'>TSX enhances JSX in terms of type checking</p>
-        <Code code={example} />
+        <Code>{example}</Code>
       </Slide>
       <Slide>
         <h2>JSX / TSX Elements</h2>
@@ -41,16 +41,12 @@ const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) =
           <li>naming convention starts with capital letter</li>
           <li>You can import them as a component in your app</li>
         </ul>
-        <Code code={buttonFragment} className='fragment' highlightedLines='2' />
-        <Code code={componentFragment} className='fragment' />
+        <Code className='fragment'>{buttonFragment}</Code>
+        <Code className='fragment'>{componentFragment}</Code>
       </Slide>
       <Slide>
         <h2>JavaScript in Elements</h2>
-        <pre>
-          <code data-trim data-noescape data-line-numbers>
-            {children}
-          </code>
-        </pre>
+        <Code>{children}</Code>
         <p>notice the following:</p>
         <ul>
           <li>
