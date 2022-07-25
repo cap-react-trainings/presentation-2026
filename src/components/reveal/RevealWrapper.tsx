@@ -2,7 +2,6 @@ import React, { ReactNode, useEffect } from 'react';
 import Reveal from 'reveal.js';
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/theme/black.css';
-import RevealHighlight from 'reveal.js/plugin/highlight/highlight.esm';
 import SpeakerNotes from 'reveal.js/plugin/notes/notes.esm';
 import './stylings.css';
 
@@ -11,7 +10,7 @@ interface RevealWrapperProps {
 }
 
 const options = {
-  plugins: [RevealHighlight, SpeakerNotes],
+  plugins: [SpeakerNotes],
   slideNumber: true,
   history: true
 };

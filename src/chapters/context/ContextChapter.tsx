@@ -1,9 +1,9 @@
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
-const tree = `
-// fetch user...
+const tree = `// fetch user...
 <Page user={props.user} />
 // ... which renders ...
 <PageLayout user={props.user} />
@@ -15,8 +15,7 @@ const tree = `
 </Link>
 `;
 
-const contextWrap = `
-const UserContext = React.createContext(null);
+const contextWrap = `const UserContext = React.createContext(null);
 
 // fetch user...
 
@@ -25,23 +24,20 @@ const UserContext = React.createContext(null);
 </UserContext.Provider>
 `;
 
-const treeAfter = `
-const user = useContext(UserContext);
+const treeAfter = `const user = useContext(UserContext);
 
 <Link href={user.permalink}>
   <Avatar user={user} />
 </Link>
 `;
 
-const updateFromChild = `
-export const ThemeContext = React.createContext({
+const updateFromChild = `export const ThemeContext = React.createContext({
   theme: themes.dark,
   toggleTheme: () => {},
 });
 `;
 
-const updateFromChild2 = `
-const {theme, toggleTheme} = useContext(UserContext)
+const updateFromChild2 = `const {theme, toggleTheme} = useContext(UserContext)
 
 return (
   <div
@@ -86,39 +82,19 @@ const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>From</h2>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers>
-            {tree}
-          </code>
-        </pre>
+        <Code>{tree}</Code>
       </Slide>
       <Slide>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers='1|1-7'>
-            {contextWrap}
-          </code>
-        </pre>
+        <Code highlightedLines='1|1-7'>{contextWrap}</Code>
       </Slide>
       <Slide>
         <h2>To</h2>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers='1|1-7'>
-            {treeAfter}
-          </code>
-        </pre>
+        <Code highlightedLines='1|1-7'>{treeAfter}</Code>
       </Slide>
       <Slide>
         <h2>Update from child</h2>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers>
-            {updateFromChild}
-          </code>
-        </pre>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers>
-            {updateFromChild2}
-          </code>
-        </pre>
+        <Code>{updateFromChild}</Code>
+        <Code>{updateFromChild2}</Code>
       </Slide>
       <Slide>
         <h2>Further Reads</h2>

@@ -1,19 +1,17 @@
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
 const example = `const element = <h1>Welcome to React!</h1>`;
 
 const buttonFragment = `export default MyButton: React.FC = () => {
-    return (
-        <button>Click Me!</button>
-    )
+    return <button>Click Me!</button>
 }`;
 
-const componentFragment = `
-    import MyButton from './myButton';
-    <MyButton /> // ok
-    <MySuperSpecialButton /> // error
+const componentFragment = `import MyButton from './myButton';
+<MyButton /> // ok
+<MySuperSpecialButton /> // error
 `;
 
 const children = `const element = (
@@ -34,11 +32,7 @@ const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) =
         <p className='fragment'>full power of JavaScript</p>
         <p className='fragment'>produces React elements</p>
         <p className='fragment'>TSX enhances JSX in terms of type checking</p>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {example}
-          </code>
-        </pre>
+        <Code className='fragment'>{example}</Code>
       </Slide>
       <Slide>
         <h2>JSX / TSX Elements</h2>
@@ -47,24 +41,12 @@ const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) =
           <li>naming convention starts with capital letter</li>
           <li>You can import them as a component in your app</li>
         </ul>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {buttonFragment}
-          </code>
-        </pre>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {componentFragment}
-          </code>
-        </pre>
+        <Code className='fragment'>{buttonFragment}</Code>
+        <Code className='fragment'>{componentFragment}</Code>
       </Slide>
       <Slide>
         <h2>JavaScript in Elements</h2>
-        <pre>
-          <code data-trim data-noescape data-line-numbers>
-            {children}
-          </code>
-        </pre>
+        <Code>{children}</Code>
         <p>notice the following:</p>
         <ul>
           <li>

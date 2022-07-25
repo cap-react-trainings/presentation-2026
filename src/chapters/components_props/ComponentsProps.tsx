@@ -1,5 +1,6 @@
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
 const fnExample = `const Welcome: React.FC = (props: Pros) {
@@ -12,107 +13,98 @@ const classExample = `class Welcome extends React.Component {
   }
 }`;
 
-const bookList = `
-  function App = () => {
-    const books: Book[] = [
-      {id: 1, name: 'Moby Dick', author: 'Herman Melville'},
-      {id: 2, name: 'Hamlet', author: 'Shakespeare'},]
-    return (
-      <div>
-      <h1>Booklist</h1>
-       {books.map((book, index) => (
-         // always define keys when looping, unique identifier for React DOM
-         <Book key={index} book={book} /> 
-       ))}
-      </div>
-    )
-  }
+const bookList = `function App = () => {
+  const books: Book[] = [
+    {id: 1, name: 'Moby Dick', author: 'Herman Melville'},
+    {id: 2, name: 'Hamlet', author: 'Shakespeare'},]
+  return (
+    <div>
+    <h1>Booklist</h1>
+     {books.map((book, index) => (
+       // always define keys when looping, unique identifier for React DOM
+       <Book key={index} book={book} /> 
+     ))}
+    </div>
+  )
+}
 `;
 
-const book = `
-  const interface Book {
-    id: number;
-    name: string;
-    author; string;
-  }
+const book = `const interface Book {
+  id: number;
+  name: string;
+  author; string;
+}
 
-  const Book: React.FC = (props: Book) => {
-    return (
-      <>
-        <h1>{props.name}</h1>
-        <p>author: {props.author}</p>
-      </>
-    )
-  }
+const Book: React.FC = (props: Book) => {
+  return (
+    <>
+      <h1>{props.name}</h1>
+      <p>author: {props.author}</p>
+    </>
+  )
+}
 `;
 
-const bookDestructured = `
-  const interface Book {
-    id: number;
-    name: string;
-    author: string;
-  }
+const bookDestructured = `const interface Book {
+  id: number;
+  name: string;
+  author: string;
+}
 
-  const Book: React.FC = ({ name, author }: Book) => {
-    return (
-      <>
-        <h1>{name}</h1>
-        <p>author: {author}</p>
-      </>
-    )
-  }
-
-  export default Book;
+const Book: React.FC = ({ name, author }: Book) => {
+  return (
+    <>
+      <h1>{name}</h1>
+      <p>author: {author}</p>
+    </>
+  )
+}
 `;
 
-const defaultProps = `
-const Book: FC = ({name="Tom", author="Rowling"}: Book) => {
-    return (
-      <>
-        <h1>{name}</h1>
-        <p>author: {author}</p>
-      </>
-    )}`;
+const defaultProps = `const Book: FC = ({name="Tom", author="Rowling"}: Book) => {
+return (
+  <>
+    <h1>{name}</h1>
+    <p>author: {author}</p>
+  </>
+)}`;
 
-const classStyled = `
-  const Book: React.FC = ({ name, author }: Book) => {
-    return (
-      <>
-        <h1 className='myHeadline'>{name}</h1>
-        <p>author: {author}</p>
-      </>
-    )
-  }
+const classStyled = `const Book: React.FC = ({ name, author }: Book) => {
+  return (
+    <>
+      <h1 className='myHeadline'>{name}</h1>
+      <p>author: {author}</p>
+    </>
+  )
+}
 `;
 
-const stylesAttribute = `
-  const Book: React.FC = ({ name, author }: Book) => {
-    return (
-      <>
-        <h1 className='myHeadline'>{name}</h1>
-          // notice the double curly braces
-        <p style={{ color: 'green'}}>author: {author}</p>
-      </>
-    )
-  }
+const stylesAttribute = `const Book: React.FC = ({ name, author }: Book) => {
+  return (
+    <>
+      <h1 className='myHeadline'>{name}</h1>
+      // notice the double curly braces
+      <p style={{ color: 'green'}}>author: {author}</p>
+    </>
+  )
+}
 `;
 
 const yarnAdd = `yarn add --save styled-components`;
 
-const styledComponent = `
-  import styled from 'styled-components';
-  const StyledAuthor = styled.p'color: 'green''
-  const Book: React.FC = ({ name, author }: Book) => {
-    return (<>
-        <h1 className='myHeadline'>{name}</h1>
-          // notice the double curly braces
-        <StyledAuthor>author: {author}</StyledAuthor>
-      </>)}
-  `;
+const styledComponent = `import styled from 'styled-components';
+const StyledAuthor = styled.p'color: 'green''
+const Book: React.FC = ({ name, author }: Book) => {
+  return (<>
+      <h1 className='myHeadline'>{name}</h1>
+        // notice the double curly braces
+      <StyledAuthor>author: {author}</StyledAuthor>
+    </>
+  )}
+`;
 
-const buttonFragment2 = `
-interface Props {
-    title: string;
+const buttonFragment2 = `interface Props {
+  title: string;
 }
 export default MyButton: React.FC = ({props: Props}) => {
     return (
@@ -120,8 +112,7 @@ export default MyButton: React.FC = ({props: Props}) => {
     )
 }`;
 
-const useButton2 = `
-<MyButton /> // error
+const useButton2 = `<MyButton /> // error
 <MyButton title={2} /> // error
 <MyButton title='Hit me' /> // ok
 `;
@@ -131,16 +122,8 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
     <Chapter {...props} subtitle={<p>JavaScript functions, accept Props and return React Elements (JSX)</p>}>
       <Slide>
         <h2>Class Components vs. Functional Components</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {fnExample}
-          </code>
-        </pre>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {classExample}
-          </code>
-        </pre>
+        <Code className='fragment'>{fnExample}</Code>
+        <Code className='fragment'>{classExample}</Code>
         <p className='fragment'>same output</p>
       </Slide>
       <Slide>
@@ -160,16 +143,8 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       <Slide>
         <h2>Properties (aka Props)</h2>
         <p>Pass information down the component tree</p>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {buttonFragment2}
-          </code>
-        </pre>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {useButton2}
-          </code>
-        </pre>
+        <Code className='fragment'>{buttonFragment2}</Code>
+        <Code className='fragment'>{useButton2}</Code>
         <aside className='notes'>Or use any other way of passing JS objects (e.g. destructuring).</aside>
       </Slide>
       <Slide>
@@ -179,11 +154,7 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       </Slide>
       <Slide>
         <h2>Properties (aka Props)</h2>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers='10'>
-            {bookList}
-          </code>
-        </pre>
+        <Code highlightedLines='10'>{bookList}</Code>
         <pre>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
@@ -196,30 +167,22 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       </Slide>
       <Slide>
         <h2>Properties: not destructured</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {book}
-          </code>
-        </pre>
+        <Code className='fragment' highlightedLines='7'>
+          {book}
+        </Code>
       </Slide>
       <Slide>
         <h2>Properties: destructured</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {bookDestructured}
-          </code>
-        </pre>
+        <Code className='fragment' highlightedLines='7'>
+          {bookDestructured}
+        </Code>
       </Slide>
       <Slide>
         <h2>Properties: destructured vs not destructured</h2>
         <ul style={{ fontSize: '2rem' }}>
           <li className='fragment'>
             Pro: easier to apply default values
-            <pre>
-              <code data-trim data-noescape data-line-numbers='1'>
-                {defaultProps}
-              </code>
-            </pre>
+            <Code highlightedLines='1'>{defaultProps}</Code>
           </li>
           <li className='fragment'>
             Con: in case of large components you might get confused which variables are defined in the component scope and which ones are
@@ -238,21 +201,13 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       <Slide>
         <h2>className</h2>
         <p className='fragment'>instead of using the 'class'-attribute, React expects 'className'</p>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {classStyled}
-          </code>
-        </pre>
+        <Code className='fragment'>{classStyled}</Code>
       </Slide>
       <Slide>
         <h2>Inline Styling</h2>
         <p className='fragment'>inline styling is also possible via the well known 'style'-attribute</p>
         <p className='fragment'>notice the double curly braces, usual CSS-syntax inside</p>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {stylesAttribute}
-          </code>
-        </pre>
+        <Code className='fragment'>{stylesAttribute}</Code>
         <pre>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
@@ -284,16 +239,10 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       </Slide>
       <Slide>
         <h2>CSS in JS - styled components</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {yarnAdd}
-          </code>
-        </pre>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers='2, 7'>
-            {styledComponent}
-          </code>
-        </pre>
+        <Code className='fragment'>{yarnAdd}</Code>
+        <Code className='fragment' highlightedLines='2,7'>
+          {styledComponent}
+        </Code>
         <pre>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}

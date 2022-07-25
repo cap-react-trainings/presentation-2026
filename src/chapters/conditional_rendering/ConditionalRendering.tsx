@@ -1,9 +1,9 @@
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
-const sayHiComponent = `
-  interface Props {
+const sayHiComponent = `  interface Props {
     userName?: string; // optional
   }
   const SayHi: React.FC = (props: Props) => {
@@ -23,59 +23,55 @@ const logoutBtn = `export default LogoutButton: React.FC = () => {
     return <button>Logout</button>
 }`;
 
-const renderButton = `
-  const AuthenticationComponent: React.FC = (props: Props) => {
-    let button;
-    if (props.userName) {
-      button = <LogoutButton />
-    } else {
-      button = <LoginButton />
-    }
-    return <div>{button}</div>
+const renderButton = `const AuthenticationComponent: React.FC = (props: Props) => {
+  let button;
+  if (props.userName) {
+    button = <LogoutButton />
+  } else {
+    button = <LoginButton />
   }
+  return <div>{button}</div>
+}
 `;
 
-const users = `
-  const UsersList: React.FC = (props: Props) => {
-    const users = props.users
-    return (
-      <div>
-        <h2>My fancy app</h2>
-        {users.length > 0 && (
-          <p>Your app is used by {users.length} users.</p>
-        )}
-      </div>
-    )
-  }
-`;
-
-const users2 = `
-  const UsersList: React.FC = (props: Props) => {
-    const users = props.users
-    return (
-      <div>
-        <h2>My fancy app</h2>
-        {users.length > 0 ? (
-          <p>Your app is used by {users.length} users.</p>
-        ) : (
-          <p>No one is interested in your app ☹️</p>
-        )}
-      </div>
-    )
-  }`;
-
-const users3 = `
-  const UsersList: React.FC = (props: Props) => {
-    if (!props.users) {
-      return null;
-    }
-    return (
-      <div>
-        <h2>My fancy app</h2>
+const users = `const UsersList: React.FC = (props: Props) => {
+  const users = props.users
+  return (
+    <div>
+      <h2>My fancy app</h2>
+      {users.length > 0 && (
         <p>Your app is used by {users.length} users.</p>
-      </div>
-    )
-  }`;
+      )}
+    </div>
+  )
+}
+`;
+
+const users2 = `const UsersList: React.FC = (props: Props) => {
+  const users = props.users
+  return (
+    <div>
+      <h2>My fancy app</h2>
+      {users.length > 0 ? (
+        <p>Your app is used by {users.length} users.</p>
+      ) : (
+        <p>No one is interested in your app ☹️</p>
+      )}
+    </div>
+  )
+}`;
+
+const users3 = `const UsersList: React.FC = (props: Props) => {
+  if (!props.users) {
+    return null;
+  }
+  return (
+    <div>
+      <h2>My fancy app</h2>
+      <p>Your app is used by {users.length} users.</p>
+    </div>
+  )
+}`;
 
 const ConditionalRenderingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
@@ -90,49 +86,27 @@ const ConditionalRenderingChapter: React.FC<GenericChapterProps> = (props: Gener
     >
       <Slide>
         <h2>Component uses different return statements</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {sayHiComponent}
-          </code>
-        </pre>
+        <Code className='fragment'>{sayHiComponent}</Code>
       </Slide>
       <Slide>
         <h2>Conditionally assign component to variable</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {loginBtn} <br />
-            {logoutBtn}
-          </code>
-        </pre>
-        <pre className='fragment'>
-          <code data-trim data-noescap data-line-numbers>
-            {renderButton}
-          </code>
-        </pre>
+        <div className='fragment'>
+          <Code className=''>{loginBtn}</Code>
+          <Code className=''>{logoutBtn}</Code>
+        </div>
+        <Code className='fragment'>{renderButton}</Code>
       </Slide>
       <Slide>
         <h2>Inline Logic - variant 1</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {users}
-          </code>
-        </pre>
+        <Code className='fragment'>{users}</Code>
       </Slide>
       <Slide>
         <h2>Inline Logic - variant 2</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {users2}
-          </code>
-        </pre>
+        <Code className='fragment'>{users2}</Code>
       </Slide>
       <Slide>
         <h2>Prevent component from rendering</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {users3}
-          </code>
-        </pre>
+        <Code className='fragment'>{users3}</Code>
       </Slide>
     </Chapter>
   );

@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
 const imports = `import {
@@ -92,8 +93,7 @@ const paramClass = `class Routing {
 }
 `;
 
-const paramRoutes = `
-useEffect(() => {
+const paramRoutes = `useEffect(() => {
   Routing.setRoutingFromUrl()
 }, [])
 
@@ -156,46 +156,26 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       <Slide>
         <h2>Browser Routing</h2>
         <p>Needed imports:</p>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers>
-            {imports}
-          </code>
-        </pre>
+        <Code>{imports}</Code>
       </Slide>
       <Slide>
         <p>Navigation Bar:</p>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers>
-            {navBar}
-          </code>
-        </pre>
+        <Code>{navBar}</Code>
       </Slide>
       <Slide>
         <p>Defined Routes:</p>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers>
-            {routes}
-          </code>
-        </pre>
+        <Code>{routes}</Code>
       </Slide>
       <Slide>
         <h2>Retrieve Parameters</h2>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers>
-            {useParams}
-          </code>
-        </pre>
+        <Code>{useParams}</Code>
       </Slide>
 
       <Slide>
         <h2>Hash Routing</h2>
         <p>basically the same as Browser Routing just another import and the URL will look like this:</p>
         <p>...yoururl.de/#/path</p>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers>
-            {hash}
-          </code>
-        </pre>
+        <Code>{hash}</Code>
       </Slide>
       <Slide>
         <p>Special cases:</p>
@@ -232,20 +212,12 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <p className='fragment'>We will start by declaring a routing class</p>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {paramClass}
-          </code>
-        </pre>
+        <Code className='fragment'>{paramClass}</Code>
       </Slide>
 
       <Slide>
         <p>Also we need to restructure our main to the following</p>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {paramRoutes}
-          </code>
-        </pre>
+        <Code className='fragment'>{paramRoutes}</Code>
       </Slide>
 
       <Slide>
@@ -260,11 +232,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <p>Browser Router</p>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {browserGuards}
-          </code>
-        </pre>
+        <Code className='fragment'>{browserGuards}</Code>
       </Slide>
       <Slide>
         <p>Parameter Router</p>

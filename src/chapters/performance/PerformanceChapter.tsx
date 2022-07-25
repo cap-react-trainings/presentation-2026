@@ -1,5 +1,6 @@
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
 const functionExample = `<AddButton onClick={() => setIsAddOpen(true)} />`;
@@ -20,28 +21,25 @@ const reactMemoCompare = `export const AddButton = React.memo(
     )
 }, (p1, p2) => p1.books.length === p2.books.length);`;
 
-const useMemo = `
-const [books, setBooks] = useState(props.books);
+const useMemo = `const [books, setBooks] = useState(props.books);
 const moizedBook = useMemo(() => {
   return books.find(book => book.author === props.author);
 }, [books, props.author]);
 `;
 
-const lazyLoad = `
-  const AddModal = lazy(() => import('./AddModal))
+const lazyLoad = `const AddModal = lazy(() => import('./AddModal))
 
-  return(
-    <>
+return(
+  <>
     /* render other components */
     <Suspense fallback={<div>Loading...</div>}>
       <AddModal />
     </Suspense>
-    <>
-  )
+  <>
+)
 `;
 
-const lazyLoadRouter = `
-const About = React.lazy(() => import("./pages/About"));
+const lazyLoadRouter = `const About = React.lazy(() => import("./pages/About"));
 export default function App() {
   return (
     <Routes>
@@ -57,18 +55,16 @@ export default function App() {
   )
 `;
 
-const batching = `
-  const App = () => {
-    const [additionCount, setAdditionCount] = useState(0);
-    const [subtractionCount, setSubtractionCount] = useState(0);
-    
-    console.log("Component Rendering");
-    ...
-  }
+const batching = `const App = () => {
+  const [additionCount, setAdditionCount] = useState(0);
+  const [subtractionCount, setSubtractionCount] = useState(0);
+  
+  console.log("Component Rendering");
+  ...
+}
 `;
 
-const fetch = `
-const handleOnClickAsync = () => {
+const fetch = `const handleOnClickAsync = () => {
   fetch(“https://jsonplaceholder.typicode.com/books/1").then(() => {
     setAdditionCount(additionCount + 1);
     setSubstractionCount(substractionCount — 1);
@@ -76,8 +72,7 @@ const handleOnClickAsync = () => {
 };
 `;
 
-const createRoot = `
-ReactDOM.createRoot(document.getElementById('app'))
+const createRoot = `ReactDOM.createRoot(document.getElementById('app'))
   .render(<App /> );
 `;
 
@@ -88,7 +83,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <h2>Ways to improve the performance of your app:</h2>
         <ul>
           <li>avoiding wasted re-renders</li>
-          <li>Autoamtic Batching</li>
+          <li>Automatic Batching</li>
           <li>caching expensive operations</li>
           <li>lazy loading components</li>
         </ul>
@@ -142,11 +137,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
       </Slide>
       <Slide>
         <h2>Typical pitfalls when detecting wasted rerenders</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {functionExample}
-          </code>
-        </pre>
+        <Code className='fragment'>{functionExample}</Code>
         <ul className='fragment'>
           <li className='fragment'>new on click function is rendered each time parent rerenders</li>
           <li className='fragment'>
@@ -157,11 +148,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
       </Slide>
       <Slide>
         <h2>Typical pitfalls when detecting wasted rerenders</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {useCallback}
-          </code>
-        </pre>
+        <Code className='fragment'>{useCallback}</Code>
         <aside className='notes'>
           <p>you can also pass dependecies in the array, might be useful on more complex operations</p>
           <p>only using useCallback won't fix the whole problem, it's only one part of the solution</p>
@@ -182,11 +169,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
             changes
           </li>
         </ul>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {reactMemo}
-          </code>
-        </pre>
+        <Code className='fragment'>{reactMemo}</Code>
       </Slide>
       <Slide>
         <h2 style={{ fontSize: '2.5rem' }}>Typical pitfalls when detecting wasted rerenders</h2>
@@ -194,11 +177,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           <li className='fragment'>by default only shallow comparison of props object</li>
           <li className='fragment'>React.memo takes a second argument where you could provide a comparison function</li>
         </ul>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {reactMemoCompare}
-          </code>
-        </pre>
+        <Code className='fragment'>{reactMemoCompare}</Code>
         <aside className='notes'>
           <p>comparions function always needs to return a boolean, telling the component to rerender or not</p>
           <p>p1, p2 stands for props before, props after</p>
@@ -244,11 +223,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           <li className='fragment'>New in React 18: Autoamted Batching</li>
           <li className='fragment'>batching group state updates, native event handlers are batched as well</li>
         </ul>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {batching}
-          </code>
-        </pre>
+        <Code className='fragment'>{batching}</Code>
         <aside className='notes'>this batching example already works since React 17</aside>
       </Slide>
       <Slide>
@@ -258,11 +233,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
             Since React 18 this also works for state updates inside a context that is not associated with the browser, e.g. for fetch()
           </li>
         </ul>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {fetch}
-          </code>
-        </pre>
+        <Code className='fragment'>{fetch}</Code>
         <aside className='notes'>
           this would rerender twice, because rerender would be triggered by both the state update AND the callback of fetch()
         </aside>
@@ -274,11 +245,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
             By upgrading the render-method in index.tsx state updates in asynchronous function will cause only one re-rendering process
           </li>
         </ul>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {createRoot}
-          </code>
-        </pre>
+        <Code className='fragment'>{createRoot}</Code>
         <a className='fragment' href='https://dmitripavlutin.com/use-react-memo-wisely/'>
           🚀 read more about automatic batching
         </a>
@@ -291,11 +258,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
             only re-calculated when your dependencies change
           </li>
         </ul>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {useMemo}
-          </code>
-        </pre>
+        <Code className='fragment'>{useMemo}</Code>
         <ul className='fragment'>
           <li>caution: be aware of the dependecies - always double check</li>
         </ul>
@@ -316,11 +279,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           </li>
           <li className='fragment'>only makes sense for big component, e.g. when rendering lots of data there</li>
         </ul>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {lazyLoad}
-          </code>
-        </pre>
+        <Code className='fragment'>{lazyLoad}</Code>
       </Slide>
       <Slide>
         <h2 style={{ fontSize: '2.5rem' }}>Lazy loading with React Router</h2>
@@ -331,11 +290,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
             improving performance
           </li>
         </ul>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {lazyLoadRouter}
-          </code>
-        </pre>
+        <Code className='fragment'>{lazyLoadRouter}</Code>
       </Slide>
 
       <Slide>

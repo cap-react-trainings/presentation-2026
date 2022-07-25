@@ -1,9 +1,9 @@
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
-const snippet = `
-// Button.stories.ts|tsx
+const snippet = `// Button.stories.ts|tsx
 
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
@@ -62,11 +62,7 @@ const StorybookChapter: React.FC<GenericChapterProps> = (props: GenericChapterPr
       </Slide>
       <Slide>
         <h2>Example</h2>
-        <pre>
-          <code data-trim data-noescape data-line-numbers='5,13|'>
-            {snippet}
-          </code>
-        </pre>
+        <Code highlightedLines='5,13'>{snippet}</Code>
       </Slide>
       <Slide
         data-background-iframe='https://61a90feace7802003a4d9c45-uaqlinmlwh.chromatic.com/?path=/story/composite-components-button--default-button&args=size:medium;disabled:false'

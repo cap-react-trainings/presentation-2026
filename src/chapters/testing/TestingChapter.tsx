@@ -1,40 +1,37 @@
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
-const snippet = `
-test("loads and displays book list", async () => {
+const snippet = `test("loads and displays book list", async () => {
     render(<BookOverview />);
     expect(await screen.findByText("Hans")).toBeDefined();
 });
 `;
 
-const snippet2 = `
-    screen.findByAltText();
-    screen.findByDisplayValue();
-    screen.findByLabelText();
-    screen.findByPlaceholderText();
-    screen.findByRole();
-    screen.findByTestId();
-    screen.findByText();
-    screen.findByTitle();
-        `;
-
-const snippet3 = `
-   server.use(
-        rest.get("/books", (req, res, ctx) => {
-        return res(
-            ctx.json([{ id: 1 })
-        )})
-    );
+const snippet2 = `screen.findByAltText();
+screen.findByDisplayValue();
+screen.findByLabelText();
+screen.findByPlaceholderText();
+screen.findByRole();
+screen.findByTestId();
+screen.findByText();
+screen.findByTitle();
 `;
 
-const snippet4 = `
-   server.use(
-        rest.get("/books", (req, res, ctx) => {
-            return res(ctx.status(500));
-        })
-    );
+const snippet3 = `server.use(
+    rest.get("/books", (req, res, ctx) => {
+    return res(
+        ctx.json([{ id: 1 })
+    )})
+);
+`;
+
+const snippet4 = `server.use(
+    rest.get("/books", (req, res, ctx) => {
+        return res(ctx.status(500));
+    })
+);
 `;
 
 const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
@@ -59,32 +56,18 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>Example</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape>
-            {snippet}
-          </code>
-        </pre>
+        <Code className='fragment'>{snippet}</Code>
       </Slide>
       <Slide>
         <h2>Helper functions</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape>
-            {snippet2}
-          </code>
-        </pre>
+        <Code className='fragment'>{snippet2}</Code>
       </Slide>
       <Slide>
         <h2>API Mocking with MSW</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape style={{ marginBottom: 10 }}>
-            {snippet3}
-          </code>
-        </pre>
-        <pre className='fragment'>
-          <code data-trim data-noescape>
-            {snippet4}
-          </code>
-        </pre>
+        <Code className='fragment' style={{ marginBottom: 10 }}>
+          {snippet3}
+        </Code>
+        <Code className='fragment'>{snippet4}</Code>
       </Slide>
       <Slide>
         <h2>Further Reads</h2>
