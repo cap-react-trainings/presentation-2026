@@ -88,7 +88,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <h2>Ways to improve the performance of your app:</h2>
         <ul>
           <li>avoiding wasted re-renders</li>
-          <li>Autoamtic Batching</li>
+          <li>Automatic Batching</li>
           <li>caching expensive operations</li>
           <li>lazy loading components</li>
         </ul>
