@@ -32,7 +32,7 @@ const JsxChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) =
         <p className='fragment'>full power of JavaScript</p>
         <p className='fragment'>produces React elements</p>
         <p className='fragment'>TSX enhances JSX in terms of type checking</p>
-        <Code>{example}</Code>
+        <Code className='fragment'>{example}</Code>
       </Slide>
       <Slide>
         <h2>JSX / TSX Elements</h2>

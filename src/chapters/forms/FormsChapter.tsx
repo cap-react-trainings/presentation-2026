@@ -1,37 +1,36 @@
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
-const componentBased = `
-   <Formik
-     initialValues={{ email: '', password: '' }}
-     validate={true}
-     onSubmit={console.log}
-   >
-     {({ isSubmitting }) => (
-       <Form>
-         <Field type="email" name="email" />
-         <ErrorMessage name="email" component="div" />
-         <button type="submit" disabled={isSubmitting}>
-           Submit
-         </button>
-       </Form>
-     )}
-   </Formik>
+const componentBased = `<Formik
+ initialValues={{ email: '', password: '' }}
+ validate={true}
+ onSubmit={console.log}
+>
+ {({ isSubmitting }) => (
+   <Form>
+     <Field type="email" name="email" />
+     <ErrorMessage name="email" component="div" />
+     <button type="submit" disabled={isSubmitting}>
+       Submit
+     </button>
+   </Form>
+ )}
+</Formik>
 `;
 
-const hookBased = `
- const { register, handleSubmit, errors } = useForm<MyForm>();
- const onSubmit = (data) => console.log(data);
+const hookBased = `const { register, handleSubmit, errors } = useForm<MyForm>();
+const onSubmit = (data) => console.log(data);
 
- return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input defaultValue="test" {...register("fName")} />
-      <input {...register("lName", { required: true })} />
-      {errors.exampleRequired && <span>required!</span>}
-      <input type="submit" />
-    </form>
- );
+return (
+  <form onSubmit={handleSubmit(onSubmit)}>
+    <input defaultValue="test" {...register("fName")} />
+    <input {...register("lName", { required: true })} />
+    {errors.exampleRequired && <span>required!</span>}
+    <input type="submit" />
+  </form>
+);
 `;
 
 const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
@@ -56,21 +55,13 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
       <Slide>
         <div>
           Components based
-          <pre className=''>
-            <code data-trim data-noescape data-line-numbers>
-              {componentBased}
-            </code>
-          </pre>
+          <Code>{componentBased}</Code>
         </div>
       </Slide>
       <Slide>
         <div>
           Hooks based
-          <pre className=''>
-            <code data-trim data-noescape data-line-numbers>
-              {hookBased}
-            </code>
-          </pre>
+          <Code>{hookBased}</Code>
         </div>
         <aside className='notes'>Better performance wise. Just updates necessary children.</aside>
       </Slide>

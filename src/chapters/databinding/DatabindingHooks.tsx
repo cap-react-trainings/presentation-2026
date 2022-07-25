@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
-const useState = `
-  const Numbers: React.FC = () => {
+const useState = `  const Numbers: React.FC = () => {
     const [bookCounter, setBookCounter] = useState<number>(0);
 
     return (
@@ -16,88 +16,79 @@ const useState = `
   }
 `;
 
-const loadingState = `
-  const [books, setBooks] = useState<Book>()
+const loadingState = `const [books, setBooks] = useState<Book>()
+
+useEffect(() => {
+  fetch(...)
+    .then(data => setBooks(data))
+}, [])  // empty array = runs at initial render
+
+return (
+  <BookList books={books} />
+)
+`;
+
+const booksByAuthor = `const [currentBooks, setCurrentBooks] = useState<Book[]>()
+const [selectedBook, setSelectedBook] = useState<Book>()
+useEffect(() => {
+  const booksByAuthor = props.books
+    .filter(book => book.author === props.author)
+  setCurrentBooks(booksByAuthor)
+  setSelectedBook(booksByAuthor[0])
+}, [props.author]) // hook runs when props.author changes
+
+return(
+  <>
+    <Select
+      options={currentBooks}
+      onChange={e => setSelectedBook(e.target.value)}/>
+    <p>Books by {props.author.name}</p>
+    <BookList books={currentBooks} />
+  </>
+)
+`;
+
+const subscribeToBooks = `useEffect(() => {
+  BooksApi.subscribeToUpdates(props.user.id);
+  /**
+   * return function only runs once before 
+   * component's lifecycle is being destroyed
+   */
+  return () => {
+    BooksApi.unsubscribeFromUpdates(props.user.id)
+  }
+}, [])
+`;
+
+const useBooks = `const useBooks = () => {
+  const [books, setBooks] = useState<Book[]>()
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch(...)
-      .then(data => setBooks(data))
-  }, [])  // empty array = runs at initial render
-
-  return (
-    <BookList books={books} />
-  )
-  `;
-
-const booksByAuthor = `
-  const [currentBooks, setCurrentBooks] = useState<Book[]>()
-  const [selectedBook, setSelectedBook] = useState<Book>()
-  useEffect(() => {
-    const booksByAuthor = props.books
-      .filter(book => book.author === props.author)
-    setCurrentBooks(booksByAuthor)
-    setSelectedBook(booksByAuthor[0])
-  }, [props.author]) // hook runs when props.author changes
-
-  return(
-    <>
-      <Select
-        options={currentBooks}
-        onChange={e => setSelectedBook(e.target.value)}/>
-      <p>Books by {props.author.name}</p>
-      <BookList books={currentBooks} />
-    </>
-  )
-  `;
-
-const subscribeToBooks = `
-    useEffect(() => {
-      BooksApi.subscribeToUpdates(props.user.id);
-      /**
-       * return function only runs once before 
-       * component's lifecycle is being destroyed
-       */
-      return () => {
-        BooksApi.unsubscribeFromUpdates(props.user.id)
-      }
-    }, [])
+      .then(data => {
+        setBooks(data)
+        setLoading(false)
+      })
+  }, [])
+  return {loading, books}
+}
 `;
 
-const useBooks = `
-  const useBooks = () => {
-    const [books, setBooks] = useState<Book[]>()
-    const [loading, setLoading] = useState(true)
+const useBooksHook = `const { loading, books } = useBooks()`;
 
-    useEffect(() => {
-      fetch(...)
-        .then(data => {
-          setBooks(data)
-          setLoading(false)
-        })
-    }, [])
-    return {loading, books}
-  }
-  `;
-
-const useBooksHook = `
-  const { loading, books } = useBooks()
-  `;
-
-const fetchUsers = `
-  const fetchUsers = async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
-    return res.json();
-  };
+const fetchUsers = `const fetchUsers = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  return res.json();
+};
 `;
 
-const fetchUsersUseQuery = `
-  import { useQuery } from "react-query";
-  // query key is used to identify the query
-  const response = useQuery("users", fetchUsers);
+const fetchUsersUseQuery = `import { useQuery } from "react-query";
+// query key is used to identify the query
+const response = useQuery("users", fetchUsers);
 `;
 
-const response = `
-data,
+const response = `data,
 error,
 failureCount,
 isError,
@@ -113,31 +104,29 @@ remove,
 status,
 `;
 
-const useQueryBooks = `
-  const {loading, data, error} = useQuery("books", fetchBooks);
+const useQueryBooks = `const {loading, data, error} = useQuery("books", fetchBooks);
 
-  return (
-    {loading ? <p>Loading...</p>
-    : error ? <p>Error: {error.message}</p>
-    : <BookList books={data} />}
-  )
-  `;
+return (
+  {loading ? <p>Loading...</p>
+  : error ? <p>Error: {error.message}</p>
+  : <BookList books={data} />}
+)
+`;
 
-const ObservableMobX = `
-  export class Test {
-    continue: boolean | undefined = undefined;
+const ObservableMobX = `export class Test {
+  continue: boolean | undefined = undefined;
 
-    constructor() {
-      makeAutoObservable(this)
-    }
-
-    someFunction = () => {
-      const disposer = observe(this, 'continue', change => {
-        console.log(change.newValue)
-      })
-    }
+  constructor() {
+    makeAutoObservable(this)
   }
-  `;
+
+  someFunction = () => {
+    const disposer = observe(this, 'continue', change => {
+      console.log(change.newValue)
+    })
+  }
+}
+`;
 
 const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
@@ -173,11 +162,7 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       </Slide>
       <Slide>
         <h2>useState-Hook</h2>
-        <pre className=''>
-          <code data-trim data-noescape data-line-numbers>
-            {useState}
-          </code>
-        </pre>
+        <Code>{useState}</Code>
         <pre>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
@@ -201,11 +186,7 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       </Slide>
       <Slide>
         <h2>useEffect-Hook: Data Fetching</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {loadingState}
-          </code>
-        </pre>
+        <Code className='fragment'>{loadingState}</Code>
         <pre>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
@@ -217,19 +198,13 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       </Slide>
       <Slide>
         <h2>useEffect-Hook: Dependency Array</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers='8'>
-            {booksByAuthor}
-          </code>
-        </pre>
+        <Code className='fragment' highlightedLines='8'>
+          {booksByAuthor}
+        </Code>
       </Slide>
       <Slide>
         <h2>useEffect-Hook: Unmount of Component</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {subscribeToBooks}
-          </code>
-        </pre>
+        <Code className='fragment'>{subscribeToBooks}</Code>
       </Slide>
       <Slide>
         <h2>Rules of Hooks</h2>
@@ -245,14 +220,8 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <ul>
           <li className='fragment'>extract component logic into reusable functions</li>
         </ul>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {useBooks}
-          </code>
-          <code data-trim data-noescape data-line-numbers>
-            {useBooksHook}
-          </code>
-        </pre>
+        <Code className='fragment'>{useBooks}</Code>
+        <Code className='fragment'>{useBooksHook}</Code>
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>
@@ -268,34 +237,18 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       </Slide>
       <Slide>
         <h2>Excursus: useQuery (React Query)</h2>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {fetchUsers}
-          </code>
-        </pre>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {fetchUsersUseQuery}
-          </code>
-        </pre>
+        <Code className='fragment'>{fetchUsers}</Code>
+        <Code className='fragment'>{fetchUsersUseQuery}</Code>
       </Slide>
       <Slide>
         <h2>Excursus: useQuery (React Query)</h2>
         <p>Response Object</p>
-        <pre className='fragment'>
-          <code data-trim data-noescape>
-            {response}
-          </code>
-        </pre>
+        <Code className='fragment'>{response}</Code>
       </Slide>
       <Slide>
         <h2>Excursus: useQuery (React Query)</h2>
         <p>save code, no need to handle states by yourself</p>
-        <pre className='fragment'>
-          <code data-trim data-noescape data-line-numbers>
-            {useQueryBooks}
-          </code>
-        </pre>
+        <Code className='fragment'>{useQueryBooks}</Code>
         <pre>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
@@ -315,11 +268,7 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       </Slide>
       <Slide>
         <h2>mobx</h2>
-        <pre>
-          <code data-trim data-noescape data-line-numbers>
-            {ObservableMobX}
-          </code>
-        </pre>
+        <Code>{ObservableMobX}</Code>
         <p className=''>If you really really need it...</p>
       </Slide>
       {/* <Slide>

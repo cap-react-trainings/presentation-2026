@@ -1,10 +1,10 @@
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import ArrowDown from '../../components/helper/icons/ArrowDown';
 import Slide from '../../components/reveal/Slide';
 
-const angularHtml = `
-<ul>
+const angularHtml = `<ul>
   <li *ngFor="let todo of todos">{{todo}}</li>
 </ul>
 <form (ngSubmit)="addTodo()">
@@ -15,8 +15,7 @@ const angularHtml = `
 
         `;
 
-const angularTs = `
-import { Component } from '@angular/core';
+const angularTs = `import { Component } from '@angular/core';
 @Component({
   selector: 'app-root’,
   templateUrl: './app.component.html’,
@@ -32,8 +31,7 @@ export class AppComponent {
 }
 `;
 
-const react = `
-import { useEffect, useState } from "react";
+const react = `import { useEffect, useState } from "react";
 import "./App.css";
 function App() {
   const [todos, setTodos] = useState([]);
@@ -59,8 +57,7 @@ function App() {
 export default App;
 `;
 
-const vue = `
-<template>
+const vue = `<template>
   <div>
     <ul>
       <li v-for="todo in todos" v-bind:key="todo">{{ todo }}</li>
@@ -271,36 +268,20 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       <Slide>
         <h2>Angular</h2>
         <div style={{ display: 'flex', justifyContent: 'center', fontSize: '2rem', gap: 10 }}>
-          <pre>
-            <code data-trim data-noescape data-line-numbers>
-              {angularHtml}
-            </code>
-          </pre>
-          <pre>
-            <code data-trim data-noescape data-line-numbers>
-              {angularTs}
-            </code>
-          </pre>
+          <Code>{angularHtml}</Code>
+          <Code>{angularTs}</Code>
         </div>
       </Slide>
       <Slide>
         <h2>React</h2>
         <div style={{ fontSize: '2rem' }}>
-          <pre>
-            <code data-trim data-noescape data-line-numbers>
-              {react}
-            </code>
-          </pre>
+          <Code>{react}</Code>
         </div>
       </Slide>
       <Slide>
         <h2>Vue</h2>
         <div style={{ fontSize: '2rem' }}>
-          <pre>
-            <code data-trim data-noescape data-line-numbers>
-              {vue}
-            </code>
-          </pre>
+          <Code>{vue}</Code>
         </div>
       </Slide>
       <Slide>
