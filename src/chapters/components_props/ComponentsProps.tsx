@@ -208,10 +208,10 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <p className='fragment'>inline styling is also possible via the well known 'style'-attribute</p>
         <p className='fragment'>notice the double curly braces, usual CSS-syntax inside</p>
         <Code className='fragment'>{stylesAttribute}</Code>
-        <pre>
+        <pre className='fragment'>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
-            href='https://github.com/cap-react-trainings/code-examples/blob/03-conditional-rendering-basic/react-training-codeexamples/src/components/book/Book.tsx'
+            href='https://github.com/cap-react-trainings/code-examples/blob/02-conditional-rendering-basic/react-training-codeexamples/src/components/book/Book.tsx'
           >
             🚀 code example on GitHub
           </a>
@@ -243,10 +243,10 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <Code className='fragment' highlightedLines='2,7'>
           {styledComponent}
         </Code>
-        <pre>
+        <pre className='fragment'>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
-            href='https://github.com/cap-react-trainings/code-examples/blob/03-conditional-rendering-styled-components/react-training-codeexamples/src/components/book/Book.tsx'
+            href='https://github.com/cap-react-trainings/code-examples/blob/02-conditional-rendering-styled-components/react-training-codeexamples/src/components/book/Book.tsx'
           >
             🚀 code example on GitHub
           </a>
@@ -254,6 +254,21 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>
+        <ul>
+          <li>
+            Implement a small app which renders a list of books. (<a href='https://vitejs.dev/guide/'>vite docs</a>)
+          </li>
+          <li>There should be a Book-Component which accepts a property of type 'Book'.</li>
+          <li>
+            <a
+              href='https://github.com/cap-react-trainings/code-examples/blob/02-conditional-rendering-styled-components/react-training-codeexamples/src/testData/Booklist.ts'
+              target='_blank'
+            >
+              sample data
+            </a>
+          </li>
+          <li>Choose on styling-method you've just learned about and style your BookList.</li>
+        </ul>
       </Slide>
     </Chapter>
   );

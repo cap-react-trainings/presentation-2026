@@ -163,10 +163,10 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       <Slide>
         <h2>useState-Hook</h2>
         <Code>{useState}</Code>
-        <pre>
+        <pre className='fragment'>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
-            href='https://github.com/cap-react-trainings/code-examples/blob/04-hooks-usestate/react-training-codeexamples/src/App.tsx'
+            href='https://github.com/cap-react-trainings/code-examples/blob/03-hooks-usestate/react-training-codeexamples/src/App.tsx'
           >
             🚀 code example on GitHub
           </a>
@@ -174,6 +174,12 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>
+        <ul>
+          <li>Implement a slider that determines the number of books to be rendered inside your book-list.</li>
+          <li>
+            You may use <a href='https://mui.com/material-ui/react-slider/'>Material UI's Slider-Commponent-</a>
+          </li>
+        </ul>
       </Slide>
       <Slide>
         <h2>useEffect-Hook</h2>
@@ -187,10 +193,10 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       <Slide>
         <h2>useEffect-Hook: Data Fetching</h2>
         <Code className='fragment'>{loadingState}</Code>
-        <pre>
+        <pre className='fragment'>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
-            href='https://github.com/cap-react-trainings/code-examples/blob/04-hooks-useEffect/react-training-codeexamples/src/App.tsx'
+            href='https://github.com/cap-react-trainings/code-examples/blob/03-hooks-useeffect/react-training-codeexamples/src/App.tsx'
           >
             🚀 code example on GitHub
           </a>
@@ -224,9 +230,6 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <Code className='fragment'>{useBooksHook}</Code>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
-      </Slide>
-      <Slide>
         <h2>Excursus: useQuery (React Query)</h2>
         <ul>
           <li className='fragment'>data-fetching library for React</li>
@@ -249,14 +252,32 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <h2>Excursus: useQuery (React Query)</h2>
         <p>save code, no need to handle states by yourself</p>
         <Code className='fragment'>{useQueryBooks}</Code>
-        <pre>
+        <pre className='fragment'>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
-            href='https://github.com/cap-react-trainings/code-examples/blob/04-hooks-use-query/react-training-codeexamples/src/components/book-list/BookList.tsx'
+            href='https://github.com/cap-react-trainings/code-examples/blob/03-hooks-use-query-with-material/react-training-codeexamples/src/components/book-list/BookList.tsx'
           >
             🚀 code example on GitHub
           </a>
         </pre>
+      </Slide>
+      <Slide>
+        <h2>💪 Exercise</h2>
+        <ul style={{ fontSize: '2.3rem' }}>
+          <li>
+            As of now: we'd like to get rid of our dummy book-data and use an <a href='https://api.itbook.store/1.0/new'>API</a> instead.
+          </li>
+          <li>Fetch the books to display from the API.</li>
+          <li>
+            Update your conditional rendering in Book.tsx: Place a badge "cheap" when the book's price is less than 30$, else the badge
+            should display "expensive".
+          </li>
+          <li>
+            Since data fetching takes some time, also provide a loading spinner that tells the user you are fetching data while there are no
+            books to display yet.
+          </li>
+          <li>Brownie points: In case you're finished early: do some refactoring and implement the useQuery-Hook.</li>
+        </ul>
       </Slide>
       <Slide>
         <h2>Angular Excursus: Observable vs State</h2>
@@ -271,9 +292,6 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <Code>{ObservableMobX}</Code>
         <p className=''>If you really really need it...</p>
       </Slide>
-      {/* <Slide>
-        <h2>💪 Exercise</h2>
-      </Slide> */}
     </Chapter>
   );
 };

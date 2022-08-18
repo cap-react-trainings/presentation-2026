@@ -108,6 +108,16 @@ const ConditionalRenderingChapter: React.FC<GenericChapterProps> = (props: Gener
         <h2>Prevent component from rendering</h2>
         <Code className='fragment'>{users3}</Code>
       </Slide>
+      <Slide>
+        <h2>💪 Exercise</h2>
+        <ul>
+          <li>
+            Extend your Book-Component with a badge that notifies the user when a book is not available in store. (Your Book-Type might need
+            an additional property).
+          </li>
+          <li>Bear in mind that there might be a case where no books are available for rendering. Create a UI for that.</li>
+        </ul>
+      </Slide>
     </Chapter>
   );
 };
