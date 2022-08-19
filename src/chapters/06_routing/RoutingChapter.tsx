@@ -33,18 +33,11 @@ const navBar = `<ul>
 </ul>
 `;
 
-const routes = `<Switch>
-  <Route path="/about">
-    <About />
-  </Route>
-  <Route path="/users">
-    <Users />
-  </Route>
-  <Route path="/">
-    <Home />
-  </Route>
-</Switch>
-`;
+const routes = `<Routes>
+    <Route index element={<Home />} />
+    <Route path="about" element={<About />} />
+    <Route path="users" element={<Users />} />
+</Routes>`
 
 const useParams = `import {
   ...
@@ -59,9 +52,7 @@ function BlogPost() {
 `;
 
 const hash = `<HashRouter 
-  basename={optionalString} 
-  getUserConfirmation={optionalFunc} 
-  hashType={optionalString}>
+  basename={optionalString}>
   <App />
 </HashRouter>;
 `;
@@ -104,29 +95,32 @@ return (
 )
 `;
 
-const browserGuards = `import { GuardProvider, GuardedRoute } from 'react-router-guards';
-import { getIsLoggedIn } from 'utils';
-
-const requireLogin = (to, from, next) => {
-  if (to.meta.auth) {
-    if (getIsLoggedIn()) {
-      next();
-    }
-    next.redirect('/login');
-  } else {
-    next();
+const browserGuards = `const ProtectedRoute = ({
+  isAllowed,
+  redirectPath = '/landing',
+  children,
+}) => {
+  if (!isAllowed) {
+    return <Navigate to={redirectPath} replace />;
   }
+
+  return children ? children : <Outlet />;
 };
 
+// user logic
+
 const App = () => (
-  <BrowserRouter>
-    <GuardProvider guards={[requireLogin]} loading={Loading} error={NotFound}>
-      <Switch>
-        <GuardedRoute path="/login" exact component={Login} />
-        <GuardedRoute path="/" exact component={Home} meta={{ auth: true }} />
-      </Switch>
-    </GuardProvider>
-  </BrowserRouter>
+  <Routes>
+    <Route index element={<Home />} />
+
+    <Route path="user" element={
+      <ProtectedRoute 
+        redirectPath="/" 
+        isAllowed={!!user} />}>
+      <Route path="home" element={<Home />} />
+      <Route path="dashboard" element={<Dashboard />} />
+    </Route>
+  </Routes>
 );
 `;
 
@@ -186,22 +180,11 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         </ul>
       </Slide>
       <Slide>
-        <p>make use of the hashTypes:</p>
-        <ul>
-          <li className='fragment'>"slash" - Creates hashes like #/ and #/sunshine/lollipops</li>
-          <li className='fragment'>"noslash" - Creates hashes like # and #sunshine/lollipops </li>
-          <li className='fragment'>
-            "hashbang" - Creates “ajax crawlable” (deprecated by Google) hashes like #!/ and #!/sunshine/lollipops
-          </li>
-        </ul>
-      </Slide>
-
-      <Slide>
         <h2>Parameter Routing</h2>
         <p className='fragment'>The most awkward one 😅</p>
         <p className='fragment'>
-          Basically: Instead of <i>domain.com/test/1</i> or <i>domain.com/#/test/1</i> we will have something like
-          <i>domain.com/?pages=test&pages=1</i> or <i>domain.com/?page=test&id=1</i>
+          Basically: Instead of <a>domain.com/test/1</a> we will have something
+          like <a>domain.com/?page=test&id=1</a>
         </p>
       </Slide>
       <Slide>
@@ -226,28 +209,19 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <p className='fragment'>Guards are for securing routes.</p>
         <p className='fragment'>Whether you are allowed to ENTER or</p>
         <p className='fragment'>to LEAVE the page</p>
-        <p className='fragment'>
-          react-dom-router has a community package for that. Our own Parameter Routing needs to do it by itself 😄{' '}
-        </p>
       </Slide>
       <Slide>
         <p>Browser Router</p>
         <Code className='fragment'>{browserGuards}</Code>
       </Slide>
       <Slide>
-        <p>Parameter Router</p>
-        <p>We need the interceptor, the continue and the routing triggered</p>
-        {/* TODO */}
-      </Slide>
-
-      <Slide>
         <h2>Further Reads</h2>
         <ul>
           <li>
-            <a href='https://v5.reactrouter.com/web/guides/quick-start'>React Router</a>
+            <a href='https://reactrouter.com/docs/en/v6/getting-started/installation'>React Router</a>
           </li>
           <li>
-            <a href='https://v5.reactrouter.com/web/api/Hooks'>Hooks</a>
+            <a href='https://reactrouter.com/docs/en/v6/hooks/use-params'>Hooks</a>
           </li>
         </ul>
       </Slide>

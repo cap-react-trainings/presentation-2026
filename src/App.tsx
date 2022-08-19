@@ -1,19 +1,19 @@
-import JsxChapter from './chapters/jsx_tsx/JSX';
-import ExampleChapter from './chapters/z_example/ExampleChapter';
-import RevealWrapper from './components/reveal/RevealWrapper';
 import React from 'react';
-import IntroChapter from './chapters/a_Intro/IntroChapter';
-import ContextChapter from './chapters/context/ContextChapter';
-import FormsChapter from './chapters/forms/FormsChapter';
-import ConditionalRenderingChapter from './chapters/conditional_rendering/ConditionalRendering';
-import ComponentsChapter from './chapters/components_props/ComponentsProps';
-import DatabindingHooksChapter from './chapters/databinding/DatabindingHooks';
-import ComparisonChapter from './chapters/comparison/ComparisonChapter';
-import TableOfContents from './chapters/a_Intro/TableOfContents';
-import TestingChapter from './chapters/testing/TestingChapter';
 import RoutingChapter from './chapters/06_routing/RoutingChapter';
-import StorybookChapter from './chapters/storybook/StorybookChapter';
+import IntroChapter from './chapters/a_Intro/IntroChapter';
+import TableOfContents from './chapters/a_Intro/TableOfContents';
+import ComparisonChapter from './chapters/comparison/ComparisonChapter';
+import ComponentsChapter from './chapters/components_props/ComponentsProps';
+import ConditionalRenderingChapter from './chapters/conditional_rendering/ConditionalRendering';
+import ContextChapter from './chapters/context/ContextChapter';
+import DatabindingHooksChapter from './chapters/databinding/DatabindingHooks';
+import FormsChapter from './chapters/forms/FormsChapter';
+import JsxChapter from './chapters/jsx_tsx/JSX';
 import PerformanceChapter from './chapters/performance/PerformanceChapter';
+import ReactNativeChapter from './chapters/react_native/ReactNative';
+import StorybookChapter from './chapters/storybook/StorybookChapter';
+import TestingChapter from './chapters/testing/TestingChapter';
+import RevealWrapper from './components/reveal/RevealWrapper';
 
 const App: React.FC = () => {
   const chapter = [
@@ -64,11 +64,11 @@ const App: React.FC = () => {
     {
       title: 'Improving Performance',
       component: PerformanceChapter
-    } //,
-    // {
-    //   title: 'jo',
-    //   component: ReactNativeChapter
-    // }
+    },
+    {
+      title: 'React Native',
+      component: ReactNativeChapter
+    }
   ];
 
   return (
