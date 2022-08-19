@@ -263,7 +263,7 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>
-        <ul style={{ fontSize: '2.3rem' }}>
+        <ul>
           <li>
             As of now: we'd like to get rid of our dummy book-data and use an <a href='https://api.itbook.store/1.0/new'>API</a> instead.
           </li>

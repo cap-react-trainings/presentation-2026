@@ -37,7 +37,7 @@ const routes = `<Routes>
     <Route index element={<Home />} />
     <Route path="about" element={<About />} />
     <Route path="users" element={<Users />} />
-</Routes>`
+</Routes>`;
 
 const useParams = `import {
   ...
@@ -142,9 +142,9 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
           <li>Hashrouting</li>
           <li>Parameter Routing (little bit extra 🧐)</li>
         </ul>
-        <p className='fragment' style={{ fontSize: '28px', fontStyle: 'italic' }}>
+        <p className='fragment'>
           Consider using Browser Routing most of the time. Hashrouting only if Browser Routing is encoded (Mircofrontend). Use Parameter
-          Routing only if EVERYTHING else fails :D
+          Routing only if EVERYTHING else fails 🥺
         </p>
       </Slide>
       <Slide>
@@ -183,8 +183,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <h2>Parameter Routing</h2>
         <p className='fragment'>The most awkward one 😅</p>
         <p className='fragment'>
-          Basically: Instead of <a>domain.com/test/1</a> we will have something
-          like <a>domain.com/?page=test&id=1</a>
+          Basically: Instead of <a>domain.com/test/1</a> we will have something like <a>domain.com/?page=test&id=1</a>
         </p>
       </Slide>
       <Slide>

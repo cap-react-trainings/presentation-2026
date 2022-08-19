@@ -157,8 +157,8 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         </aside>
       </Slide>
       <Slide>
-        <h2 style={{ fontSize: '2.5rem' }}>Typical pitfalls when detecting wasted rerenders</h2>
-        <ul style={{ fontSize: '2rem' }}>
+        <h2>Typical pitfalls when detecting wasted rerenders</h2>
+        <ul>
           <li className='fragment'>children need to be optimized as well</li>
           <li className='fragment'>
             only rerender, when Props or references change by using{' '}
@@ -172,8 +172,8 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <Code className='fragment'>{reactMemo}</Code>
       </Slide>
       <Slide>
-        <h2 style={{ fontSize: '2.5rem' }}>Typical pitfalls when detecting wasted rerenders</h2>
-        <ul style={{ fontSize: '2rem' }}>
+        <h2>Typical pitfalls when detecting wasted rerenders</h2>
+        <ul>
           <li className='fragment'>by default only shallow comparison of props object</li>
           <li className='fragment'>React.memo takes a second argument where you could provide a comparison function</li>
         </ul>
@@ -196,19 +196,23 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <div className='fragment fade-in'>
           <ul>
             <li>
-              <h3 style={{ fontSize: '2rem' }}>Pure functional Component</h3>
-              <p style={{ fontSize: '1.5rem' }}>Your Component is functional and given the same Props, always renders the same output.</p>
+              Pure functional Component
+              <ul>
+                <li>Your Component is functional and given the same Props, always renders the same output.</li>
+              </ul>
+            </li>
+            <li>Renders often</li>
+            <li>
+              Re-renders with the same Props
+              <ul>
+                <li>Your Component is usually provided with the same props during re-rendering</li>
+              </ul>
             </li>
             <li>
-              <h3 style={{ fontSize: '2rem' }}>Renders often</h3>
-            </li>
-            <li>
-              <h3 style={{ fontSize: '2rem' }}>Re-renders with the same Props</h3>
-              <p style={{ fontSize: '1.5rem' }}>Your Component is usually provided with the same props during re-rendering</p>
-            </li>
-            <li>
-              <h3 style={{ fontSize: '2rem' }}>Medium to big size</h3>
-              <p style={{ fontSize: '1.5rem' }}>Your component contains a decent amount of UI-Elements to reason Props equality check.</p>
+              Medium to big size
+              <ul>
+                <li>Your component contains a decent amount of UI-Elements to reason Props equality check.</li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -218,8 +222,8 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         </a>
       </Slide>
       <Slide>
-        <h2 style={{ fontSize: '2.5rem' }}>Autoamtic Batching</h2>
-        <ul style={{ fontSize: '2rem' }}>
+        <h2>Autoamtic Batching</h2>
+        <ul>
           <li className='fragment'>New in React 18: Autoamted Batching</li>
           <li className='fragment'>batching group state updates, native event handlers are batched as well</li>
         </ul>
@@ -227,8 +231,8 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <aside className='notes'>this batching example already works since React 17</aside>
       </Slide>
       <Slide>
-        <h2 style={{ fontSize: '2.5rem' }}>Automatic Batching</h2>
-        <ul style={{ fontSize: '2rem' }}>
+        <h2>Automatic Batching</h2>
+        <ul>
           <li className='fragment'>
             Since React 18 this also works for state updates inside a context that is not associated with the browser, e.g. for fetch()
           </li>
@@ -239,7 +243,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         </aside>
       </Slide>
       <Slide>
-        <h2 style={{ fontSize: '2.5rem' }}>Automatic Batching</h2>
+        <h2>Automatic Batching</h2>
         <ul className='fragment'>
           <li className='fragment'>
             By upgrading the render-method in index.tsx state updates in asynchronous function will cause only one re-rendering process
@@ -270,8 +274,8 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         </aside>
       </Slide>
       <Slide>
-        <h2 style={{ fontSize: '2.5rem' }}>Lazy loading expensive components</h2>
-        <ul style={{ fontSize: '2rem' }}>
+        <h2>Lazy loading expensive components</h2>
+        <ul>
           <li className='fragment'>import lazy and Supense from React</li>
           <li className='fragment'>
             downloads the component's bundle on demand, renders rest of component and displays Suspense's fallback as long as the lazy
@@ -282,8 +286,8 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <Code className='fragment'>{lazyLoad}</Code>
       </Slide>
       <Slide>
-        <h2 style={{ fontSize: '2.5rem' }}>Lazy loading with React Router</h2>
-        <ul style={{ fontSize: '2rem' }}>
+        <h2>Lazy loading with React Router</h2>
+        <ul>
           <li className='fragment'>lazy load individual route elements or portions of router hierarchy</li>
           <li className='fragment'>
             pages that are not required on the landing page can be split into seperate bundles, decreasing load time on initial page and

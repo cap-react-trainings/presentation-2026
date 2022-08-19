@@ -128,10 +128,8 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       </Slide>
       <Slide>
         <h2>Class Components vs. Functional Components</h2>
-        <p className='fragment' style={{ fontSize: '2.2rem' }}>
-          Whats the difference? When should I use which one?
-        </p>
-        <ul className='fragment' style={{ fontSize: '2.2rem' }}>
+        <p className='fragment'>Whats the difference? When should I use which one?</p>
+        <ul className='fragment'>
           <li>historical reasons: no state-management / lifecycle hooks before 2019 in functional components</li>
           <li>nowadays: hardly any usage of class components</li>
           <li>functional components are easier to read and test, less code, better performance</li>
@@ -179,7 +177,7 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       </Slide>
       <Slide>
         <h2>Properties: destructured vs not destructured</h2>
-        <ul style={{ fontSize: '2rem' }}>
+        <ul>
           <li className='fragment'>
             Pro: easier to apply default values
             <Code highlightedLines='1'>{defaultProps}</Code>

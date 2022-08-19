@@ -267,20 +267,20 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       </Slide>
       <Slide>
         <h2>Angular</h2>
-        <div style={{ display: 'flex', justifyContent: 'center', fontSize: '2rem', gap: 10 }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
           <Code>{angularHtml}</Code>
           <Code>{angularTs}</Code>
         </div>
       </Slide>
       <Slide>
         <h2>React</h2>
-        <div style={{ fontSize: '2rem' }}>
+        <div>
           <Code>{react}</Code>
         </div>
       </Slide>
       <Slide>
         <h2>Vue</h2>
-        <div style={{ fontSize: '2rem' }}>
+        <div>
           <Code>{vue}</Code>
         </div>
       </Slide>
