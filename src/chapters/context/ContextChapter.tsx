@@ -15,7 +15,7 @@ const tree = `// fetch user...
 </Link>
 `;
 
-const contextWrap = `const UserContext = React.createContext(null);
+const contextWrap = `const UserContext = React.createContext<User>(null);
 
 // fetch user...
 
@@ -85,6 +85,7 @@ const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <Code>{tree}</Code>
       </Slide>
       <Slide>
+        <h2>To</h2>
         <Code highlightedLines='1|1-7'>{contextWrap}</Code>
       </Slide>
       <Slide>
@@ -102,17 +103,30 @@ const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
           <li>
             <a href='https://reactjs.org/docs/context.html'>React Docs</a>
           </li>
-          <li>
-            <a href='https://kentcdodds.com/blog/application-state-management-with-react'>🚀 Application State Management with React</a>
-          </li>
-          <li>
-            <a href='https://kentcdodds.com/blog/how-to-use-react-context-effectively'>🚀 How to use React Context effectively</a>
-          </li>
+          <li>Advanced State Management:</li>
+          <ul>
+            <li>
+              <a href='https://kentcdodds.com/blog/application-state-management-with-react'>🚀 Application State Management with React</a>
+            </li>
+            <li>
+              <a href='https://kentcdodds.com/blog/how-to-use-react-context-effectively'>🚀 How to use React Context effectively</a>
+            </li>
+          </ul>
         </ul>
         <aside className='notes'>Recommend Kent C. Dotts blog posts. You won&apos;t need redux anymore!</aside>
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>
+        <ul>
+          <li>Extract the book list into a separate component</li>
+          <li>
+            Use <a href='https://reactjs.org/docs/context.html'>React Context</a> to create a context wrapper for light/dark mode switch
+          </li>
+          <li>Apply it to the outmost component (App.tsx)</li>
+          <li>Toggle stylings in book list (font color) according to dark mode context</li>
+          <li>Add button to App.tsx that toggles the color mode</li>
+          <li>Allow child components to toggle the color mode (and demonstrate it with a new component)</li>
+        </ul>
       </Slide>
     </Chapter>
   );
