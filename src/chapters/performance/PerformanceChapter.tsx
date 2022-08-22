@@ -30,12 +30,12 @@ const moizedBook = useMemo(() => {
 const lazyLoad = `const AddModal = lazy(() => import('./AddModal))
 
 return(
-  <>
+  <div>
     /* render other components */
     <Suspense fallback={<div>Loading...</div>}>
       <AddModal />
     </Suspense>
-  <>
+  <div>
 )
 `;
 
@@ -46,7 +46,7 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="about"
         element={
-          <React.Suspense fallback={<>...</>}>
+          <React.Suspense fallback={<div>...</div>}>
             <About />
           </React.Suspense>
         }

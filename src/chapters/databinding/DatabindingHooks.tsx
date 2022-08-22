@@ -38,13 +38,13 @@ useEffect(() => {
 }, [props.author]) // hook runs when props.author changes
 
 return(
-  <>
+  <div>
     <Select
       options={currentBooks}
       onChange={e => setSelectedBook(e.target.value)}/>
     <p>Books by {props.author.name}</p>
     <BookList books={currentBooks} />
-  </>
+  </div>
 )
 `;
 

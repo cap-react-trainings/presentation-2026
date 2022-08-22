@@ -15,6 +15,8 @@ const componentFragment = `import MyButton from './myButton';
 `;
 
 const children = `const element = (
+    const formatUser = user => user.firstName + user.lastName
+    const mySource = "https://mylink.com"
     <div>
       <h1>Hello {formatUser(user)}</h1>
       <img src={mySource}/> 

@@ -32,15 +32,15 @@ const bookList = `function App = () => {
 const book = `const interface Book {
   id: number;
   name: string;
-  author; string;
+  author: string;
 }
 
 const Book: React.FC = (props: Book) => {
   return (
-    <>
+    <div>
       <h1>{props.name}</h1>
       <p>author: {props.author}</p>
-    </>
+    </div>
   )
 }
 `;
@@ -53,39 +53,39 @@ const bookDestructured = `const interface Book {
 
 const Book: React.FC = ({ name, author }: Book) => {
   return (
-    <>
+    <div>
       <h1>{name}</h1>
       <p>author: {author}</p>
-    </>
+    </div>
   )
 }
 `;
 
 const defaultProps = `const Book: FC = ({name="Tom", author="Rowling"}: Book) => {
 return (
-  <>
+  <div>
     <h1>{name}</h1>
     <p>author: {author}</p>
-  </>
+  </div>
 )}`;
 
 const classStyled = `const Book: React.FC = ({ name, author }: Book) => {
   return (
-    <>
+    <div>
       <h1 className='myHeadline'>{name}</h1>
       <p>author: {author}</p>
-    </>
+    </div>
   )
 }
 `;
 
 const stylesAttribute = `const Book: React.FC = ({ name, author }: Book) => {
   return (
-    <>
+    <div>
       <h1 className='myHeadline'>{name}</h1>
       // notice the double curly braces
       <p style={{ color: 'green'}}>author: {author}</p>
-    </>
+    </div>
   )
 }
 `;
@@ -93,20 +93,20 @@ const stylesAttribute = `const Book: React.FC = ({ name, author }: Book) => {
 const yarnAdd = `yarn add --save styled-components`;
 
 const styledComponent = `import styled from 'styled-components';
-const StyledAuthor = styled.p'color: 'green''
+const StyledAuthor = styled.p\`color: 'green'\`
 const Book: React.FC = ({ name, author }: Book) => {
-  return (<>
+  return (<div>
       <h1 className='myHeadline'>{name}</h1>
         // notice the double curly braces
       <StyledAuthor>author: {author}</StyledAuthor>
-    </>
+    </div>
   )}
 `;
 
 const buttonFragment2 = `interface Props {
   title: string;
 }
-export default MyButton: React.FC = ({props: Props}) => {
+export default MyButton: React.FC = (props: Props) => {
     return (
         <button>{props.title}</button>
     )
@@ -253,19 +253,19 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       <Slide>
         <h2>💪 Exercise</h2>
         <ul>
-          <li>
-            Implement a small app which renders a list of books. (<a href='https://vitejs.dev/guide/'>vite docs</a>)
-          </li>
+          <li>Implement a small app which renders a list of books (start in App.tsx).</li>
           <li>There should be a Book-Component which accepts a property of type 'Book'.</li>
           <li>
+            Find some sample data{' '}
             <a
               href='https://github.com/cap-react-trainings/code-examples/blob/02-conditional-rendering-styled-components/react-training-codeexamples/src/testData/Booklist.ts'
               target='_blank'
+              rel='noreferrer'
             >
-              sample data
+              here
             </a>
           </li>
-          <li>Choose on styling-method you've just learned about and style your BookList.</li>
+          <li>Choose one styling-method you've just learned about and style your BookList.</li>
         </ul>
       </Slide>
     </Chapter>

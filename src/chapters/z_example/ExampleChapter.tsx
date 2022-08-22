@@ -1,5 +1,6 @@
 import React from 'react';
 import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
+import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
 const snippet = `<Slide isMain>
@@ -22,16 +23,16 @@ const ExampleChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       <Slide>
         <h2>Slide Components (1/2)</h2>
         <p className='fragment'>Das hier ist eine Unterseite. Die {`<Slide>`} Komponente machts leicht:</p>
-        <Code className='fragment'='1,4'>
-            {snippet}
-          </Code>
+        <Code className='fragment' highlightedLines='1,4'>
+          {snippet}
+        </Code>
       </Slide>
       <Slide>
         <h2>Slide Components (2/2)</h2>
         <p className='fragment'>Das hier ist eine Unterseite. Die {`<Slide>`} Komponente machts leicht:</p>
-        <Code className='fragment'='1,4'>
-            {snippet}
-          </Code>
+        <Code className='fragment' highlightedLines='1,4'>
+          {snippet}
+        </Code>
       </Slide>
       <Slide>
         <h2>Further Reads</h2>
