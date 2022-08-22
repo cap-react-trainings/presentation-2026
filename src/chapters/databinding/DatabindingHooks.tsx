@@ -166,6 +166,8 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <pre className='fragment'>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
+            target='_blank'
+            rel='noreferrer'
             href='https://github.com/cap-react-trainings/code-examples/blob/03-hooks-usestate/react-training-codeexamples/src/App.tsx'
           >
             🚀 code example on GitHub
@@ -177,7 +179,10 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <ul>
           <li>Implement a slider that determines the number of books to be rendered inside your book-list.</li>
           <li>
-            You may use <a href='https://mui.com/material-ui/react-slider/'>Material UI's Slider-Commponent-</a>
+            You may use{' '}
+            <a href='https://mui.com/material-ui/react-slider/' target='_blank' rel='noreferrer'>
+              Material UI's Slider-Commponent-
+            </a>
           </li>
         </ul>
       </Slide>
@@ -196,6 +201,8 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <pre className='fragment'>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
+            target='_blank'
+            rel='noreferrer'
             href='https://github.com/cap-react-trainings/code-examples/blob/03-hooks-useeffect/react-training-codeexamples/src/App.tsx'
           >
             🚀 code example on GitHub
@@ -255,6 +262,8 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <pre className='fragment'>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
+            target='_blank'
+            rel='noreferrer'
             href='https://github.com/cap-react-trainings/code-examples/blob/03-hooks-use-query-with-material/react-training-codeexamples/src/components/book-list/BookList.tsx'
           >
             🚀 code example on GitHub
@@ -265,7 +274,11 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <h2>💪 Exercise</h2>
         <ul>
           <li>
-            As of now: we'd like to get rid of our dummy book-data and use an <a href='https://api.itbook.store/1.0/new'>API</a> instead.
+            As of now: we'd like to get rid of our dummy book-data and use an{' '}
+            <a href='https://api.itbook.store/1.0/new' target='_blank' rel='noreferrer'>
+              API
+            </a>{' '}
+            instead.
           </li>
           <li>Fetch the books to display from the API.</li>
           <li>

@@ -10,7 +10,6 @@ const IntroChapter: React.FC = () => {
         <aside className='notes'>Intro Notes.</aside>
       </Slide>
       <Slide isMain data-auto-animate dataAutoAnimate>
-        <h2>Capgemini</h2>
         <h2>React Training</h2>
         <div style={{ marginTop: 50 }}>
           <ReactLogo />

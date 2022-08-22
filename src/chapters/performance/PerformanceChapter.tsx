@@ -91,13 +91,19 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
       <Slide>
         <h2>Wasted Re-renders</h2>
         <div style={{ position: 'relative', width: 'auto', height: '34rem', margin: '0 auto' }}>
-          <img className='fragment fade-out' data-fragment-index='0' width='auto' height='100%' src='slide-assets/virtual-actual-dom.png' />
+          <img
+            className='fragment fade-out'
+            data-fragment-index='0'
+            width='auto'
+            height='100%'
+            src='./slide-assets/virtual-actual-dom.png'
+          />
           <img
             className='fragment fade-in'
             data-fragment-index='0'
             width='auto'
             height='100%'
-            src='slide-assets/wasted-re-renders.png'
+            src='./slide-assets/wasted-re-renders.png'
             style={{ position: 'absolute', top: 0, left: '25%' }}
           />
         </div>
@@ -116,13 +122,17 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <h2>React DEV Tools</h2>
         <ul>
           <li>
-            <a href='https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi'>
+            <a
+              href='https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi'
+              target='_blank'
+              rel='noreferrer'
+            >
               install Chrome Extension
             </a>
           </li>
           <li>inspect your app with the profiler</li>
         </ul>
-        <img className='fragment fade-in' src='slide-assets/pilot-devtools.png' />
+        <img className='fragment fade-in' src='./slide-assets/pilot-devtools.png' />
 
         <aside className='notes'>
           <p>inspect the app together "live session"</p>
@@ -130,7 +140,9 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           <p>profiler shows rerenders</p>
           <p>
             #TODO: decision yet to make: inspect our own app or example from{' '}
-            <a href='https://github.com/hendrikswan/pluralsight-react-performance'>GitHub</a>
+            <a href='https://github.com/hendrikswan/pluralsight-react-performance' target='_blank' rel='noreferrer'>
+              GitHub
+            </a>
           </p>
           <p>image shows profiler. you can navigate through the rerender cycles and see components that are being rerendered</p>
         </aside>
@@ -141,7 +153,10 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <ul className='fragment'>
           <li className='fragment'>new on click function is rendered each time parent rerenders</li>
           <li className='fragment'>
-            solution: <a href='https://reactjs.org/docs/hooks-reference.html#usecallback'>useCallback-hook</a>
+            solution:{' '}
+            <a href='https://reactjs.org/docs/hooks-reference.html#usecallback' target='_blank' rel='noreferrer'>
+              useCallback-hook
+            </a>
           </li>
           <li className='fragment'>returns memoized version of the callback, only changes if a dependency changes</li>
         </ul>
@@ -162,7 +177,9 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           <li className='fragment'>children need to be optimized as well</li>
           <li className='fragment'>
             only rerender, when Props or references change by using{' '}
-            <a href='https://reactjs.org/docs/react-api.html#reactmemo'>React.memo</a>
+            <a href='https://reactjs.org/docs/react-api.html#reactmemo' target='_blank' rel='noreferrer'>
+              React.memo
+            </a>
           </li>
           <li className='fragment'>
             In case React.memo has useState, useReducer or useContext Hook in its implementation, it will still rerender on according
@@ -217,7 +234,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           </ul>
         </div>
 
-        <a className='fragment' href='https://dmitripavlutin.com/use-react-memo-wisely/'>
+        <a className='fragment' href='https://dmitripavlutin.com/use-react-memo-wisely/' target='_blank' rel='noreferrer'>
           🚀 use React.memo() wisely
         </a>
       </Slide>
@@ -250,7 +267,7 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           </li>
         </ul>
         <Code className='fragment'>{createRoot}</Code>
-        <a className='fragment' href='https://dmitripavlutin.com/use-react-memo-wisely/'>
+        <a className='fragment' href='https://dmitripavlutin.com/use-react-memo-wisely/' target='_blank' rel='noreferrer'>
           🚀 read more about automatic batching
         </a>
       </Slide>
@@ -258,8 +275,10 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <h2>Caching expensive operations</h2>
         <ul>
           <li className='fragment'>
-            <a href='https://reactjs.org/docs/hooks-reference.html#usememo'>useMemo</a> is your friend: it returns a memoized value that is
-            only re-calculated when your dependencies change
+            <a href='https://reactjs.org/docs/hooks-reference.html#usememo' target='_blank' rel='noreferrer'>
+              useMemo
+            </a>{' '}
+            is your friend: it returns a memoized value that is only re-calculated when your dependencies change
           </li>
         </ul>
         <Code className='fragment'>{useMemo}</Code>
@@ -301,7 +320,10 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <h2>Measure page performance</h2>
         <ul>
           <li className='fragment'>
-            <a href='https://pagespeed.web.dev/'>web vital</a> or Chrome DevTools 'Lighthouse'
+            <a href='https://pagespeed.web.dev/' target='_blank' rel='noreferrer'>
+              web vital
+            </a>{' '}
+            or Chrome DevTools 'Lighthouse'
           </li>
           <li className='fragment'>will analyze your performance on mobile and desktop</li>
           <li className='fragment'>reveals painpoints you can work on</li>

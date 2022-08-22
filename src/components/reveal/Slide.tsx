@@ -4,7 +4,7 @@ interface SlideProps {
   children: ReactNode;
   /**
    * The isMain attributes toggles between the main
-   * page styling (Capgemini spade background and
+   * page styling (Cap spade background and
    * white font) and the normal, basic page styling
    * (white background, black font).
    */
@@ -16,7 +16,7 @@ interface SlideProps {
 const Slide: React.FC<SlideProps> = (props: SlideProps) => {
   return (
     <section
-      data-background-image={props.isMain ? '/bg1.svg' : undefined}
+      data-background-image={props.isMain ? import.meta.env.BASE_URL + '/bg1.svg' : undefined}
       data-background-transition={props.isMain ? 'slide' : undefined}
       // @ts-expect-error not assignable to css props
       style={props.isMain ? { '--r-heading-color': 'white', color: 'white' } : {}}

@@ -1,13 +1,16 @@
 {
-  "name": "capgemini-react-training-presentation",
+  "name": "cap-react-training-presentation",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://cap-react-trainings.github.io",
   "scripts": {
     "dev": "vite --port 3003",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "prismjs": "^1.28.0",
@@ -26,6 +29,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.6.0",
     "typescript": "^4.5.4",
     "vite": "^2.8.0"

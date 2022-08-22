@@ -44,10 +44,14 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
         </p>
         <ul className='fragment'>
           <li>
-            <a href='https://github.com/jaredpalmer/formik'>Formik</a>
+            <a href='https://github.com/jaredpalmer/formik' target='_blank' rel='noreferrer'>
+              Formik
+            </a>
           </li>
           <li>
-            <a href='https://github.com/react-hook-form/react-hook-form'>React Hook Form</a>
+            <a href='https://github.com/react-hook-form/react-hook-form' target='_blank' rel='noreferrer'>
+              React Hook Form
+            </a>
           </li>
         </ul>
         <aside className='notes'>Depends on personal preference, used UI libs/frameworks and performance requirements.</aside>
@@ -69,7 +73,11 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
         <h2>Further Reads</h2>
         <ul>
           <li>
-            <a href='https://dev.to/pmbanugo/looking-for-the-best-react-form-library-in-2021-it-s-probably-on-this-list-e2h'>
+            <a
+              href='https://dev.to/pmbanugo/looking-for-the-best-react-form-library-in-2021-it-s-probably-on-this-list-e2h'
+              target='_blank'
+              rel='noreferrer'
+            >
               📄 Comparison of four form libraries
             </a>
           </li>

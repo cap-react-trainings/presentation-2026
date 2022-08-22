@@ -43,10 +43,14 @@ const ReactNativeChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <h2>Further Reads</h2>
         <ul>
           <li>
-            <a href='https://reactnative.dev/docs/environment-setup'>React Native</a>
+            <a href='https://reactnative.dev/docs/environment-setup' target='_blank' rel='noreferrer'>
+              React Native
+            </a>
           </li>
           <li>
-            <a href='https://docs.expo.dev/get-started/installation/'>Expo</a>
+            <a href='https://docs.expo.dev/get-started/installation/' target='_blank' rel='noreferrer'>
+              Expo
+            </a>
           </li>
         </ul>
       </Slide>

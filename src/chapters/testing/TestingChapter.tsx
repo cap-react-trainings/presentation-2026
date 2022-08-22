@@ -64,19 +64,21 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>API Mocking with MSW</h2>
-        <Code className='fragment' style={{ marginBottom: 10 }}>
-          {snippet3}
-        </Code>
+        <Code className='fragment'>{snippet3}</Code>
         <Code className='fragment'>{snippet4}</Code>
       </Slide>
       <Slide>
         <h2>Further Reads</h2>
         <ul>
           <li>
-            <a href='https://reactjs.org/docs/testing.html'>React Docs</a>
+            <a href='https://reactjs.org/docs/testing.html' target='_blank' rel='noreferrer'>
+              React Docs
+            </a>
           </li>
           <li>
-            <a href='https://testing-library.com/docs/react-testing-library/intro'>React Testing Library</a>
+            <a href='https://testing-library.com/docs/react-testing-library/intro' target='_blank' rel='noreferrer'>
+              React Testing Library
+            </a>
           </li>
         </ul>
       </Slide>

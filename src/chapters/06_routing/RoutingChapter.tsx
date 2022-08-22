@@ -217,10 +217,14 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <h2>Further Reads</h2>
         <ul>
           <li>
-            <a href='https://reactrouter.com/docs/en/v6/getting-started/installation'>React Router</a>
+            <a href='https://reactrouter.com/docs/en/v6/getting-started/installation' target='_blank' rel='noreferrer'>
+              React Router
+            </a>
           </li>
           <li>
-            <a href='https://reactrouter.com/docs/en/v6/hooks/use-params'>Hooks</a>
+            <a href='https://reactrouter.com/docs/en/v6/hooks/use-params' target='_blank' rel='noreferrer'>
+              Hooks
+            </a>
           </li>
         </ul>
       </Slide>
@@ -228,8 +232,11 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <h2>💪 Exercise</h2>
         <ul>
           <li>
-            Use <a href='https://reactrouter.com/docs/en/v6/getting-started/overview'>React Router</a> to implement a routing to the detail
-            page of a book (in App.tsx)
+            Use{' '}
+            <a href='https://reactrouter.com/docs/en/v6/getting-started/overview' target='_blank' rel='noreferrer'>
+              React Router
+            </a>{' '}
+            to implement a routing to the detail page of a book (in App.tsx)
           </li>
           <li>Clicking on the title of a book in the list should forward the user to the detail page (/detail/[isbn])</li>
           <li>On the detail page, a request is triggered to get the book details (https://api.itbook.store/1.0/books/[isbn])</li>

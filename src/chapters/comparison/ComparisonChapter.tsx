@@ -140,27 +140,27 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       </Slide>
       <Slide>
         <h2>Github Stars</h2>
-        <img src='/slide-assets/framework-github-starts.png' />
+        <img src='./slide-assets/framework-github-starts.png' />
         <small>https://www.codeinwp.com/blog/angular-vs-vue-vs-react/</small>
       </Slide>
       <Slide>
         <h2>Stackoverflow</h2>
-        <img src='/slide-assets/framework-stackoverflow.png' />
+        <img src='./slide-assets/framework-stackoverflow.png' />
         <small>https://scand.com/company/blog/top-5-front-end-development-frameworks/</small>
       </Slide>
       <Slide>
         <h2>npm downloads</h2>
-        <img src='/slide-assets/framework-npm.png' />
+        <img src='./slide-assets/framework-npm.png' />
         <small>https://os-system.com/blog/best-front-end-frameworks-for-web-development/</small>
       </Slide>
       <Slide>
         <h2>user satisfaction</h2>
-        <img src='/slide-assets/framework-dx.png' />
+        <img src='./slide-assets/framework-dx.png' />
         <small>https://os-system.com/blog/best-front-end-frameworks-for-web-development/</small>
       </Slide>
       <Slide>
         <h2>jobs</h2>
-        <img src='/slide-assets/framework-jobs.png' />
+        <img src='./slide-assets/framework-jobs.png' />
         <small>https://www.codeinwp.com/blog/angular-vs-vue-vs-react/</small>
       </Slide>
       <Slide>
@@ -262,7 +262,7 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       </Slide>
       <Slide>
         <h2>Example: TODO App</h2>
-        <img src='/slide-assets/framework-todo.png' />
+        <img src='./slide-assets/framework-todo.png' />
         <small>https://www.youtube.com/watch?v=cuHDQhDhvPE</small>
       </Slide>
       <Slide>

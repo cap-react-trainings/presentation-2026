@@ -26,7 +26,7 @@ const StorybookChapter: React.FC<GenericChapterProps> = (props: GenericChapterPr
   const RevealPxOfImageSlide = ({ id, pixel }: { id: string; pixel: number }) => (
     <Slide dataAutoAnimate>
       <div style={{ position: 'relative' }}>
-        <img src='slide-assets/atomic-design-example.png' />
+        <img src='./slide-assets/atomic-design-example.png' />
         <div
           data-id={id}
           style={{ position: 'absolute', background: '#191919', height: '100%', width: '100%', top: 0, marginLeft: pixel }}
@@ -75,23 +75,29 @@ const StorybookChapter: React.FC<GenericChapterProps> = (props: GenericChapterPr
       </Slide>
       <Slide>
         <h2>Addons</h2>
-        <img src='slide-assets/storybook-a11y-plugin.png' />
+        <img src='./slide-assets/storybook-a11y-plugin.png' />
       </Slide>
       <Slide>
         <h2>Component library</h2>
-        <img src='slide-assets/component-lib-approach.png' />
+        <img src='./slide-assets/component-lib-approach.png' />
       </Slide>
       <Slide>
         <h2>Further Reads</h2>
         <ul>
           <li>
-            <a href='https://storybook.js.org/docs/react/get-started/introduction'>Storybook Docs</a>
+            <a href='https://storybook.js.org/docs/react/get-started/introduction' target='_blank' rel='noreferrer'>
+              Storybook Docs
+            </a>
           </li>
           <li>
-            <a href='https://bradfrost.com/blog/post/atomic-web-design/'>Atomic Design</a>
+            <a href='https://bradfrost.com/blog/post/atomic-web-design/' target='_blank' rel='noreferrer'>
+              Atomic Design
+            </a>
           </li>
           <li>
-            <a href='https://bradfrost.com/blog/post/atomic-design-and-storybook/'>Atomic Design &amp; Storybook</a>
+            <a href='https://bradfrost.com/blog/post/atomic-design-and-storybook/' target='_blank' rel='noreferrer'>
+              Atomic Design &amp; Storybook
+            </a>
           </li>
         </ul>
       </Slide>

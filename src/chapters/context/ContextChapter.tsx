@@ -101,15 +101,21 @@ const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <h2>Further Reads</h2>
         <ul>
           <li>
-            <a href='https://reactjs.org/docs/context.html'>React Docs</a>
+            <a href='https://reactjs.org/docs/context.html' target='_blank' rel='noreferrer'>
+              React Docs
+            </a>
           </li>
           <li>Advanced State Management:</li>
           <ul>
             <li>
-              <a href='https://kentcdodds.com/blog/application-state-management-with-react'>🚀 Application State Management with React</a>
+              <a href='https://kentcdodds.com/blog/application-state-management-with-react' target='_blank' rel='noreferrer'>
+                🚀 Application State Management with React
+              </a>
             </li>
             <li>
-              <a href='https://kentcdodds.com/blog/how-to-use-react-context-effectively'>🚀 How to use React Context effectively</a>
+              <a href='https://kentcdodds.com/blog/how-to-use-react-context-effectively' target='_blank' rel='noreferrer'>
+                🚀 How to use React Context effectively
+              </a>
             </li>
           </ul>
         </ul>
@@ -120,7 +126,11 @@ const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <ul>
           <li>Extract the book list into a separate component</li>
           <li>
-            Use <a href='https://reactjs.org/docs/context.html'>React Context</a> to create a context wrapper for light/dark mode switch
+            Use{' '}
+            <a href='https://reactjs.org/docs/context.html' target='_blank' rel='noreferrer'>
+              React Context
+            </a>{' '}
+            to create a context wrapper for light/dark mode switch
           </li>
           <li>Apply it to the outmost component (App.tsx)</li>
           <li>Toggle stylings in book list (font color) according to dark mode context</li>

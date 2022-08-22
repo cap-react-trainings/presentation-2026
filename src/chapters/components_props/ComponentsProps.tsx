@@ -156,6 +156,8 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <pre>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
+            target='_blank'
+            rel='noreferrer'
             href='https://github.com/cap-react-trainings/code-examples/blob/03-conditional-rendering-basic/react-training-codeexamples/src/App.tsx'
           >
             🚀 code example on GitHub
@@ -209,6 +211,8 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <pre className='fragment'>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
+            target='_blank'
+            rel='noreferrer'
             href='https://github.com/cap-react-trainings/code-examples/blob/02-conditional-rendering-basic/react-training-codeexamples/src/components/book/Book.tsx'
           >
             🚀 code example on GitHub
@@ -223,16 +227,26 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
           <li>no React built-in-feature -{`>`} external library</li>
           <ul className='fragment'>
             <li>
-              most popular: <a href='https://styled-components.com/'>Styled Components</a> (36K+ stars on GitHub)
+              most popular:{' '}
+              <a href='https://styled-components.com/' target='_blank' rel='noreferrer'>
+                Styled Components
+              </a>{' '}
+              (36K+ stars on GitHub)
             </li>
             <li>
-              also used by <a href='https://mui.com/system/styled/'>MUI</a>
+              also used by{' '}
+              <a href='https://mui.com/system/styled/' target='_blank' rel='noreferrer'>
+                MUI
+              </a>
             </li>
           </ul>
         </ul>
         <aside className='notes'>
           hint: when working with MUI you should checkout the latest version of styling, `the system`, which implements{' '}
-          <a href='https://tailwindcss.com/'>tailwind</a> and makes your styling life a lot easier and esp. faster
+          <a href='https://tailwindcss.com/' target='_blank' rel='noreferrer'>
+            tailwind
+          </a>{' '}
+          and makes your styling life a lot easier and esp. faster
         </aside>
       </Slide>
       <Slide>
@@ -244,6 +258,8 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <pre className='fragment'>
           <a
             style={{ fontSize: '1.7rem', marginTop: 4 }}
+            target='_blank'
+            rel='noreferrer'
             href='https://github.com/cap-react-trainings/code-examples/blob/02-conditional-rendering-styled-components/react-training-codeexamples/src/components/book/Book.tsx'
           >
             🚀 code example on GitHub
