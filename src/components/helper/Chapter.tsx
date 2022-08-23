@@ -22,7 +22,8 @@ const Chapter: React.FC<ChapterProps> = (props: ChapterProps) => {
           right: 0,
           writingMode: 'vertical-lr',
           height: '100%',
-          opacity: 0.3
+          color: '#0070ad',
+          opacity: 0.5
         }}
       >
         {chapterTitle}
