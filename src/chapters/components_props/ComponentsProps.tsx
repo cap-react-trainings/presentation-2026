@@ -69,6 +69,10 @@ return (
   </div>
 )}`;
 
+const immutableProps = `const Book: FC = (props: Props) => {
+  props.title = "HI"
+}`;
+
 const classStyled = `const Book: React.FC = ({ name, author }: Book) => {
   return (
     <div>
@@ -191,6 +195,32 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         </ul>
       </Slide>
       <Slide>
+        <h2>Important sidenote: Props are immutable</h2>
+        <ul>
+          <li>
+            this means you <strong>cannot</strong> do something like this:
+          </li>
+          <Code>{immutableProps}</Code>
+        </ul>
+      </Slide>
+      <Slide>
+        <h2>💪 Exercise</h2>
+        <ul>
+          <li>Implement a small app which renders a list of books (start in App.tsx).</li>
+          <li>There should be a Book-Component which accepts a property of type 'Book'.</li>
+          <li>
+            Find some sample data{' '}
+            <a
+              href='https://github.com/cap-react-trainings/code-examples/blob/02-conditional-rendering-styled-components/react-training-codeexamples/src/testData/Booklist.ts'
+              target='_blank'
+              rel='noreferrer'
+            >
+              here
+            </a>
+          </li>
+        </ul>
+      </Slide>
+      <Slide>
         <h2>Let's style our Booklist</h2>
         <ul className='fragment'>
           <li>via css classes</li>
@@ -269,18 +299,7 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       <Slide>
         <h2>💪 Exercise</h2>
         <ul>
-          <li>Implement a small app which renders a list of books (start in App.tsx).</li>
-          <li>There should be a Book-Component which accepts a property of type 'Book'.</li>
-          <li>
-            Find some sample data{' '}
-            <a
-              href='https://github.com/cap-react-trainings/code-examples/blob/02-conditional-rendering-styled-components/react-training-codeexamples/src/testData/Booklist.ts'
-              target='_blank'
-              rel='noreferrer'
-            >
-              here
-            </a>
-          </li>
+          <li>Our booklist isn't very pretty yet ...</li>
           <li>Choose one styling-method you've just learned about and style your BookList.</li>
         </ul>
       </Slide>

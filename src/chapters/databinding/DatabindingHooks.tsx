@@ -177,13 +177,8 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       <Slide>
         <h2>💪 Exercise</h2>
         <ul>
-          <li>Implement a slider that determines the number of books to be rendered inside your book-list.</li>
-          <li>
-            You may use{' '}
-            <a href='https://mui.com/material-ui/react-slider/' target='_blank' rel='noreferrer'>
-              Material UI's Slider-Commponent-
-            </a>
-          </li>
+          <li>Implement some buttons, that determine how many books should be rendered inside your book-list.</li>
+          <li>As you might have already guessed: the useState-hook is your friend!</li>
         </ul>
       </Slide>
       <Slide>
@@ -237,6 +232,34 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <Code className='fragment'>{useBooksHook}</Code>
       </Slide>
       <Slide>
+        <h2>💪 Exercise</h2>
+        <ul>
+          <li>
+            As of now: we'd like to get rid of our dummy book-data and use an{' '}
+            <a href='https://api.itbook.store/1.0/new' target='_blank' rel='noreferrer'>
+              API
+            </a>{' '}
+            instead.
+          </li>
+          <li>Fetch the books to display from the API.</li>
+          <li>
+            Update your conditional rendering in Book.tsx: Place a badge "cheap" when the book's price is less than 30$, else the badge
+            should display "expensive".
+          </li>
+          <li>
+            Since data fetching takes some time, also provide a loading spinner that tells the user you are fetching data while there are no
+            books to display yet.
+          </li>
+          <li>
+            Brownie points: In case you're finished early: learn about the{' '}
+            <a href='https://tanstack.com/query/v4/docs/reference/useQuery?from=reactQueryV3&original=https://react-query-v3.tanstack.com/reference/useQuery'>
+              useQuery-Hook
+            </a>
+            , do some refactoring and implement your datafetching by using useQuery.
+          </li>
+        </ul>
+      </Slide>
+      <Slide>
         <h2>Excursus: useQuery (React Query)</h2>
         <ul>
           <li className='fragment'>data-fetching library for React</li>
@@ -271,25 +294,9 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         </pre>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
+        <h2>💪 Homework</h2>
         <ul>
-          <li>
-            As of now: we'd like to get rid of our dummy book-data and use an{' '}
-            <a href='https://api.itbook.store/1.0/new' target='_blank' rel='noreferrer'>
-              API
-            </a>{' '}
-            instead.
-          </li>
-          <li>Fetch the books to display from the API.</li>
-          <li>
-            Update your conditional rendering in Book.tsx: Place a badge "cheap" when the book's price is less than 30$, else the badge
-            should display "expensive".
-          </li>
-          <li>
-            Since data fetching takes some time, also provide a loading spinner that tells the user you are fetching data while there are no
-            books to display yet.
-          </li>
-          <li>Brownie points: In case you're finished early: do some refactoring and implement the useQuery-Hook.</li>
+          <li>If not done yet: refactor your code and implement the data fetching part by using the useQuery-Hook.</li>
         </ul>
       </Slide>
       <Slide>

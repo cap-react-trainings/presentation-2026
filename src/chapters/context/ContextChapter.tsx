@@ -60,6 +60,9 @@ const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       }
     >
       <Slide>
+        <img style={{ width: 800 }} src='./slide-assets/context.png' />
+      </Slide>
+      <Slide>
         <h2>When to use?</h2>
         {/* <p>Wrapping with data instead of passing it down</p> */}
         <ul className='fragment'>
