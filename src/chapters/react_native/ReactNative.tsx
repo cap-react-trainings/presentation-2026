@@ -57,6 +57,9 @@ const ReactNativeChapter: React.FC<GenericChapterProps> = (props: GenericChapter
       <Slide>
         <h2>💪 Exercise</h2>
       </Slide>
+      <Slide>
+        <h2>FIN 🤪</h2>
+      </Slide>
     </Chapter>
   );
 };

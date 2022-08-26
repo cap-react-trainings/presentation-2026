@@ -64,15 +64,15 @@ const StorybookChapter: React.FC<GenericChapterProps> = (props: GenericChapterPr
         <h2>Example</h2>
         <Code highlightedLines='5,13'>{snippet}</Code>
       </Slide>
-      <Slide
+      {/*  <Slide
         data-background-iframe='https://61a90feace7802003a4d9c45-uaqlinmlwh.chromatic.com/?path=/story/composite-components-button--default-button&args=size:medium;disabled:false'
         data-background-interactive
       >
-        {/* <iframe
+        <iframe
           src='https://61a90feace7802003a4d9c45-uaqlinmlwh.chromatic.com/?path=/story/composite-components-button--default-button&args=size:medium;disabled:false'
           style={{ width: '90%', height: '90%' }}
-        ></iframe> */}
-      </Slide>
+        ></iframe> 
+      </Slide>*/}
       <Slide>
         <h2>Addons</h2>
         <img src='./slide-assets/storybook-a11y-plugin.png' />

@@ -239,9 +239,9 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         </a>
       </Slide>
       <Slide>
-        <h2>Autoamtic Batching</h2>
+        <h2>Automatic Batching</h2>
         <ul>
-          <li className='fragment'>New in React 18: Autoamted Batching</li>
+          <li className='fragment'>New in React 18: Automated Batching</li>
           <li className='fragment'>batching group state updates, native event handlers are batched as well</li>
         </ul>
         <Code className='fragment'>{batching}</Code>
@@ -329,9 +329,6 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
           <li className='fragment'>reveals painpoints you can work on</li>
         </ul>
         <aside className='notes'>do a short live session, show some insights</aside>
-      </Slide>
-      <Slide>
-        <h2>FIN 🤪</h2>
       </Slide>
     </Chapter>
   );
