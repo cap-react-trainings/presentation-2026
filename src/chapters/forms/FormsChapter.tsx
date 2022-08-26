@@ -86,6 +86,16 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>
+        <ul>
+          <li>
+            extend your booklist with the possibility to add a new book to your list. (For example, add some button that shows a form
+            onClick())
+          </li>
+          <li>
+            install <a href='https://react-hook-form.com/api/useform/'>useForm</a>
+          </li>
+          <li>In case you're finished early: try to use Formik 🤓</li>
+        </ul>
       </Slide>
     </Chapter>
   );
