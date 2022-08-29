@@ -22,3 +22,16 @@ pre[class*='language-'] {
   font-size: 18px;
   right: unset;
 }
+
+/* Copy to clipboard button */
+div.code-toolbar > .toolbar {
+  top: 0;
+  right: 0;
+  transform: translateX(-40px);
+}
+div.code-toolbar > .toolbar > .toolbar-item > button {
+  font-size: 0.4em;
+  background: rgb(39 40 35);
+  border: 1px solid #bbb;
+  cursor: pointer;
+}

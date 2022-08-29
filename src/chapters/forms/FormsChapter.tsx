@@ -92,9 +92,18 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
             onClick())
           </li>
           <li>
-            install <a href='https://react-hook-form.com/api/useform/'>useForm</a>
+            install{' '}
+            <a href='https://react-hook-form.com/api/useform/' target='_blank' rel='noreferrer'>
+              useForm
+            </a>
           </li>
-          <li>In case you're finished early: try to use Formik 🤓</li>
+          <li>
+            In case you're finished early: try to use{' '}
+            <a href='https://formik.org/docs/overview' target='_blank' rel='noreferrer'>
+              Formik
+            </a>{' '}
+            🤓
+          </li>
         </ul>
       </Slide>
     </Chapter>

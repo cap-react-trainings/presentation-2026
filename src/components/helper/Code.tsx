@@ -3,16 +3,20 @@ import Prism from 'prismjs';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-tsx';
+import 'prismjs/components/prism-bash';
 import 'prismjs/themes/prism-okaidia.min.css';
 import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
 import 'prismjs/plugins/line-highlight/prism-line-highlight.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import 'prismjs/plugins/toolbar/prism-toolbar.js';
+import 'prismjs/plugins/toolbar/prism-toolbar.min.css';
+import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js';
 import { useEffect, useRef } from 'react';
 
 interface CodeProps {
   children: string;
-  language?: 'tsx';
+  language?: 'tsx' | 'bash';
   /**
    * Which lines to highlight in the code snippet, e.g.:
    * - '5' (The 5th line)

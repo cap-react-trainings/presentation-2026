@@ -34,6 +34,22 @@ const snippet4 = `server.use(
 );
 `;
 
+const setup1 = `yarn add -D @testing-library/react @testing-library/jest-dom jest jest-environment-jsdom`;
+const setup2 = `yarn add -D ts-jest @types/jest @types/testing-library__react @types/testing-library__jest-dom`;
+const setup3 = `//jest.config.js
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+};`;
+const setup4 = `// package.json
+...
+"scripts": {
+  ...
+  "test": "jest"
+}
+...`;
+
 const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
     <Chapter {...props}>
@@ -84,6 +100,27 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>
+        <p>Setup for testing</p>
+        <Code language='bash'>{setup1}</Code>
+        <Code language='bash'>{setup2}</Code>
+      </Slide>
+      <Slide>
+        <h2>💪 Exercise</h2>
+        <p>Create / modify files</p>
+
+        <Code language='bash'>{setup3}</Code>
+        <Code language='bash'>{setup4}</Code>
+      </Slide>
+      <Slide>
+        <h2>💪 Exercise</h2>
+        <ul>
+          <li>Implement test that verifies isCheap-badge logic</li>
+          <ul>
+            <li>show &quot;cheap&quot; on price &lt; 30</li>
+            <li>show &quot;expensive&quot; on price &gt; 30</li>
+          </ul>
+          <li>If you're done, feel free to implement further tests.</li>
+        </ul>
       </Slide>
     </Chapter>
   );
