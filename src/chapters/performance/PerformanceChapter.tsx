@@ -92,13 +92,6 @@ const PerformanceChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <h2>Wasted Re-renders</h2>
         <div style={{ position: 'relative', width: 'auto', height: '34rem', margin: '0 auto' }}>
           <img
-            className='fragment fade-out'
-            data-fragment-index='0'
-            width='auto'
-            height='100%'
-            src='./slide-assets/virtual-actual-dom.png'
-          />
-          <img
             className='fragment fade-in'
             data-fragment-index='0'
             width='auto'
