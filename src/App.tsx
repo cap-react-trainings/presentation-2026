@@ -1,6 +1,5 @@
 import React from 'react';
 import RoutingChapter from './chapters/06_routing/RoutingChapter';
-import IntroChapter from './chapters/a_Intro/IntroChapter';
 import TableOfContents from './chapters/a_Intro/TableOfContents';
 import ComparisonChapter from './chapters/comparison/ComparisonChapter';
 import ComponentsChapter from './chapters/components_props/ComponentsProps';
@@ -13,7 +12,9 @@ import PerformanceChapter from './chapters/performance/PerformanceChapter';
 import ReactNativeChapter from './chapters/react_native/ReactNative';
 import StorybookChapter from './chapters/storybook/StorybookChapter';
 import TestingChapter from './chapters/testing/TestingChapter';
+import ReactLogo from './components/helper/ReactLogo';
 import RevealWrapper from './components/reveal/RevealWrapper';
+import Slide from './components/reveal/Slide';
 
 const App: React.FC = () => {
   const chapter = [
@@ -73,7 +74,17 @@ const App: React.FC = () => {
 
   return (
     <RevealWrapper>
-      <IntroChapter />
+      <Slide isMain dataAutoAnimate>
+        <ReactLogo scale={2} />
+        <aside className='notes'>Intro Notes.</aside>
+      </Slide>
+      <Slide isMain data-auto-animate dataAutoAnimate>
+        <h2>React Training</h2>
+        <div style={{ marginTop: 50 }}>
+          <ReactLogo />
+        </div>
+        <aside className='notes'>Intro Notes.</aside>
+      </Slide>
       <TableOfContents chapter={chapter} />
       {/* <ExampleChapter title='Example' index={0} /> */}
       {chapter.map((chapter, index) => (

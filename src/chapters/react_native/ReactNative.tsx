@@ -10,7 +10,7 @@ const ReactNativeChapter: React.FC<GenericChapterProps> = (props: GenericChapter
       <Slide>
         <h2>Basics</h2>
         <p className='fragment'>
-          React Native is a framework for building mobile apps with React. It is based on React, and uses the same components, but with some
+          React Native is a library for building mobile apps with React. It is based on React, and uses the same components, but with some
           changes to make it work on native platforms like Android and iOS.
         </p>
       </Slide>
