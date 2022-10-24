@@ -19,9 +19,8 @@ const Chapter: React.FC<ChapterProps> = (props: ChapterProps) => {
       <div
         style={{
           position: 'absolute',
-          right: 0,
-          writingMode: 'vertical-lr',
-          height: '100%',
+          bottom: 0,
+          left: 0,
           color: '#0070ad',
           opacity: 0.5
         }}

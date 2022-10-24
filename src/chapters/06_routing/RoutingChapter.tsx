@@ -187,7 +187,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         </p>
       </Slide>
       <Slide>
-        <p>We need to build our own routing. So forget about the react-dom-router 🥲</p>
+        <p>We need to build our own routing. So forget about the react-dom-router 😉</p>
         <p className='fragment'>
           We will need to use a state management. Wheter it is mobx, context or redux. We need to store our routing somewhere
         </p>
@@ -217,12 +217,12 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <h2>Further Reads</h2>
         <ul>
           <li>
-            <a href='https://reactrouter.com/docs/en/v6/getting-started/installation' target='_blank' rel='noreferrer'>
+            <a href='https://reactrouter.com/en/main/start/tutorial#setup' target='_blank' rel='noreferrer'>
               React Router
             </a>
           </li>
           <li>
-            <a href='https://reactrouter.com/docs/en/v6/hooks/use-params' target='_blank' rel='noreferrer'>
+            <a href='https://reactrouter.com/en/main/hooks/use-params' target='_blank' rel='noreferrer'>
               Hooks
             </a>
           </li>
@@ -233,7 +233,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <ul>
           <li>
             Use{' '}
-            <a href='https://reactrouter.com/docs/en/v6/getting-started/overview' target='_blank' rel='noreferrer'>
+            <a href='https://reactrouter.com/en/main' target='_blank' rel='noreferrer'>
               React Router
             </a>{' '}
             to implement a routing to the detail page of a book (in App.tsx)
