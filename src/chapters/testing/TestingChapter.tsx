@@ -80,6 +80,7 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>API Mocking with MSW</h2>
+        <p>"Mock service worker"</p>
         <Code className='fragment'>{snippet3}</Code>
         <Code className='fragment'>{snippet4}</Code>
       </Slide>

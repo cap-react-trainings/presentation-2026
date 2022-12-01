@@ -27,7 +27,7 @@ return (
   <form onSubmit={handleSubmit(onSubmit)}>
     <input defaultValue="test" {...register("fName")} />
     <input {...register("lName", { required: true })} />
-    {errors.exampleRequired && <span>required!</span>}
+    {errors.lName && <span>required!</span>}
     <input type="submit" />
   </form>
 );

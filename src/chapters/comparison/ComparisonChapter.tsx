@@ -167,6 +167,69 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <h2>More Details</h2>
       </Slide>
       <Slide>
+        <h2>React</h2>
+        <table style={{ fontSize: '1.75rem' }}>
+          <tbody>
+            <tr>
+              <td>Initial Release</td>
+              <td>2013</td>
+            </tr>
+            <tr>
+              <td>Developers</td>
+              <td>Meta and Community</td>
+            </tr>
+            <tr>
+              <td>Website</td>
+              <td>
+                <a href='https://reactjs.org/'>https://reactjs.org</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </Slide>
+      <Slide>
+        <h2>Angular</h2>
+        <table style={{ fontSize: '1.75rem' }}>
+          <tbody>
+            <tr>
+              <td>Initial Release</td>
+              <td>2010 (as AngularJS)</td>
+            </tr>
+            <tr>
+              <td>Developers</td>
+              <td>Google</td>
+            </tr>
+            <tr>
+              <td>Website</td>
+              <td>
+                <a href='https://angular.io/'>https://angular.io</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </Slide>
+      <Slide>
+        <h2>Vue.js</h2>
+        <table style={{ fontSize: '1.75rem' }}>
+          <tbody>
+            <tr>
+              <td>Initial Release</td>
+              <td>2014</td>
+            </tr>
+            <tr>
+              <td>Developers</td>
+              <td>Evan You and Community</td>
+            </tr>
+            <tr>
+              <td>Website</td>
+              <td>
+                <a href='https://vuejs.org/'>https://vuejs.org</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </Slide>
+      <Slide>
         <h2>Facts</h2>
         <table style={{ width: '100%', fontSize: '1.75rem' }}>
           <thead>
@@ -239,15 +302,15 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
             <ArrowDown />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
-            <div style={{ background: 'grey', borderRadius: '10%', padding: 10 }}>
+            <div style={{ background: '#0170ad', borderRadius: '10%', padding: 10, width: '20%' }}>
               <h5>React</h5>
               <small>App.tsx</small>
             </div>
-            <div style={{ background: 'grey', borderRadius: '10%', padding: 10 }}>
+            <div style={{ background: '#0170ad', borderRadius: '10%', padding: 10, width: '20%' }}>
               <h5>Vue</h5>
               <small>App.vue</small>
             </div>
-            <div style={{ background: 'grey', borderRadius: '10%', padding: 10 }}>
+            <div style={{ background: '#0170ad', borderRadius: '10%', padding: 10, width: '20%' }}>
               <h5>Angular</h5>
               <small>App.component.css</small>
               <br />

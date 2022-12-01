@@ -76,14 +76,32 @@ const App: React.FC = () => {
     <RevealWrapper>
       <Slide isMain dataAutoAnimate>
         <ReactLogo scale={2} />
-        <aside className='notes'>Intro Notes.</aside>
       </Slide>
       <Slide isMain data-auto-animate dataAutoAnimate>
         <h2>React Training</h2>
         <div style={{ marginTop: 50 }}>
           <ReactLogo />
         </div>
-        <aside className='notes'>Intro Notes.</aside>
+      </Slide>
+      <Slide isMain>
+        <h2>Why we are here</h2>
+        <p>React: A JavaScript library for building user interfaces</p>
+        <p>
+          🖥 <a href='https://reactjs.org/'>https://reactjs.org</a>
+        </p>
+        <aside className='notes'>
+          Heavily used in the industry. Makes it painless to create interactive UIs. React = `it reacts to user inputs``
+        </aside>
+      </Slide>
+      <Slide isMain>
+        <h2>About You</h2>
+        <div style={{ textAlign: 'left', display: 'inline-block' }}>
+          🙋‍♀️ Who are you?
+          <br />
+          🏋️‍♀️ What experience do you have with web development?
+          <br />
+          💭 What do you expect from the training?
+        </div>
       </Slide>
       <TableOfContents chapter={chapter} />
       {/* <ExampleChapter title='Example' index={0} /> */}

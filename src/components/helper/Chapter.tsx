@@ -22,7 +22,8 @@ const Chapter: React.FC<ChapterProps> = (props: ChapterProps) => {
           bottom: 0,
           left: 0,
           color: '#0070ad',
-          opacity: 0.5
+          opacity: 0.5,
+          fontSize: '1rem'
         }}
       >
         {chapterTitle}
