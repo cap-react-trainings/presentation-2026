@@ -113,21 +113,6 @@ return (
 )
 `;
 
-const ObservableMobX = `export class Test {
-  continue: boolean | undefined = undefined;
-
-  constructor() {
-    makeAutoObservable(this)
-  }
-
-  someFunction = () => {
-    const disposer = observe(this, 'continue', change => {
-      console.log(change.newValue)
-    })
-  }
-}
-`;
-
 const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
     <Chapter
@@ -306,11 +291,6 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
           You just simply don't need them :) The state listening in a useEffect for example is like a simple pipe in Angular
         </p>
         <p className='fragment'>However it is possible to have "real" subscribe with mobx for example.</p>
-      </Slide>
-      <Slide>
-        <h2>mobx</h2>
-        <Code>{ObservableMobX}</Code>
-        <p className=''>If you really really need it...</p>
       </Slide>
     </Chapter>
   );

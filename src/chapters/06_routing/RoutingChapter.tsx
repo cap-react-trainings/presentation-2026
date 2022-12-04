@@ -57,44 +57,6 @@ const hash = `<HashRouter
 </HashRouter>;
 `;
 
-const paramClass = `class Routing {
-  page: string
-
-  // make this page observable (depends on your way to do it)
-
-  setRoutingFromUrl(): void {
-    const queryParams = new URLSearchParams(window.location.search);
-    const page = queryParams.get('page');
-  }
-
-  setRouting(page: string): void {
-    setPage(page);
-    let params = new URLSearchParams(window.location.search);
-
-    params.set('page', page);
-
-    let url = window.location + params;
-
-    window.location.replace(url);
-  }
-
-  private setPage(newPage: string): void {
-    this.page = newPage;
-  }
-}
-`;
-
-const paramRoutes = `useEffect(() => {
-  Routing.setRoutingFromUrl()
-}, [])
-
-return (
-  {Routing.page === 'about' && <About /> }
-  {Routing.page === 'users' && <Users /> }
-  {Routing.page === '' && <Home /> }
-)
-`;
-
 const browserGuards = `const ProtectedRoute = ({
   isAllowed,
   redirectPath = '/landing',
@@ -140,11 +102,9 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <ul className='fragment'>
           <li>Browser Routing (Basic Routing)</li>
           <li>Hashrouting</li>
-          <li>Parameter Routing (little bit extra 🧐)</li>
         </ul>
         <p className='fragment'>
-          Consider using Browser Routing most of the time. Hashrouting only if Browser Routing is encoded (Mircofrontend). Use Parameter
-          Routing only if EVERYTHING else fails 🥺
+          Consider using Browser Routing most of the time. Hashrouting only if Browser Routing is encoded (Mircofrontend).
         </p>
       </Slide>
       <Slide>
@@ -179,29 +139,6 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
           <li className='fragment'>it is not a 'real' routing</li>
         </ul>
       </Slide>
-      <Slide>
-        <h2>Parameter Routing</h2>
-        <p className='fragment'>The most awkward one 😅</p>
-        <p className='fragment'>
-          Basically: Instead of <a>domain.com/test/1</a> we will have something like <a>domain.com/?page=test&id=1</a>
-        </p>
-      </Slide>
-      <Slide>
-        <p>We need to build our own routing. So forget about the react-dom-router 😉</p>
-        <p className='fragment'>
-          We will need to use a state management. Wheter it is mobx, context or redux. We need to store our routing somewhere
-        </p>
-      </Slide>
-      <Slide>
-        <p className='fragment'>We will start by declaring a routing class</p>
-        <Code className='fragment'>{paramClass}</Code>
-      </Slide>
-
-      <Slide>
-        <p>Also we need to restructure our main to the following</p>
-        <Code className='fragment'>{paramRoutes}</Code>
-      </Slide>
-
       <Slide>
         <h2>Guards</h2>
         <p className='fragment'>One special, but important part.</p>
