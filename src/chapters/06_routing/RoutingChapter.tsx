@@ -104,8 +104,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
           <li>Hashrouting</li>
         </ul>
         <p className='fragment'>
-          Consider using Browser Routing most of the time. Hashrouting only if Browser Routing is encoded (Mircofrontend). Use Parameter
-          Routing only if EVERYTHING else fails 🥺
+          Consider using Browser Routing most of the time. Hashrouting only if Browser Routing is encoded (Mircofrontend).
         </p>
       </Slide>
       <Slide>
