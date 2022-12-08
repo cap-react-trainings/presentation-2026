@@ -60,13 +60,13 @@ const hash = `<HashRouter
 const browserGuards = `const ProtectedRoute = ({
   isAllowed,
   redirectPath = '/landing',
-  children,
 }) => {
   if (!isAllowed) {
     return <Navigate to={redirectPath} replace />;
   }
 
-  return children ? children : <Outlet />;
+  // 'Outlet' passes through all child routes
+  return <Outlet />;
 };
 
 // user logic
@@ -75,10 +75,7 @@ const App = () => (
   <Routes>
     <Route index element={<Home />} />
 
-    <Route path="user" element={
-      <ProtectedRoute 
-        redirectPath="/" 
-        isAllowed={!!user} />}>
+    <Route path="user" element={<ProtectedRoute isAllowed={!!user} />}>
       <Route path="home" element={<Home />} />
       <Route path="dashboard" element={<Dashboard />} />
     </Route>
@@ -149,6 +146,11 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       <Slide>
         <p>Browser Router</p>
         <Code className='fragment'>{browserGuards}</Code>
+        <aside className='notes'>
+          An Outlet should be used in parent route elements to render their child route elements. This allows nested UI to show up when
+          child routes are rendered. If the parent route matched exactly, it will render a child index route or nothing if there is no index
+          route.
+        </aside>
       </Slide>
       <Slide>
         <h2>Further Reads</h2>
@@ -169,8 +171,11 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <h2>💪 Exercise</h2>
         <ul>
           <li>
+            <code>git checkout 04-context-wrapper</code>
+          </li>
+          <li>
             Use{' '}
-            <a href='https://reactrouter.com/en/main' target='_blank' rel='noreferrer'>
+            <a href='https://reactrouter.com/en/main/start/tutorial' target='_blank' rel='noreferrer'>
               React Router
             </a>{' '}
             to implement a routing to the detail page of a book (in App.tsx)

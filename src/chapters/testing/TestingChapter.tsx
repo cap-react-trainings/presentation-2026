@@ -101,6 +101,7 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>
+        <code>git checkout 06-forms-chapter</code>
         <p>Setup for testing</p>
         <Code language='bash'>{setup1}</Code>
         <Code language='bash'>{setup2}</Code>

@@ -35,3 +35,13 @@ div.code-toolbar > .toolbar > .toolbar-item > button {
   border: 1px solid #bbb;
   cursor: pointer;
 }
+/* Custom styles for code selection via mouse drag */
+div.code-toolbar ::-moz-selection {
+  /* Code for Firefox */
+  color: rgb(18, 18, 18);
+  background: hsl(70deg 8% 33%);
+}
+div.code-toolbar ::selection {
+  background: hsl(70deg 8% 33%);
+  color: unset;
+}

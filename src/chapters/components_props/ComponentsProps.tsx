@@ -121,6 +121,9 @@ const useButton2 = `<MyButton /> // error
 <MyButton title='Hit me' /> // ok
 `;
 
+const bootstrapping1 = `$ npx create-react-app my-app --template typescript`;
+const bootstrapping2 = `$ npm create vite@latest my-app -- --template react-ts`;
+
 const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
     <Chapter {...props} subtitle={<p>JavaScript functions, accept Props and return React Elements (JSX)</p>}>
@@ -202,6 +205,17 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
           </li>
           <Code>{immutableProps}</Code>
         </ul>
+      </Slide>
+      <Slide>
+        <h2>First things first</h2>
+        <p>
+          <a href='https://create-react-app.dev/docs/getting-started'>Create React App</a> 🐌
+        </p>
+        <Code language='bash'>{bootstrapping1}</Code>
+        <p>
+          <a href='https://vitejs.dev/guide/'>Vite</a> 🚀
+        </p>
+        <Code language='bash'>{bootstrapping2}</Code>
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>

@@ -47,11 +47,17 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
             <a href='https://github.com/jaredpalmer/formik' target='_blank' rel='noreferrer'>
               Formik
             </a>
+            <div>
+              <small>(31k stars on github)</small>
+            </div>
           </li>
           <li>
             <a href='https://github.com/react-hook-form/react-hook-form' target='_blank' rel='noreferrer'>
               React Hook Form
             </a>
+            <div>
+              <small>(32k stars on github)</small>
+            </div>
           </li>
         </ul>
         <aside className='notes'>Depends on personal preference, used UI libs/frameworks and performance requirements.</aside>
@@ -82,11 +88,13 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
             </a>
           </li>
         </ul>
-        <aside className='notes'>Recommend Kent C. Dotts blog posts. You won&apos;t need redux anymore!</aside>
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>
         <ul>
+          <li>
+            <code>git checkout 05-routing-chapter</code>
+          </li>
           <li>
             extend your booklist with the possibility to add a new book to your list. (For example, add some button that shows a form
             onClick())
@@ -94,7 +102,7 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
           <li>
             install{' '}
             <a href='https://react-hook-form.com/api/useform/' target='_blank' rel='noreferrer'>
-              useForm
+              react-hook-form
             </a>
           </li>
           <li>
