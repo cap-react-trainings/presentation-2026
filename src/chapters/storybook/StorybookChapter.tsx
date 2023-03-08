@@ -64,10 +64,22 @@ const StorybookChapter: React.FC<GenericChapterProps> = (props: GenericChapterPr
         <h2>Example</h2>
         <Code highlightedLines='5,13'>{snippet}</Code>
       </Slide>
+      <Slide>
+        <h2>How to Storybook</h2>
+        <p>
+          <a href='https://storybook.js.org/tutorials/intro-to-storybook/react/en/get-started/'>1. 🏗 Set it up from scratch</a>
+          <Code>{`npx degit chromaui/intro-storybook-react-template newproject`}</Code>
+        </p>
+        <p>
+          <a href='https://storybook.js.org/docs/react/get-started/install'>2. 📦 Set it up in an existing project</a>
+          <Code>{`npx storybook init`}</Code>
+        </p>
+      </Slide>
       {/*  <Slide
         data-background-iframe='https://61a90feace7802003a4d9c45-uaqlinmlwh.chromatic.com/?path=/story/composite-components-button--default-button&args=size:medium;disabled:false'
         data-background-interactive
       >
+
         <iframe
           src='https://61a90feace7802003a4d9c45-uaqlinmlwh.chromatic.com/?path=/story/composite-components-button--default-button&args=size:medium;disabled:false'
           style={{ width: '90%', height: '90%' }}

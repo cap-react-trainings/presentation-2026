@@ -7,7 +7,7 @@ import ConditionalRenderingChapter from './chapters/conditional_rendering/Condit
 import ContextChapter from './chapters/context/ContextChapter';
 import DatabindingHooksChapter from './chapters/databinding/DatabindingHooks';
 import FormsChapter from './chapters/forms/FormsChapter';
-import JsxChapter from './chapters/jsx_tsx/JSX';
+import ReactBasicsChapter from './chapters/react_basics/ReactBasics';
 import PerformanceChapter from './chapters/performance/PerformanceChapter';
 import ReactNativeChapter from './chapters/react_native/ReactNative';
 import StorybookChapter from './chapters/storybook/StorybookChapter';
@@ -23,8 +23,8 @@ const App: React.FC = () => {
       component: ComparisonChapter
     },
     {
-      title: 'JSX & TSX',
-      component: JsxChapter
+      title: 'React in a nutshell 🥜',
+      component: ReactBasicsChapter
     },
     {
       title: 'Components & Styling',
@@ -108,6 +108,10 @@ const App: React.FC = () => {
       {chapter.map((chapter, index) => (
         <chapter.component key={index} title={chapter.title} index={index + 1} />
       ))}
+      <Slide isMain>
+        <h2>Thanks a lot!</h2>
+        <p>Please fill out our survey, so that we can keep on improving! 😊</p>
+      </Slide>
     </RevealWrapper>
   );
 };

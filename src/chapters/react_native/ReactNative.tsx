@@ -59,10 +59,11 @@ const ReactNativeChapter: React.FC<GenericChapterProps> = (props: GenericChapter
         <p className='fragment'>
           The logic can stay the same. We may need to adapt image uploads or other logic to use native components from React Native.
         </p>
-        <p className='fragment'>
-          When we want to add a React Native application to an existing React application, we can use a mono-repo approach. A mono-repo
-          contains the shared code aswell as the code for the native elements.
-        </p>
+      </Slide>
+      <Slide>
+        <h2>Web & App?</h2>
+        <p className='fragment'>"Normal" React and React native can live together in a mono-repo!</p>
+        <p className='fragment'>Business logic shall be shared whilst the view needs to be implemented twice.</p>
       </Slide>
       <Slide>
         <h2>How to start</h2>
