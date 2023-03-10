@@ -94,13 +94,15 @@ const App: React.FC = () => {
         </aside>
       </Slide>
       <Slide isMain>
-        <h2>About You</h2>
+        <h2>🙋‍♀️ Who are you?</h2>
         <div style={{ textAlign: 'left', display: 'inline-block' }}>
-          🙋‍♀️ Who are you?
-          <br />
-          🏋️‍♀️ What experience do you have with web development?
-          <br />
-          💭 What do you expect from the training?
+          Let's get to know each other on{' '}
+          <a
+            style={{ color: '#F48FB1', textDecoration: 'underline' }}
+            href=''
+          >
+            Mural
+          </a>
         </div>
       </Slide>
       <TableOfContents chapter={chapter} />
