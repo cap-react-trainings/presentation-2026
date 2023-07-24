@@ -96,13 +96,11 @@ const App: React.FC = () => {
       <Slide isMain>
         <h2>🙋‍♀️ Who are you?</h2>
         <div style={{ textAlign: 'left', display: 'inline-block' }}>
-          Let's get to know each other on{' '}
-          <a
-            style={{ color: '#F48FB1', textDecoration: 'underline' }}
-            href=''
-          >
-            Mural
-          </a>
+          <ul style={{ listStyle: 'none' }}>
+            <li>⦿ Which office to you belong to?</li>
+            <li>☞ What is your current role and project?</li>
+            <li>🏁 What is your goal considering this training?</li>
+          </ul>
         </div>
       </Slide>
       <TableOfContents chapter={chapter} />
