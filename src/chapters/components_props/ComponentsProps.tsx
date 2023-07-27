@@ -3,7 +3,7 @@ import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
-const fnExample = `const Welcome: React.FC = (props: Pros) {
+const fnExample = `const Welcome: React.FC<Props> = (props: Pros) {
   return <h1>Hello, {props.name}</h1>;
 }`;
 
@@ -35,7 +35,7 @@ const book = `const interface Book {
   author: string;
 }
 
-const Book: React.FC = (props: Book) => {
+const Book: React.FC<Book> = (props: Book) => {
   return (
     <div>
       <h1>{props.name}</h1>
@@ -51,7 +51,7 @@ const bookDestructured = `const interface Book {
   author: string;
 }
 
-const Book: React.FC = ({ name, author }: Book) => {
+const Book: React.FC<Book> = ({ name, author }: Book) => {
   return (
     <div>
       <h1>{name}</h1>
@@ -61,7 +61,7 @@ const Book: React.FC = ({ name, author }: Book) => {
 }
 `;
 
-const defaultProps = `const Book: FC = ({name="Tom", author="Rowling"}: Book) => {
+const defaultProps = `const Book: React.FC<Book> = ({name="Tom", author="Rowling"}: Book) => {
 return (
   <div>
     <h1>{name}</h1>
@@ -69,11 +69,11 @@ return (
   </div>
 )}`;
 
-const immutableProps = `const Book: FC = (props: Props) => {
+const immutableProps = `const Book: FC<Props> = (props: Props) => {
   props.title = "HI"
 }`;
 
-const classStyled = `const Book: React.FC = ({ name, author }: Book) => {
+const classStyled = `const Book: React.FC<Book> = ({ name, author }: Book) => {
   return (
     <div>
       <h1 className='myHeadline'>{name}</h1>
@@ -83,7 +83,7 @@ const classStyled = `const Book: React.FC = ({ name, author }: Book) => {
 }
 `;
 
-const stylesAttribute = `const Book: React.FC = ({ name, author }: Book) => {
+const stylesAttribute = `const Book: React.FC<Book> = ({ name, author }: Book) => {
   return (
     <div>
       <h1 className='myHeadline'>{name}</h1>
@@ -97,8 +97,8 @@ const stylesAttribute = `const Book: React.FC = ({ name, author }: Book) => {
 const yarnAdd = `yarn add --save styled-components`;
 
 const styledComponent = `import styled from 'styled-components';
-const StyledAuthor = styled.p\`color: 'green'\`
-const Book: React.FC = ({ name, author }: Book) => {
+const StyledAuthor = styled.p\`color: green\`
+const Book: React.FC<Book> = ({ name, author }: Book) => {
   return (<div>
       <h1 className='myHeadline'>{name}</h1>
         // notice the double curly braces
@@ -110,7 +110,7 @@ const Book: React.FC = ({ name, author }: Book) => {
 const buttonFragment2 = `interface Props {
   title: string;
 }
-export default MyButton: React.FC = (props: Props) => {
+export default MyButton: React.FC<Props> = (props: Props) => {
     return (
         <button>{props.title}</button>
     )
