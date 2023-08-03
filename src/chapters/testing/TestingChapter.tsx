@@ -37,7 +37,7 @@ const snippet4 = `server.use(
 const setup1 = `yarn add -D @testing-library/react @testing-library/jest-dom jest jest-environment-jsdom`;
 const setup2 = `yarn add -D ts-jest @types/jest @types/testing-library__react @types/testing-library__jest-dom`;
 const setup3 = `//jest.config.js
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+/** @type {import('ts-jest/dist/types').JestConfigWithTsJest} */
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
@@ -114,7 +114,10 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <Code language='bash'>{setup4}</Code>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
+          <h2>💪 Exercise</h2>
+          <small>⏱️ 45min</small>
+        </div>
         <ul>
           <li>Implement test that verifies isCheap-badge logic</li>
           <ul>

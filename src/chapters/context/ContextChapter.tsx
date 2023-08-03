@@ -125,7 +125,10 @@ const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <aside className='notes'>Recommend Kent C. Dotts blog posts. You won&apos;t need redux anymore!</aside>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
+          <h2>💪 Exercise</h2>
+          <small>⏱️ 50min</small>
+        </div>
         <ul>
           <li>Extract the book list into a separate component</li>
           <li>

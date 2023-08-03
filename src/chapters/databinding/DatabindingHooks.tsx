@@ -104,10 +104,10 @@ remove,
 status,
 `;
 
-const useQueryBooks = `const {loading, data, error} = useQuery("books", fetchBooks);
+const useQueryBooks = `const {isLoading, data, error} = useQuery("books", fetchBooks);
 
 return (
-  {loading ? <p>Loading...</p>
+  {isLoading ? <p>Loading...</p>
   : error ? <p>Error: {error.message}</p>
   : <BookList books={data} />}
 )
@@ -160,7 +160,10 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         </pre>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
+          <h2>💪 Exercise</h2>
+          <small>⏱️ 30min</small>
+        </div>
         <ul>
           <li>Implement some buttons, that determine how many books should be rendered inside your book-list.</li>
           <li>As you might have already guessed: the useState-hook is your friend!</li>
@@ -217,7 +220,10 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         <Code className='fragment'>{useBooksHook}</Code>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
+          <h2>💪 Exercise</h2>
+          <small>⏱️ 45min</small>
+        </div>
         <ul>
           <li>
             As of now: we'd like to get rid of our dummy book-data and use an{' '}
@@ -279,7 +285,10 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         </pre>
       </Slide>
       <Slide>
-        <h2>💪 Homework</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
+          <h2>💪 Homework</h2>
+          <small>⏱️ 30min</small>
+        </div>
         <ul>
           <li>If not done yet: refactor your code and implement the data fetching part by using the useQuery-Hook.</li>
         </ul>

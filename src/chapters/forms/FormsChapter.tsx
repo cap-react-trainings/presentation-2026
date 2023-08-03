@@ -90,7 +90,10 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
         </ul>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
+          <h2>💪 Exercise</h2>
+          <small>⏱️ 30min</small>
+        </div>
         <ul>
           <li>
             <code>git checkout 05-routing-chapter</code>

@@ -218,7 +218,10 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <Code language='bash'>{bootstrapping2}</Code>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
+          <h2>💪 Exercise</h2>
+          <small>⏱️ 25min</small>
+        </div>
         <ul>
           <li>Implement a small app which renders a list of books (start in App.tsx).</li>
           <li>There should be a Book-Component which accepts a property of type 'Book'.</li>
@@ -311,7 +314,10 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         </pre>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
+          <h2>💪 Exercise</h2>
+          <small>⏱️ 15min</small>
+        </div>
         <ul>
           <li>Our booklist isn't very pretty yet ...</li>
           <li>Choose one styling-method you've just learned about and style your BookList.</li>

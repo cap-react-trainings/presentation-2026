@@ -109,7 +109,10 @@ const ConditionalRenderingChapter: React.FC<GenericChapterProps> = (props: Gener
         <Code className='fragment'>{users3}</Code>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
+          <h2>💪 Exercise</h2>
+          <small>⏱️ 25min</small>
+        </div>
         <ul>
           <li>
             Extend your Book-Component with a badge that notifies the user when a book is not available in store. (Pass an additional prop
