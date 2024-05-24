@@ -3,19 +3,22 @@ import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
-const snippet = `// Button.stories.ts|tsx
+const snippet = `import type { Meta, StoryObj } from '@storybook/react';
 
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Button } from './Button';
+import { Button, ButtonProps } from './Button';
 
-export default {
-  title: 'Button',
+const meta: Meta<typeof Button> = {
   component: Button,
-} as ComponentMeta<typeof Button>;
+};
 
-export const Primary: ComponentStory<typeof Button> = () => {
-  return <Button primary>Button</Button>;
+export default meta;
+type Story = StoryObj<typeof Button>;
+
+export const Primary: Story = {
+  args: {
+    primary: true,
+    label: 'Button',
+  },
 };
 `;
 
@@ -66,13 +69,11 @@ const StorybookChapter: React.FC<GenericChapterProps> = (props: GenericChapterPr
       </Slide>
       <Slide>
         <h2>How to Storybook</h2>
+        <p>It's really easy! You can set it up from scratch with a new project or simply add it to an existing one.</p>
+        <p>For existing projects, Storybook will even notice your Framework & Bundler during install</p>
         <p>
-          <a href='https://storybook.js.org/tutorials/intro-to-storybook/react/en/get-started/'>1. 🏗 Set it up from scratch</a>
-          <Code>{`npx degit chromaui/intro-storybook-react-template newproject`}</Code>
-        </p>
-        <p>
-          <a href='https://storybook.js.org/docs/react/get-started/install'>2. 📦 Set it up in an existing project</a>
-          <Code>{`npx storybook init`}</Code>
+          <a href='https://storybook.js.org/docs/get-started'>Docs: Get Started with Storybook</a>
+          <Code>{`npx storybook@latest init`}</Code>
         </p>
       </Slide>
       {/*  <Slide
@@ -113,9 +114,18 @@ const StorybookChapter: React.FC<GenericChapterProps> = (props: GenericChapterPr
           </li>
         </ul>
       </Slide>
-      {/* <Slide>
-        <h2>💪 Exercise</h2>
-      </Slide> */}
+      <Slide>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
+          <h2>💪 Exercise</h2>
+          <small>⏱️ 20min</small>
+        </div>
+        <ul>
+          <li>
+            Extend your current App with Storybook following the <a href='https://storybook.js.org/docs/get-started'>Docs</a>
+          </li>
+          <li>Create a 'Story' for your Book-Component</li>
+        </ul>
+      </Slide>
     </Chapter>
   );
 };
