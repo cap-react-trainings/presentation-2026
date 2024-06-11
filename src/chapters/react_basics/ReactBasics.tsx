@@ -33,7 +33,7 @@ npm start
 
 const example = `const element = <h1>Welcome to React!</h1>`;
 
-const buttonFragment = `export default MyButton: React.FC = () => {
+const buttonFragment = `export default MyButton = () => {
     return <button>Click Me!</button>
 }`;
 
@@ -42,14 +42,15 @@ const componentFragment = `import MyButton from './myButton';
 <MySuperSpecialButton /> // error
 `;
 
-const children = `const element = (
-    const formatUser = user => user.firstName + user.lastName
-    const mySource = "https://mylink.com"
-    return (<div>
+const children = `const element = {
+  const formatUser = user => user.firstName + user.lastName
+  const mySource = "https://mylink.com"
+  return (
+    <div>
       <h1>Hello {formatUser(user)}</h1>
       <img src={mySource}/> 
-    </div>)
-  )
+    </div>
+)}
   `;
 
 const ReactBasicsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {

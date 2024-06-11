@@ -6,7 +6,7 @@ import Slide from '../../components/reveal/Slide';
 const sayHiComponent = `  interface Props {
     userName?: string; // optional
   }
-  const SayHi: React.FC<Props> = (props: Props) => {
+  const SayHi = (props: Props) => {
     if (props.userName) {
       return <h1>Hi {props.userName}!</h1>
     } else {
@@ -15,15 +15,15 @@ const sayHiComponent = `  interface Props {
   }
 `;
 
-const loginBtn = `export default LoginButton: React.FC = () => {
+const loginBtn = `export default LoginButton = () => {
     return <button>Login</button>
 }`;
 
-const logoutBtn = `export default LogoutButton: React.FC = () => {
+const logoutBtn = `export default LogoutButton = () => {
     return <button>Logout</button>
 }`;
 
-const renderButton = `const AuthenticationComponent: React.FC<Props> = (props: Props) => {
+const renderButton = `const AuthenticationComponent = (props: Props) => {
   let button;
   if (props.userName) {
     button = <LogoutButton />
@@ -34,7 +34,7 @@ const renderButton = `const AuthenticationComponent: React.FC<Props> = (props: P
 }
 `;
 
-const users = `const UsersList: React.FC<Props> = (props: Props) => {
+const users = `const UsersList = (props: Props) => {
   const users = props.users
   return (
     <div>
@@ -47,7 +47,7 @@ const users = `const UsersList: React.FC<Props> = (props: Props) => {
 }
 `;
 
-const users2 = `const UsersList: React.FC<Props> = (props: Props) => {
+const users2 = `const UsersList = (props: Props) => {
   const users = props.users
   return (
     <div>
@@ -61,7 +61,7 @@ const users2 = `const UsersList: React.FC<Props> = (props: Props) => {
   )
 }`;
 
-const users3 = `const UsersList: React.FC<Props> = (props: Props) => {
+const users3 = `const UsersList = (props: Props) => {
   if (!props.users) {
     return null;
   }

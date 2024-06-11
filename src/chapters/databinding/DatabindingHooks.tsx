@@ -4,7 +4,7 @@ import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
-const useState = `  const Numbers: React.FC = () => {
+const useState = `  const Numbers = () => {
     const [bookCounter, setBookCounter] = useState<number>(0);
 
     return (
@@ -30,6 +30,7 @@ return (
 
 const booksByAuthor = `const [currentBooks, setCurrentBooks] = useState<Book[]>()
 const [selectedBook, setSelectedBook] = useState<Book>()
+
 useEffect(() => {
   const booksByAuthor = props.books
     .filter(book => book.author === props.author)

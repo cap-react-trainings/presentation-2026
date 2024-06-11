@@ -3,7 +3,11 @@ import Chapter, { GenericChapterProps } from '../../components/helper/Chapter';
 import Code from '../../components/helper/Code';
 import Slide from '../../components/reveal/Slide';
 
-const fnExample = `const Welcome: React.FC<Props> = (props: Pros) {
+const fnExample = `interface Props {
+  name: string;
+}
+
+const Welcome = (props: Props) {
   return <h1>Hello, {props.name}</h1>;
 }`;
 
@@ -35,7 +39,7 @@ const book = `const interface Book {
   author: string;
 }
 
-const Book: React.FC<Book> = (props: Book) => {
+const Book = (props: Book) => {
   return (
     <div>
       <h1>{props.name}</h1>
@@ -51,7 +55,7 @@ const bookDestructured = `const interface Book {
   author: string;
 }
 
-const Book: React.FC<Book> = ({ name, author }: Book) => {
+const Book = ({ name, author }: Book) => {
   return (
     <div>
       <h1>{name}</h1>
@@ -61,7 +65,7 @@ const Book: React.FC<Book> = ({ name, author }: Book) => {
 }
 `;
 
-const defaultProps = `const Book: React.FC<Book> = ({name="Tom", author="Rowling"}: Book) => {
+const defaultProps = `const Book = ({name="Tom", author="Rowling"}: Book) => {
 return (
   <div>
     <h1>{name}</h1>
@@ -69,11 +73,11 @@ return (
   </div>
 )}`;
 
-const immutableProps = `const Book: FC<Props> = (props: Props) => {
+const immutableProps = `const Book = (props: Props) => {
   props.title = "HI"
 }`;
 
-const classStyled = `const Book: React.FC<Book> = ({ name, author }: Book) => {
+const classStyled = `const Book = ({ name, author }: Book) => {
   return (
     <div>
       <h1 className='myHeadline'>{name}</h1>
@@ -83,7 +87,7 @@ const classStyled = `const Book: React.FC<Book> = ({ name, author }: Book) => {
 }
 `;
 
-const stylesAttribute = `const Book: React.FC<Book> = ({ name, author }: Book) => {
+const stylesAttribute = `const Book = ({ name, author }: Book) => {
   return (
     <div>
       <h1 className='myHeadline'>{name}</h1>
@@ -98,7 +102,7 @@ const yarnAdd = `yarn add --save styled-components`;
 
 const styledComponent = `import styled from 'styled-components';
 const StyledAuthor = styled.p\`color: green\`
-const Book: React.FC<Book> = ({ name, author }: Book) => {
+const Book = ({ name, author }: Book) => {
   return (<div>
       <h1 className='myHeadline'>{name}</h1>
         // notice the double curly braces
@@ -110,7 +114,7 @@ const Book: React.FC<Book> = ({ name, author }: Book) => {
 const buttonFragment2 = `interface Props {
   title: string;
 }
-export default MyButton: React.FC<Props> = (props: Props) => {
+export default MyButton = (props: Props) => {
     return (
         <button>{props.title}</button>
     )
@@ -123,6 +127,23 @@ const useButton2 = `<MyButton /> // error
 
 const bootstrapping1 = `$ npx create-react-app my-app --template typescript`;
 const bootstrapping2 = `$ npm create vite@latest my-app -- --template react-ts`;
+
+const typePropsWithChildren = `type PropsWithChildren<P> = P & { children?: ReactNode };`;
+
+const childrenAsProps = `import { PropsWithChildren } from 'react'
+  interface Props {
+    title: string;
+  }
+
+  export const MyComponent = (props: PropsWithChildren<Props>) => {
+    return (
+      <div>
+        <h1>{props.title}</h1>
+        {props.children}
+      </div>
+    )
+  }
+`;
 
 const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
@@ -196,6 +217,26 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
             passed as props
           </li>
         </ul>
+      </Slide>
+      <Slide>
+        <h2>Passing Children</h2>
+        <ul>
+          <li>React allows us to pass other React Elements / Components as children</li>
+          <li>Not mandatory but very handy: React's Type 'PropsWithChildren'</li>
+          <ul>
+            <li>takes your component's Props and returns a union type with the children prop appropriatly typed</li>
+            <li>
+              ReactNode Type is a union of ReactChild, ReactFragment, ReactPortal, boolean, null or undefined. You can basically pass any
+              valid React Element.
+            </li>
+          </ul>
+        </ul>
+        <Code className='fragment'>{typePropsWithChildren}</Code>
+      </Slide>
+      <Slide>
+        <h2>Passing Children - PropsWithChildren</h2>
+        <Code>{childrenAsProps}</Code>
+        <aside className='notes'>Example of using PropsWithChildren</aside>
       </Slide>
       <Slide>
         <h2>Important sidenote: Props are immutable</h2>
