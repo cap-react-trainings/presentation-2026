@@ -52,14 +52,14 @@ const browserRouterInsideApp = `function App() {
   );
 }`;
 
-const dataFetchingWithRouter = `<Route
+const dataFetchingWithCreateBrowserRouter = `<Route
   path="/"
   loader={async ({ request }) => {
     // loaders can be async functions
     const userRes = await fetch("/api/user.json");
     return await userRes.json();
   }}
-  element={<Root />}
+  element={<Root />}>
 
     <Route
     path=":teamId"
@@ -87,7 +87,8 @@ const linkComponent = `<Link to="/homepage">Go to Homepage</Link>`;
 const navLinkComponent = `import { NavLink } from "react-router-dom";
 <NavLink
   to="/messages"
-  className={({ isActive, isPending }) =>
+  // alternative: className={(props: NavLinkProps) => ...props.isActive
+  className={({ isActive, isPending }: NavLinkProps) =>
     isPending ? "pending" : isActive ? "active" : ""
   }
 >Messages</NavLink>;`;
@@ -268,10 +269,11 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <p>createBrowserRouter vs. BrowserRouter</p>
         <ul>
           <li>
-            ability to handle data fetching, mutations and errors is the main difference between BrowserRouter and createBrowserRouter
+            ability to handle data fetching, mutations and errors is the main difference between BrowserRouter and{' '}
+            <b>createBrowserRouter</b>
           </li>
         </ul>
-        <Code>{dataFetchingWithRouter}</Code>
+        <Code>{dataFetchingWithCreateBrowserRouter}</Code>
         <aside className='notes'>
           you can do basic functionality in both approaches, so it's up to you which one to use. createBrowsersRouter just offers more, in
           case you might need it. Don't know how common this acutally is, never used it myself
@@ -279,7 +281,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>Important Router Components</h2>
-        <p>Route</p>
+        <h4>Route</h4>
         <ul>
           <li>couple URL segments to components</li>
           <li>path pattern to match agains URL in browser</li>
@@ -292,7 +294,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>Important Router Components</h2>
-        <p>Route - optional segments</p>
+        <h4>Route - optional segments</h4>
         <ul>
           <li>adding `?` makes route segment optional</li>
           <li>
@@ -304,7 +306,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>Important Router Components</h2>
-        <p>Link</p>
+        <h4>Link</h4>
         <ul>
           <li>element that lets user navigate to another page within our App</li>
           <li>renders an accessible anchor tag with real href</li>
@@ -318,7 +320,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>Important Router Components</h2>
-        <p>NavLink</p>
+        <h4>NavLink</h4>
         <ul>
           <li>special kind of Link that knows whether or not is is "active", "pending" or "transitioning"</li>
           <li>breadcrumb: indicate which one is currently selected</li>
@@ -328,7 +330,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>Important Router Components</h2>
-        <p>Outlet</p>
+        <h4>Outlet</h4>
         <ul>
           <li>when working with nested routes, this should be used in parent route elements to render their children routes</li>
           <li>allows nested UI to shop up when child routes are rendered / match</li>
@@ -340,12 +342,12 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>Important Router Components</h2>
-        <p>Outlet</p>
+        <h4>Outlet</h4>
         <Code>{outlet}</Code>
       </Slide>
       <Slide>
         <h2>Important Router Components</h2>
-        <p>Navigate</p>
+        <h4>Navigate</h4>
         <ul>
           <li>Navigate element changes current location when being rendered</li>
           <li>in comparison to Link, it lets you determine locations programmatically</li>
