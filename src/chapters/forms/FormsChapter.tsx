@@ -92,7 +92,7 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
           <h2>💪 Exercise</h2>
-          <small>⏱️ 30min</small>
+          <small>⏱️ 40min</small>
         </div>
         <ul>
           <li>

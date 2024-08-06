@@ -111,7 +111,7 @@ const ConditionalRenderingChapter: React.FC<GenericChapterProps> = (props: Gener
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
           <h2>💪 Exercise</h2>
-          <small>⏱️ 25min</small>
+          <small>⏱️ 35min</small>
         </div>
         <ul>
           <li>
