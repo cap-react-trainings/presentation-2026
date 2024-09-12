@@ -52,6 +52,14 @@ fireEvent.click(screen.getByText(/click me/i))
 expect(handleClick).toHaveBeenCalledTimes(1)
 `;
 
+const snippet6 = `const user = { name: "John", age: 25 };
+
+test('user has correct properties', () => {
+  expect(user).toEqual({ name: "John", age: 25 });
+  expect(user).toHaveProperty('name', "John");
+});
+`;
+
 const setup1 = `yarn add -D @testing-library/react @testing-library/jest-dom jest jest-environment-jsdom`;
 const setup2 = `yarn add -D ts-jest @types/jest @types/testing-library__react @types/testing-library__jest-dom`;
 const setup3 = `//jest.config.js
@@ -126,6 +134,14 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
             </a>
           </li>
         </ul>
+      </Slide>
+      <Slide>
+        <h2>
+          <a href='https://jestjs.io/docs/jest-object' target='_blank' rel='noreferrer'>
+            Jest object
+          </a>
+          <Code className='fragment'>{snippet6}</Code>
+        </h2>
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>
