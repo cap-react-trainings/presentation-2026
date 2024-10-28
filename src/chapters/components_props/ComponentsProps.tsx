@@ -131,18 +131,19 @@ const bootstrapping2 = `$ npm create vite@latest my-app -- --template react-ts`;
 const typePropsWithChildren = `type PropsWithChildren<P> = P & { children?: ReactNode };`;
 
 const childrenAsProps = `import { PropsWithChildren } from 'react'
-  interface Props {
-    title: string;
-  }
 
-  export const MyComponent = (props: PropsWithChildren<Props>) => {
-    return (
-      <div>
-        <h1>{props.title}</h1>
-        {props.children}
-      </div>
-    )
-  }
+interface Props {
+  title: string;
+}
+
+export const MyComponent = (props: PropsWithChildren<Props>) => {
+  return (
+    <div>
+      <h1>{props.title}</h1>
+      {props.children}
+    </div>
+  )
+}
 `;
 
 const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
