@@ -162,7 +162,7 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
           <h2>💪 Exercise</h2>
-          <small>⏱️ 30min</small>
+          <small>⏱️ 40min</small>
         </div>
         <ul>
           <li>Implement some buttons, that determine how many books should be rendered inside your book-list.</li>
@@ -222,7 +222,7 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
           <h2>💪 Exercise</h2>
-          <small>⏱️ 45min</small>
+          <small>⏱️ 55min</small>
         </div>
         <ul>
           <li>
@@ -286,8 +286,8 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
       </Slide>
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
-          <h2>💪 Homework</h2>
-          <small>⏱️ 30min</small>
+          <h2>💪 Bonus</h2>
+          <small>⏱️ 40min</small>
         </div>
         <ul>
           <li>If not done yet: refactor your code and implement the data fetching part by using the useQuery-Hook.</li>

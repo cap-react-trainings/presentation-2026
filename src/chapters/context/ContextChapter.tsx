@@ -127,7 +127,7 @@ const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
           <h2>💪 Exercise</h2>
-          <small>⏱️ 50min</small>
+          <small>⏱️ 60min</small>
         </div>
         <ul>
           <li>Extract the book list into a separate component</li>

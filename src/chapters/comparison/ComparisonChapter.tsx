@@ -93,7 +93,7 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <h2>Some number crunching</h2>
       </Slide>
       <Slide>
-        <h2>Stats at github</h2>
+        <h2>Stats on github</h2>
         <table style={{ width: '100%' }}>
           <thead>
             <tr>
@@ -105,34 +105,28 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
           </thead>
           <tbody>
             <tr>
-              <td>Watchers</td>
-              <td>3200</td>
-              <td>6700</td>
-              <td>6300</td>
-            </tr>
-            <tr>
               <td>Stars</td>
-              <td>71k</td>
-              <td>164k</td>
-              <td>200k</td>
+              <td>78k</td>
+              <td>180k</td>
+              <td>218k</td>
             </tr>
             <tr>
               <td>Forks</td>
-              <td>19k</td>
-              <td>33k</td>
-              <td>32k</td>
+              <td>21k</td>
+              <td>37k</td>
+              <td>36k</td>
             </tr>
             <tr>
               <td>Contributers</td>
-              <td>1350</td>
-              <td>1550</td>
-              <td>380</td>
+              <td>1,500+</td>
+              <td>1,500+</td>
+              <td>400+</td>
             </tr>
             <tr>
-              <td>Used by</td>
-              <td>1.7M</td>
-              <td>5.7M</td>
-              <td>167k</td>
+              <td>Watchers</td>
+              <td>3.1k</td>
+              <td>6.7k</td>
+              <td>6.3k</td>
             </tr>
           </tbody>
         </table>
@@ -141,26 +135,6 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       <Slide>
         <h2>Github Stars</h2>
         <img src='./slide-assets/framework-github-starts.png' />
-        <small>https://www.codeinwp.com/blog/angular-vs-vue-vs-react/</small>
-      </Slide>
-      <Slide>
-        <h2>Stackoverflow</h2>
-        <img src='./slide-assets/framework-stackoverflow.png' />
-        <small>https://scand.com/company/blog/top-5-front-end-development-frameworks/</small>
-      </Slide>
-      <Slide>
-        <h2>npm downloads</h2>
-        <img src='./slide-assets/framework-npm.png' />
-        <small>https://os-system.com/blog/best-front-end-frameworks-for-web-development/</small>
-      </Slide>
-      <Slide>
-        <h2>user satisfaction</h2>
-        <img src='./slide-assets/framework-dx.png' />
-        <small>https://os-system.com/blog/best-front-end-frameworks-for-web-development/</small>
-      </Slide>
-      <Slide>
-        <h2>jobs</h2>
-        <img src='./slide-assets/framework-jobs.png' />
         <small>https://www.codeinwp.com/blog/angular-vs-vue-vs-react/</small>
       </Slide>
       <Slide>

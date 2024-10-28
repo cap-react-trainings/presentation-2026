@@ -50,10 +50,6 @@ const App: React.FC = () => {
       title: 'Forms',
       component: FormsChapter
     },
-    // {
-    //   title: 'jo',
-    //   component: PerformanceChapter
-    // },
     {
       title: 'Testing',
       component: TestingChapter
@@ -93,18 +89,7 @@ const App: React.FC = () => {
           Heavily used in the industry. Makes it painless to create interactive UIs. React = `it reacts to user inputs``
         </aside>
       </Slide>
-      <Slide isMain>
-        <h2>🙋‍♀️ Who are you?</h2>
-        <div style={{ textAlign: 'left', display: 'inline-block' }}>
-          <ul style={{ listStyle: 'none' }}>
-            <li>⦿ Which office to you belong to?</li>
-            <li>☞ What is your current role and project?</li>
-            <li>🏁 What is your goal considering this training?</li>
-          </ul>
-        </div>
-      </Slide>
       <TableOfContents chapter={chapter} />
-      {/* <ExampleChapter title='Example' index={0} /> */}
       {chapter.map((chapter, index) => (
         <chapter.component key={index} title={chapter.title} index={index + 1} />
       ))}

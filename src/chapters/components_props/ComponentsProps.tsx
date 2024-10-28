@@ -220,7 +220,7 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
           <h2>💪 Exercise</h2>
-          <small>⏱️ 25min</small>
+          <small>⏱️ 35min</small>
         </div>
         <ul>
           <li>Implement a small app which renders a list of books (start in App.tsx).</li>
@@ -316,7 +316,7 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
           <h2>💪 Exercise</h2>
-          <small>⏱️ 15min</small>
+          <small>⏱️ 25min</small>
         </div>
         <ul>
           <li>Our booklist isn't very pretty yet ...</li>

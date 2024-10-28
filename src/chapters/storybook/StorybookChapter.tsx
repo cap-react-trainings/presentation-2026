@@ -117,13 +117,18 @@ const StorybookChapter: React.FC<GenericChapterProps> = (props: GenericChapterPr
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
           <h2>💪 Exercise</h2>
-          <small>⏱️ 20min</small>
+          <small>⏱️ 40min</small>
         </div>
         <ul>
           <li>
             Extend your current App with Storybook following the <a href='https://storybook.js.org/docs/get-started'>Docs</a>
           </li>
           <li>Create a 'Story' for your Book-Component</li>
+          <li>Write an interaction test using Storybook's 'play'-function: </li>
+          <ul>
+            <li>Create another Story for our Add-Book-Form</li>
+            <li>Test the form by automating the user's input in our form fields and submitting it.</li>
+          </ul>
         </ul>
       </Slide>
     </Chapter>

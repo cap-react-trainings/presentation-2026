@@ -116,7 +116,7 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
           <h2>💪 Exercise</h2>
-          <small>⏱️ 45min</small>
+          <small>⏱️ 55min</small>
         </div>
         <ul>
           <li>Implement test that verifies isCheap-badge logic</li>
