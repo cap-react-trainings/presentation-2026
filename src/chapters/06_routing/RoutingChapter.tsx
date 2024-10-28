@@ -66,7 +66,7 @@ const dataFetchingWithCreateBrowserRouter = `<Route
     // loaders understand Fetch Responses and will automatically
     // unwrap the res.json(), so you can simply return a fetch
     loader={({ params }) => {
-      return fetch("/api/teams/params.teamId");
+      return fetch("/api/teams/" + params.teamId);
     }}
     element={<Team />}
     ></Route>
