@@ -19,19 +19,45 @@ screen.findByText();
 screen.findByTitle();
 `;
 
-const snippet3 = `server.use(
-    rest.get("/books", (req, res, ctx) => {
-    return res(
-        ctx.json([{ id: 1 })
-    )})
-);
+const snippet3 = `beforeEach(() => {
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      ok: true,
+      status: 200,
+      json: () =>
+        Promise.resolve({
+          books: [
+            {
+              "title": "An Introduction to C & GUI Programming, 2nd Edition",
+              ...
+            }
+          ]
+        })
+    } as Response)
+  );
+});
 `;
 
-const snippet4 = `server.use(
-    rest.get("/books", (req, res, ctx) => {
-        return res(ctx.status(500));
-    })
-);
+const snippet4 = `test("Fetches and displays books", async () => {
+  await act(() => {
+    render(<BookList />);
+  }); 
+  await waitFor(() => expect(screen.getByText("Snowflake: The Definitive Guide")).toBeInTheDocument());
+});
+`;
+
+const snippet5 = `const handleClick = jest.fn()
+render(<Button onClick={handleClick}>Click Me</Button>)
+fireEvent.click(screen.getByText(/click me/i))
+expect(handleClick).toHaveBeenCalledTimes(1)
+`;
+
+const snippet6 = `const user = { name: "John", age: 25 };
+
+test('user has correct properties', () => {
+  expect(user).toEqual({ name: "John", age: 25 });
+  expect(user).toHaveProperty('name', "John");
+});
 `;
 
 const setup1 = `yarn add -D @testing-library/react @testing-library/jest-dom jest jest-environment-jsdom`;
@@ -79,10 +105,15 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <Code className='fragment'>{snippet2}</Code>
       </Slide>
       <Slide>
-        <h2>API Mocking with MSW</h2>
-        <p>"Mock service worker"</p>
+        <h2>API Mocking</h2>
         <Code className='fragment'>{snippet3}</Code>
+      </Slide>
+      <Slide>
         <Code className='fragment'>{snippet4}</Code>
+      </Slide>
+      <Slide>
+        <h2>Simulate actions</h2>
+        <Code className='fragment'>{snippet5}</Code>
       </Slide>
       <Slide>
         <h2>Further Reads</h2>
@@ -97,7 +128,20 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
               React Testing Library
             </a>
           </li>
+          <li>
+            <a href='https://jestjs.io/docs/jest-object' target='_blank' rel='noreferrer'>
+              Jest object
+            </a>
+          </li>
         </ul>
+      </Slide>
+      <Slide>
+        <h2>
+          <a href='https://jestjs.io/docs/jest-object' target='_blank' rel='noreferrer'>
+            Jest object
+          </a>
+          <Code className='fragment'>{snippet6}</Code>
+        </h2>
       </Slide>
       <Slide>
         <h2>💪 Exercise</h2>
