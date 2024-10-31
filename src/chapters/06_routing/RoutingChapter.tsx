@@ -30,6 +30,29 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
 );`;
 
+const createBrowserRouterWithCreateRoutesFromElements = `import * as React from "react";
+import * as ReactDOM from "react-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
+import Root from "./routes/root";
+import Team from "./routes/team";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+     <Route path="/" element={<Root />}>
+       <Route path="team" element={<Team />} />
+     </Route>
+     )
+  );
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
+);`;
+
 const browserRouterInsideMain = `import * as React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -247,6 +270,20 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
           </ul>
           <a href='https://remix.run/_docs/routing'>This is a nice presenttation showoing how children work within routes</a>
         </aside>
+      </Slide>
+      <Slide>
+        <h2>Browser Routing</h2>
+        <p>createBrowserRouter vs. BrowserRouter</p>
+        <ul>
+          <li>
+            createBrowserRouter can also be used with components. Therefore use{' '}
+            <a href='https://reactrouter.com/en/main/utils/create-routes-from-elements#createroutesfromelements'>
+              createRoutesFromElements
+            </a>
+            .
+          </li>
+        </ul>
+        <Code>{createBrowserRouterWithCreateRoutesFromElements}</Code>
       </Slide>
       <Slide>
         <h2>Browser Routing</h2>
