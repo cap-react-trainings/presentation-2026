@@ -92,6 +92,9 @@ const dataFetchingWithCreateBrowserRouter = `<Route
       return fetch("/api/teams/" + params.teamId);
     }}
     element={<Team />}
+    // If an error occurs while rendering, loading data, or performing data mutations,
+    // React Router will catch it and render an error screen.
+    errorElement={<ErrorPage />}
     ></Route>
   </Route>
 >`;
