@@ -7,7 +7,7 @@ const fnExample = `interface Props {
   name: string;
 }
 
-const Welcome = (props: Props) {
+const Welcome = (props: Props) => {
   return <h1>Hello, {props.name}</h1>;
 }`;
 
@@ -105,7 +105,6 @@ const StyledAuthor = styled.p\`color: green\`
 const Book = ({ name, author }: Book) => {
   return (<div>
       <h1 className='myHeadline'>{name}</h1>
-        // notice the double curly braces
       <StyledAuthor>author: {author}</StyledAuthor>
     </div>
   )}
@@ -146,13 +145,47 @@ export const MyComponent = (props: PropsWithChildren<Props>) => {
 }
 `;
 
+const callbackFunctionChild = `interface ChildComponentProps {
+  onMessageChange: (message: string) => void;
+}
+
+const ChildComponent = ({ onMessageChange }) => {
+  const sendMessage = () => {
+    onMessageChange('Hello from Child!');
+  };
+
+  return (
+    <div>
+      <button onClick={sendMessage}>Send Message</button>
+    </div>
+  );
+}
+
+export default ChildComponent;`;
+
+const callbackFunctionParent = `const ParentComponent = () => {
+
+  const handleMessageChange = (newMessage: string) => {
+    console.log(newMessage);
+  };
+
+  return (
+    <div>
+      <h1>Message from Child: {message}</h1>
+      <ChildComponent onMessageChange={handleMessageChange} />
+    </div>
+  );
+}
+
+export default ParentComponent;`;
+
 const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
     <Chapter {...props} subtitle={<p>JavaScript functions, accept Props and return React Elements (JSX)</p>}>
       <Slide>
         <h2>Class Components vs. Functional Components</h2>
-        <Code className='fragment'>{fnExample}</Code>
         <Code className='fragment'>{classExample}</Code>
+        <Code className='fragment'>{fnExample}</Code>
         <p className='fragment'>same output</p>
       </Slide>
       <Slide>
@@ -187,7 +220,7 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
             style={{ fontSize: '1.7rem', marginTop: 4 }}
             target='_blank'
             rel='noreferrer'
-            href='https://github.com/cap-react-trainings/code-examples/blob/03-conditional-rendering-basic/react-training-codeexamples/src/App.tsx'
+            href='https://github.com/cap-react-trainings/code-examples/blob/02-conditional-rendering-basic/react-training-codeexamples/src/App.tsx'
           >
             🚀 code example on GitHub
           </a>
@@ -238,6 +271,16 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <h2>Passing Children - PropsWithChildren</h2>
         <Code>{childrenAsProps}</Code>
         <aside className='notes'>Example of using PropsWithChildren</aside>
+      </Slide>
+      <Slide>
+        <h2>Props and Callback-Functions</h2>
+        <p>Pass information up the component tree</p>
+        <Code className='notes'>{callbackFunctionChild}</Code>
+      </Slide>
+      <Slide>
+        <h2>Props and Callback-Functions</h2>
+        <p>Pass information up the component tree</p>
+        <Code className='notes'>{callbackFunctionParent}</Code>
       </Slide>
       <Slide>
         <h2>Important sidenote: Props are immutable</h2>
