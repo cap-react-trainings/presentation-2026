@@ -73,7 +73,7 @@ const browserRouterInsideApp = `function App() {
       </Routes>
     </BrowserRouter>
   );
-}`;
+};`;
 
 const dataFetchingWithCreateBrowserRouter = `<Route
   path="/"
@@ -101,23 +101,25 @@ const dataFetchingWithCreateBrowserRouter = `<Route
 
 const basicRoute = `<Route
   element={<Team />}
-  path="teams/:teamId"/>`;
+  path="teams/:teamId"
+/>`;
 
 const optionalRouteSegment = `<Route
   path="/:lang?/categories"
   element={<Categories />}
-/>;`;
+/>`;
 
 const linkComponent = `<Link to="/homepage">Go to Homepage</Link>`;
 
 const navLinkComponent = `import { NavLink } from "react-router-dom";
+
 <NavLink
   to="/messages"
   // alternative: className={(props: NavLinkProps) => ...props.isActive
   className={({ isActive, isPending }: NavLinkProps) =>
     isPending ? "pending" : isActive ? "active" : ""
   }
->Messages</NavLink>;`;
+>Messages</NavLink>`;
 
 const outlet = `function Dashboard() {
   return (
@@ -130,7 +132,7 @@ const outlet = `function Dashboard() {
       <Outlet />
     </div>
   );
-}
+};
 
 function App() {
   return (
@@ -144,7 +146,7 @@ function App() {
       </Route>
     </Routes>
   );
-}`;
+};`;
 
 const navigate = `function SomeComponent(props) {
   render() {
@@ -157,7 +159,7 @@ const navigate = `function SomeComponent(props) {
         )}
       </div>
     );
-  }}`;
+  }};`;
 
 const useParams = `import {
   ...
@@ -168,26 +170,26 @@ function BlogPost() {
 
   let { slug } = useParams();
   return <div>Now showing post {slug}</div>;
-}
+};
 `;
 
-const protecedRoute = `import { Outlet, Navigate } from 'react-router-dom'
+const protecedRoute = `import { Outlet, Navigate } from 'react-router-dom';
 
 const ProtecedRoute = () => {
-    let auth = {'token': false}
+    let auth = {'token': false};
     return(
         auth.token ? <Outlet/> : <Navigate to="/login"/>
-    )
-}
+    );
+};
 
-export default ProtecedRoute`;
+export default ProtecedRoute;`;
 
 const usageProtecedRoute = `import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Products from './pages/Products'
-import Login from './pages/Login'
-import PrivateRoutes from './utils/PrivateRoutes'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Products from './pages/Products';
+import Login from './pages/Login';
+import ProtecedRoute from './utils/ProtecedRoute';
 
 function App() {
   return (
@@ -203,7 +205,7 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;`;
 
@@ -238,13 +240,13 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <h2>Most important routing-types</h2>
         <ul className='fragment'>
           <li>Browser Routing 🌟</li>
-          <li>Hash Routing</li>
+          <li>Hash Routing:</li>
           <ul>
             <li>only in case we're not able to configure our server to direct all traffic to our React Router</li>
             <li>hash portion to manage application URL</li>
             <li>example: Mircofrontend</li>
           </ul>
-          <li>Memory Routing</li>
+          <li>Memory Routing:</li>
           <ul>
             <li>manages history in its own stack --&gt; does not rely on browser history</li>
             <li>useful for testing, i.e. with Jest or Storybook</li>

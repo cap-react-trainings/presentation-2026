@@ -5,136 +5,136 @@ import Slide from '../../components/reveal/Slide';
 
 const fnExample = `interface Props {
   name: string;
-}
+};
 
-const Welcome = (props: Props) {
+const Welcome = (props: Props) => {
   return <h1>Hello, {props.name}</h1>;
-}`;
+};`;
 
 const classExample = `class Welcome extends React.Component {
   render() {
     return <h1>Hello, {this.props.name}</h1>;
-  }
-}`;
+  };
+};`;
 
 const bookList = `function App = () => {
   const books: Book[] = [
     {id: 1, name: 'Moby Dick', author: 'Herman Melville'},
-    {id: 2, name: 'Hamlet', author: 'Shakespeare'},]
+    {id: 2, name: 'Hamlet', author: 'Shakespeare'},
+  ];
+  
   return (
     <div>
-    <h1>Booklist</h1>
-     {books.map((book, index) => (
-       // always define keys when looping, unique identifier for React DOM
-       <Book key={index} book={book} /> 
-     ))}
+      <h1>Booklist</h1>
+      {books.map((book, index) => (
+        // always define keys when looping, unique identifier for React DOM
+        <Book key={index} book={book} /> 
+      ))}
     </div>
-  )
-}
-`;
+  );
+};`;
 
-const book = `const interface Book {
+const book = `const interface BookProps {
   id: number;
   name: string;
   author: string;
-}
+};
 
-const Book = (props: Book) => {
+const Book = (props: BookProps) => {
   return (
     <div>
       <h1>{props.name}</h1>
       <p>author: {props.author}</p>
     </div>
-  )
-}
-`;
+  );
+};`;
 
-const bookDestructured = `const interface Book {
+const bookDestructured = `const interface BookProps {
   id: number;
   name: string;
   author: string;
-}
+};
 
-const Book = ({ name, author }: Book) => {
+const Book = ({ name, author }: BookProps) => {
   return (
     <div>
       <h1>{name}</h1>
       <p>author: {author}</p>
     </div>
-  )
-}
-`;
+  );
+};`;
 
-const defaultProps = `const Book = ({name="Tom", author="Rowling"}: Book) => {
-return (
-  <div>
-    <h1>{name}</h1>
-    <p>author: {author}</p>
-  </div>
-)}`;
+const defaultProps = `const Book = ({name="Tom", author="Rowling"}: BookProps) => {
+  return (
+    <div>
+      <h1>{name}</h1>
+      <p>author: {author}</p>
+    </div>
+  );
+};`;
 
 const immutableProps = `const Book = (props: Props) => {
   props.title = "HI"
-}`;
+};`;
 
-const classStyled = `const Book = ({ name, author }: Book) => {
+const classStyled = `const Book = ({ name, author }: BookProps) => {
   return (
     <div>
       <h1 className='myHeadline'>{name}</h1>
       <p>author: {author}</p>
     </div>
-  )
-}
-`;
+  );
+};`;
 
-const stylesAttribute = `const Book = ({ name, author }: Book) => {
+const stylesAttribute = `const Book = ({ name, author }: BookProps) => {
   return (
     <div>
       <h1 className='myHeadline'>{name}</h1>
       // notice the double curly braces
       <p style={{ color: 'green'}}>author: {author}</p>
     </div>
-  )
-}
-`;
+  );
+};`;
 
 const yarnAdd = `yarn add --save styled-components`;
 
 const styledComponent = `import styled from 'styled-components';
-const StyledAuthor = styled.p\`color: green\`
-const Book = ({ name, author }: Book) => {
-  return (<div>
+
+const StyledAuthor = styled.p\`color: green\`;
+
+const Book = ({ name, author }: BookProps) => {
+  return (
+    <div>
       <h1 className='myHeadline'>{name}</h1>
-        // notice the double curly braces
       <StyledAuthor>author: {author}</StyledAuthor>
     </div>
-  )}
-`;
+  );
+};`;
 
 const buttonFragment2 = `interface Props {
   title: string;
-}
+};
+
 export default MyButton = (props: Props) => {
-    return (
-        <button>{props.title}</button>
-    )
-}`;
+  return (
+    <button>{props.title}</button>
+  );
+};`;
 
 const useButton2 = `<MyButton /> // error
 <MyButton title={2} /> // error
-<MyButton title='Hit me' /> // ok
-`;
+<MyButton title='Hit me' /> // ok`;
 
 const bootstrapping1 = `$ npx create-react-app my-app --template typescript`;
 const bootstrapping2 = `$ npm create vite@latest my-app -- --template react-ts`;
 
 const typePropsWithChildren = `type PropsWithChildren<P> = P & { children?: ReactNode };`;
 
-const childrenAsProps = `import { PropsWithChildren } from 'react'
+const childrenAsProps = `import { PropsWithChildren } from 'react';
 
 interface Props {
   title: string;
-}
+};
 
 export const MyComponent = (props: PropsWithChildren<Props>) => {
   return (
@@ -142,17 +142,48 @@ export const MyComponent = (props: PropsWithChildren<Props>) => {
       <h1>{props.title}</h1>
       {props.children}
     </div>
-  )
-}
-`;
+  );
+};`;
+
+const callbackFunctionChild = `interface ChildComponentProps {
+  onMessageChange: (message: string) => void;
+};
+
+const ChildComponent = ({ onMessageChange }: ChildComponentProps) => {
+  const sendMessage = () => {
+    onMessageChange('Hello from Child!');
+  };
+
+  return (
+    <div>
+      <button onClick={sendMessage}>Send Message</button>
+    </div>
+  );
+};
+
+export default ChildComponent;`;
+
+const callbackFunctionParent = `const ParentComponent = () => {
+  const handleMessageChange = (newMessage: string) => {
+    console.log(newMessage);
+  };
+
+  return (
+    <div>
+      <ChildComponent onMessageChange={handleMessageChange} />
+    </div>
+  );
+};
+
+export default ParentComponent;`;
 
 const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
     <Chapter {...props} subtitle={<p>JavaScript functions, accept Props and return React Elements (JSX)</p>}>
       <Slide>
         <h2>Class Components vs. Functional Components</h2>
-        <Code className='fragment'>{fnExample}</Code>
         <Code className='fragment'>{classExample}</Code>
+        <Code className='fragment'>{fnExample}</Code>
         <p className='fragment'>same output</p>
       </Slide>
       <Slide>
@@ -187,7 +218,7 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
             style={{ fontSize: '1.7rem', marginTop: 4 }}
             target='_blank'
             rel='noreferrer'
-            href='https://github.com/cap-react-trainings/code-examples/blob/03-conditional-rendering-basic/react-training-codeexamples/src/App.tsx'
+            href='https://github.com/cap-react-trainings/code-examples/blob/02-conditional-rendering-basic/react-training-codeexamples/src/App.tsx'
           >
             🚀 code example on GitHub
           </a>
@@ -238,6 +269,16 @@ const ComponentsChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
         <h2>Passing Children - PropsWithChildren</h2>
         <Code>{childrenAsProps}</Code>
         <aside className='notes'>Example of using PropsWithChildren</aside>
+      </Slide>
+      <Slide>
+        <h2>Props and Callback-Functions</h2>
+        <p>Pass information up the component tree</p>
+        <Code>{callbackFunctionChild}</Code>
+      </Slide>
+      <Slide>
+        <h2>Props and Callback-Functions</h2>
+        <p>Pass information up the component tree</p>
+        <Code>{callbackFunctionParent}</Code>
       </Slide>
       <Slide>
         <h2>Important sidenote: Props are immutable</h2>

@@ -12,31 +12,31 @@ const useState = `  const Numbers = () => {
       <button onClick={() => setBookCounter(bookCounter + 1)}>
         increase bookCounter
       </button>
-    )
-  }
+    );
+  };
 `;
 
-const loadingState = `const [books, setBooks] = useState<Book>()
+const loadingState = `const [books, setBooks] = useState<Book>();
 
 useEffect(() => {
   fetch(...)
     .then(data => setBooks(data))
-}, [])  // empty array = runs at initial render
+}, []);  // empty array = runs at initial render
 
 return (
   <BookList books={books} />
-)
+);
 `;
 
-const booksByAuthor = `const [currentBooks, setCurrentBooks] = useState<Book[]>()
-const [selectedBook, setSelectedBook] = useState<Book>()
+const booksByAuthor = `const [currentBooks, setCurrentBooks] = useState<Book[]>();
+const [selectedBook, setSelectedBook] = useState<Book>();
 
 useEffect(() => {
   const booksByAuthor = props.books
     .filter(book => book.author === props.author)
   setCurrentBooks(booksByAuthor)
   setSelectedBook(booksByAuthor[0])
-}, [props.author]) // hook runs when props.author changes
+}, [props.author]); // hook runs when props.author changes
 
 return(
   <div>
@@ -46,7 +46,7 @@ return(
     <p>Books by {props.author.name}</p>
     <BookList books={currentBooks} />
   </div>
-)
+);
 `;
 
 const subscribeToBooks = `useEffect(() => {
@@ -58,12 +58,12 @@ const subscribeToBooks = `useEffect(() => {
   return () => {
     BooksApi.unsubscribeFromUpdates(props.user.id)
   }
-}, [])
+}, []);
 `;
 
 const useBooks = `const useBooks = () => {
-  const [books, setBooks] = useState<Book[]>()
-  const [loading, setLoading] = useState(true)
+  const [books, setBooks] = useState<Book[]>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(...)
@@ -71,12 +71,12 @@ const useBooks = `const useBooks = () => {
         setBooks(data)
         setLoading(false)
       })
-  }, [])
-  return {loading, books}
-}
+  }, []);
+  return {loading, books};
+};
 `;
 
-const useBooksHook = `const { loading, books } = useBooks()`;
+const useBooksHook = `const { loading, books } = useBooks();`;
 
 const fetchUsers = `const fetchUsers = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
@@ -111,7 +111,7 @@ return (
   {isLoading ? <p>Loading...</p>
   : error ? <p>Error: {error.message}</p>
   : <BookList books={data} />}
-)
+);
 `;
 
 const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
@@ -130,9 +130,11 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
     >
       <Slide>
         <h2>Hooks</h2>
-        <p>work with React state and lifecycle features from function components</p>
-        <p>No more need for Class Components 😁</p>
-        <p>most important React Hooks: useState, useEffect, (useContext, useReducer, useCallback, useMemo, ...)</p>
+        <ul>
+          <li>work with React state and lifecycle features from function components</li>
+          <li>no more need for Class Components 😁</li>
+          <li>most important React Hooks: useState, useEffect, (useContext, useReducer, useCallback, useMemo, ...)</li>
+        </ul>
       </Slide>
       <Slide>
         <h2>useState-Hook</h2>
@@ -166,8 +168,8 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
           <small>⏱️ 40min</small>
         </div>
         <ul>
-          <li>Implement some buttons, that determine how many books should be rendered inside your book-list.</li>
-          <li>As you might have already guessed: the useState-hook is your friend!</li>
+          <li>implement some buttons, that determine how many books should be rendered inside your book-list.</li>
+          <li>as you might have already guessed: the useState-hook is your friend!</li>
         </ul>
       </Slide>
       <Slide>
@@ -209,7 +211,7 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
           <li className='fragment'>
             only call Hooks at the top level of a component. React will run into problems when calling hooks after determining conditions
           </li>
-          <li className='fragment'>Don't call Hooks from regular JS functions, the only other valid place are custom Hooks</li>
+          <li className='fragment'>don't call Hooks from regular JS functions, the only other valid place are custom Hooks</li>
         </ul>
       </Slide>
       <Slide>
@@ -227,23 +229,23 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
         </div>
         <ul>
           <li>
-            As of now: we'd like to get rid of our dummy book-data and use an{' '}
+            as of now: we'd like to get rid of our dummy book-data and use an{' '}
             <a href='https://api.itbook.store/1.0/new' target='_blank' rel='noreferrer'>
               API
             </a>{' '}
             instead.
           </li>
-          <li>Fetch the books to display from the API.</li>
+          <li>fetch the books to display from the API.</li>
           <li>
-            Update your conditional rendering in Book.tsx: Place a badge "cheap" when the book's price is less than 30$, else the badge
+            update your conditional rendering in Book.tsx: Place a badge "cheap" when the book's price is less than 30$, else the badge
             should display "expensive".
           </li>
           <li>
-            Since data fetching takes some time, also provide a loading spinner that tells the user you are fetching data while there are no
+            since data fetching takes some time, also provide a loading spinner that tells the user you are fetching data while there are no
             books to display yet.
           </li>
           <li>
-            Brownie points: In case you're finished early: learn about the{' '}
+            brownie points: In case you're finished early: learn about the{' '}
             <a href='https://tanstack.com/query/v4/docs/reference/useQuery?from=reactQueryV3&original=https://react-query-v3.tanstack.com/reference/useQuery'>
               useQuery-Hook
             </a>
@@ -291,16 +293,16 @@ const DatabindingHooksChapter: React.FC<GenericChapterProps> = (props: GenericCh
           <small>⏱️ 40min</small>
         </div>
         <ul>
-          <li>If not done yet: refactor your code and implement the data fetching part by using the useQuery-Hook.</li>
+          <li>if not done yet: refactor your code and implement the data fetching part by using the useQuery-Hook.</li>
         </ul>
       </Slide>
       <Slide>
         <h2>Angular Excursus: Observable vs State</h2>
-        <p className='fragment'>When coming from Angular it is often asked what happened to the Observables</p>
+        <p className='fragment'>when coming from Angular it is often asked what happened to the Observables</p>
         <p className='fragment'>
-          You just simply don't need them :) The state listening in a useEffect for example is like a simple pipe in Angular
+          you just simply don't need them :) The state listening in a useEffect for example is like a simple pipe in Angular
         </p>
-        <p className='fragment'>However it is possible to have "real" subscribe with mobx for example.</p>
+        <p className='fragment'>however it is possible to have "real" subscribe with mobx for example.</p>
       </Slide>
     </Chapter>
   );
