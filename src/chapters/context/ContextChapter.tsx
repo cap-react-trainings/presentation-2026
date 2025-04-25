@@ -22,6 +22,13 @@ const contextWrap = `const UserContext = React.createContext<User>(null);
 <UserContext.Provider value={user}>
   <Page />
 </UserContext.Provider>
+
+// React 19
+
+<UserContext value={user}>
+  <Page />
+</UserContext>
+
 `;
 
 const treeAfter = `const user = useContext(UserContext);
