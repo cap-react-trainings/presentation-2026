@@ -100,37 +100,37 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
               <th></th>
               <th>Angular</th>
               <th>React</th>
-              <th>Vue</th>
+              <th>Vue (v3)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Stars</td>
-              <td>78k</td>
-              <td>180k</td>
-              <td>218k</td>
+              <td>97k</td>
+              <td>235k</td>
+              <td>50k</td>
             </tr>
             <tr>
               <td>Forks</td>
-              <td>21k</td>
-              <td>37k</td>
-              <td>36k</td>
+              <td>26k</td>
+              <td>48k</td>
+              <td>9k</td>
             </tr>
             <tr>
               <td>Contributers</td>
-              <td>1,500+</td>
-              <td>1,500+</td>
-              <td>400+</td>
+              <td>2,000+</td>
+              <td>1,700+</td>
+              <td>500+</td>
             </tr>
             <tr>
               <td>Watchers</td>
               <td>3.1k</td>
               <td>6.7k</td>
-              <td>6.3k</td>
+              <td>800</td>
             </tr>
           </tbody>
         </table>
-        <small>https://www.codeinwp.com/blog/angular-vs-vue-vs-react/</small>
+        <small>Github (april 2025)</small>
       </Slide>
       <Slide>
         <h2>Github Stars</h2>
