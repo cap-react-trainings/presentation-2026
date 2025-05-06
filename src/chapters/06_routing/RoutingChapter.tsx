@@ -16,11 +16,11 @@ import Team from "./routes/team";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    Component: Root,
     children: [
       {
         path: "team",
-        element: <Team />,
+        Component: Team,
       },
     ],
   },
@@ -30,84 +30,38 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
 );`;
 
-const createBrowserRouterWithCreateRoutesFromElements = `import * as React from "react";
-import * as ReactDOM from "react-dom";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  Route,
-} from "react-router-dom";
-import Root from "./routes/root";
-import Team from "./routes/team";
+const indexRouting = `createBrowserRouter([
+  {
+    path: "/",
+    Component: Root,
+    children: [
+      { index: true, Component: Home },
+      { path: "about", Component: About },
+      {
+        path: "auth",
+        Component: AuthLayout,
+        children: [
+          { path: "login", Component: Login },
+          { path: "register", Component: Register },
+        ],
+      },
+    ],
+  },
+]);`;
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-     <Route path="/" element={<Root />}>
-       <Route path="team" element={<Team />} />
-     </Route>
-     )
-  );
+const paramsRouting = `createBrowserRouter([
+  {
+    path: "/teams/:teamId",
+    Component: Team,
+  },
+]);`;
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
-);`;
-
-const browserRouterInsideMain = `import * as React from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-
-const root = createRoot(document.getElementById("root"));
-
-root.render(
-  <BrowserRouter>
-    {/* The rest of your app goes here */}
-  </BrowserRouter>
-);`;
-
-const browserRouterInsideApp = `function App() {
-  return (
-    <BrowserRouter basename="/app">
-      <Routes>
-        <Route path="/" /> {/* 👈 Renders at /app/ */}
-      </Routes>
-    </BrowserRouter>
-  );
-};`;
-
-const dataFetchingWithCreateBrowserRouter = `<Route
-  path="/"
-  loader={async ({ request }) => {
-    // loaders can be async functions
-    const userRes = await fetch("/api/user.json");
-    return await userRes.json();
-  }}
-  element={<Root />}>
-
-    <Route
-    path=":teamId"
-    // loaders understand Fetch Responses and will automatically
-    // unwrap the res.json(), so you can simply return a fetch
-    loader={({ params }) => {
-      return fetch("/api/teams/" + params.teamId);
-    }}
-    element={<Team />}
-    // If an error occurs while rendering, loading data, or performing data mutations,
-    // React Router will catch it and render an error screen.
-    errorElement={<ErrorPage />}
-    ></Route>
-  </Route>
->`;
-
-const basicRoute = `<Route
-  element={<Team />}
-  path="teams/:teamId"
-/>`;
-
-const optionalRouteSegment = `<Route
-  path="/:lang?/categories"
-  element={<Categories />}
-/>`;
+const optionalPathSegment = `createBrowserRouter([
+  {
+    path: "/:lang?/categories",
+    Component: Categories,
+  },
+]);`;
 
 const linkComponent = `<Link to="/homepage">Go to Homepage</Link>`;
 
@@ -134,7 +88,20 @@ const outlet = `function Dashboard() {
   );
 };
 
-function App() {
+//
+createBrowserRouter([
+  {
+    path: "/",
+    Component: Dashboard,
+    children: [
+      { path: "messages", Component: DashboardMessages },
+      { path: "tasks", Component: DashboardTasks },
+    ],
+  },
+]);
+`;
+
+const browserRouterExample = `function App() {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />}>
@@ -166,17 +133,50 @@ const useParams = `import {
   useParams
 } from "react-router-dom";
 
-function BlogPost() {
+function Team() {
 
-  let { slug } = useParams();
-  return <div>Now showing post {slug}</div>;
+  const { teamId } = useParams();
+  // Alternative
+  const params = useParams()
+  return <div>Now showing post {teamId} {params.teamId}</div>;
 };
 `;
+
+const provideData = `createBrowserRouter([
+  {
+    path: "/",
+    loader: () => {
+      // return data from here
+      return { records: await getSomeRecords() };
+    },
+    Component: MyRoute,
+  },
+]);`;
+
+const accessData = `import { useLoaderData } from "react-router";
+
+function MyRoute() {
+  const { records } = useLoaderData<typeof loader>();
+  return <div>{records.length}</div>;
+}`;
+
+const useNavigateExample = `import { useNavigate } from "react-router";
+
+function SomeComponent() {
+  let navigate = useNavigate();
+  return (
+    <button
+      onClick={() => {
+        navigate("/my-path");
+      }}
+    />
+  );
+}`;
 
 const protecedRoute = `import { Outlet, Navigate } from 'react-router-dom';
 
 const ProtecedRoute = () => {
-    let auth = {'token': false};
+    const auth = {'token': false};
     return(
         auth.token ? <Outlet/> : <Navigate to="/login"/>
     );
@@ -190,6 +190,21 @@ import Home from './pages/Home';
 import Products from './pages/Products';
 import Login from './pages/Login';
 import ProtecedRoute from './utils/ProtecedRoute';
+
+createBrowserRouter([
+  {
+    path: "/",
+    Component: ProtectedRoute,
+    children: [
+      {index: true, Component: Home}
+      {path: "/products", Component: Products}
+    ]
+  },
+  {
+    path: "/login",
+    Comoinent: Login
+  }
+])
 
 function App() {
   return (
@@ -240,103 +255,61 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <h2>Most important routing-types</h2>
         <ul className='fragment'>
           <li>Browser Routing 🌟</li>
+          <ul>
+            <li>uses real URL structure and history api (push & pop state)</li>
+            <li>perfect match for SPA</li>
+          </ul>
           <li>Hash Routing:</li>
           <ul>
             <li>only in case we're not able to configure our server to direct all traffic to our React Router</li>
-            <li>hash portion to manage application URL</li>
+            <li>hash portion to manage application URL, i.e. example.com/#/about</li>
             <li>example: Mircofrontend</li>
           </ul>
           <li>Memory Routing:</li>
           <ul>
             <li>manages history in its own stack --&gt; does not rely on browser history</li>
-            <li>useful for testing, i.e. with Jest or Storybook</li>
+            <li>useful for testing, i.e. with Jest, Viterst or Storybook</li>
             <li>applicable in non-browser environments</li>
           </ul>
         </ul>
       </Slide>
       <Slide>
         <h2>Browser Routing</h2>
-        <p>createBrowserRouter vs. BrowserRouter</p>
         <ul>
-          <li>
-            createBrowserRouter works with a Router-Provider and is located in your main.tsx file
-            <Code>{createBrowserRouter}</Code>
-          </li>
+          <li>Routes are configured as the first argument to createBroswerRouter. At a minimum, you need a path and a component.</li>
+          <li>Nesting routes works through children</li>
+          <li>createBrowserRouter works with a Router-Provider and is located in your main.tsx file</li>
         </ul>
-        <aside className='notes'>
-          <ul>
-            <li>you can use both without noticing any differences when only using the basic functionality: Routing </li>
-            <li>However createBrowserRouter is more powerful: it let's you perform data fetching, data mutations and handle errors</li>
-            <li>
-              We will stick to basic functionality within our training. Since there are multiple ways for handling data fetching. We don't
-              want to narrow down to BrowserRouter's approach
-            </li>
-            <li>In case of interest, regard this as a further read</li>
-          </ul>
-          <a href='https://remix.run/_docs/routing'>This is a nice presenttation showoing how children work within routes</a>
-        </aside>
       </Slide>
       <Slide>
-        <h2>Browser Routing</h2>
-        <p>createBrowserRouter vs. BrowserRouter</p>
+        <Code>{createBrowserRouter}</Code>
+      </Slide>
+
+      <Slide>
+        <h2>Browser Routing - Index Param</h2>
+        <p>When working with router children, you're able to define default routes</p>
+        <Code>{indexRouting}</Code>
+      </Slide>
+
+      <Slide>
+        <h2>Browser Routing - Parameters</h2>
+        <p>Your component might need to react differently to parameters, define them in your Router Config and use them later</p>
+        <p>In this exmaple, Team-Component will be able to access `params.teamId`</p>
+        <Code>{paramsRouting}</Code>
+      </Slide>
+
+      <Slide>
+        <h2>Browser Router vs Browser Routing</h2>
         <ul>
-          <li>
-            createBrowserRouter can also be used with components. Therefore use{' '}
-            <a href='https://reactrouter.com/en/main/utils/create-routes-from-elements#createroutesfromelements'>
-              createRoutesFromElements
-            </a>
-            .
-          </li>
+          <li>You're not forced to use createBroswerRouter</li>
+          <li>It is also possible to simply use the "Routes" and "Route"-Components</li>
+          <li>However, you will not be able to perform side effects like data fetching</li>
         </ul>
-        <Code>{createBrowserRouterWithCreateRoutesFromElements}</Code>
+        <Code>{browserRouterExample}</Code>
       </Slide>
+
       <Slide>
-        <h2>Browser Routing</h2>
-        <p>createBrowserRouter vs. BrowserRouter</p>
-        <ul>BrowserRouter is a component based approach and can either be attached to your main.tsx file or live inside App.tsx</ul>
-        <Code>{browserRouterInsideMain}</Code>
-      </Slide>
-      <Slide>
-        <h2>Browser Routing</h2>
-        <p>createBrowserRouter vs. BrowserRouter</p>
-        <ul>BrowserRouter is a component based approach and can either be attached to your main.tsx file or live inside App.tsx</ul>
-        <Code>{browserRouterInsideApp}</Code>
-        <aside className='notes'>
-          Something worth noting: by adding a base path to your router, which is also possible for the create-approach, we're able to
-          configure some path-segment that will always prefix any route
-        </aside>
-      </Slide>
-      <Slide>
-        <h2>Browser Routing</h2>
-        <p>createBrowserRouter vs. BrowserRouter</p>
-        <ul>
-          <li>
-            ability to handle data fetching, mutations and errors is the main difference between BrowserRouter and{' '}
-            <b>createBrowserRouter</b>
-          </li>
-        </ul>
-        <Code>{dataFetchingWithCreateBrowserRouter}</Code>
-        <aside className='notes'>
-          you can do basic functionality in both approaches, so it's up to you which one to use. createBrowsersRouter just offers more, in
-          case you might need it. Don't know how common this acutally is, never used it myself
-        </aside>
-      </Slide>
-      <Slide>
-        <h2>Important Router Components</h2>
-        <h4>Route</h4>
-        <ul>
-          <li>couple URL segments to components</li>
-          <li>path pattern to match agains URL in browser</li>
-          <li>element: what to render</li>
-          <li>
-            <code>teams/:teams</code> indicates this segment is dynamic, will mat i.e. <code>teams/123, teams/abc</code>, ...
-          </li>
-        </ul>
-        <Code>{basicRoute}</Code>
-      </Slide>
-      <Slide>
-        <h2>Important Router Components</h2>
-        <h4>Route - optional segments</h4>
+        <h2>Optional Path Segments</h2>
         <ul>
           <li>adding `?` makes route segment optional</li>
           <li>
@@ -344,14 +317,16 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
           </li>
           <li>this Route would also match /categories</li>
         </ul>
-        <Code>{optionalRouteSegment}</Code>
+        <Code>{optionalPathSegment}</Code>
       </Slide>
+
       <Slide>
         <h2>Important Router Components</h2>
         <h4>Link</h4>
         <ul>
           <li>element that lets user navigate to another page within our App</li>
           <li>renders an accessible anchor tag with real href</li>
+          <li>wrapper to enable navigation with client-side routing</li>
           <li>
             why use Link instead of a-tag? <br />
             It does not reload the document and thus behaves smoother
@@ -364,7 +339,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <h2>Important Router Components</h2>
         <h4>NavLink</h4>
         <ul>
-          <li>special kind of Link that knows whether or not is is "active", "pending" or "transitioning"</li>
+          <li>special kind of Link that knows whether or not it is "active", "pending" or "transitioning"</li>
           <li>breadcrumb: indicate which one is currently selected</li>
           <li>provides useful context for assistive technology like screen readers</li>
         </ul>
@@ -393,9 +368,31 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         <ul>
           <li>Navigate element changes current location when being rendered</li>
           <li>in comparison to Link, it lets you determine locations programmatically</li>
+          <li>Might be useful for Redirecting, but it is recommended to use useNavigate-Hook</li>
         </ul>
         <Code>{navigate}</Code>
       </Slide>
+      <Slide>
+        <h2>Important Router Hooks</h2>
+        <h4>useParams</h4>
+        <p>access routing parameters in your component</p>
+        <Code>{paramsRouting}</Code>
+        <Code>{useParams}</Code>
+      </Slide>
+      <Slide>
+        <h2>Important Router Hooks</h2>
+        <h4>useLoaderData</h4>
+        <p>fetch data before component is being rendered</p>
+        <Code>{provideData}</Code>
+        <Code>{accessData}</Code>
+      </Slide>
+      <Slide>
+        <h2>Important Router Hooks</h2>
+        <h4>useNavigate</h4>
+        <p>respond to user interactions and navigate programmatically</p>
+        <Code>{useNavigateExample}</Code>
+      </Slide>
+
       <Slide>
         <h2>Protected Routes</h2>
         <ul>
@@ -416,7 +413,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>Documentation</h2>
-        <p>We recommend to focus on the above introduced parts of BrowserRouter as a starter, since things can get really complex! 🫠</p>
+        <p>We recommend to focus on the above introduced parts of react-router-dom as a starter, since things can get really complex! 🫠</p>
         <a href='https://reactrouter.com/en/main/start/overview' target='_blank' rel='noopener'>
           Getting Started with ReactRouter
         </a>
@@ -432,7 +429,7 @@ const RoutingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
           </li>
           <li>
             Use{' '}
-            <a href='https://reactrouter.com/en/main/start/tutorial' target='_blank' rel='noopener'>
+            <a href='https://reactrouter.com/start/data/installation' target='_blank' rel='noopener'>
               React Router
             </a>{' '}
             to implement a routing to the detail page of a book (in App.tsx)
