@@ -48,7 +48,7 @@ const updateFromChild2 = `const {theme, toggleTheme} = useContext(UserContext)
 
 return (
   <div
-    style={{ background: theme.back }}
+    style={{ background: theme.black }}
     onClick={() => toggleTheme()}>
     Click me
   </div>

@@ -40,7 +40,11 @@ const snippet3 = `beforeEach(() => {
 
 const snippet4 = `test("Fetches and displays books", async () => {
   await act(() => {
-    render(<BookList />);
+    render(
+      <MemoryRouter>
+        <BookList />
+      </MemoryRouter>
+    );
   }); 
   await waitFor(() => expect(screen.getByText("Snowflake: The Definitive Guide")).toBeInTheDocument());
 });
@@ -60,8 +64,9 @@ test('user has correct properties', () => {
 });
 `;
 
-const setup1 = `yarn add -D @testing-library/react @testing-library/jest-dom jest jest-environment-jsdom`;
-const setup2 = `yarn add -D ts-jest @types/jest @types/testing-library__react @types/testing-library__jest-dom`;
+const setup1 = `yarn add -D jest jest-environment-jsdom ts-jest`;
+const setup2 = `yarn add -D @testing-library/react @testing-library/jest-dom @testing-library/user-event`;
+const setup21 = `yarn add -D @types/jest @types/testing-library__react @types/testing-library__jest-dom`;
 const setup3 = `//jest.config.js
 /** @type {import('ts-jest/dist/types').JestConfigWithTsJest} */
 module.exports = {
@@ -144,18 +149,16 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
         </h2>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
-        <code>git checkout 06-forms-chapter</code>
-        <p>Setup for testing</p>
+        <p>Usual setup for testing:</p>
         <Code language='bash'>{setup1}</Code>
         <Code language='bash'>{setup2}</Code>
+        <Code language='bash'>{setup21}</Code>
       </Slide>
       <Slide>
-        <h2>💪 Exercise</h2>
-        <p>Create / modify files</p>
-
         <Code language='bash'>{setup3}</Code>
         <Code language='bash'>{setup4}</Code>
+        <h2>💪 Exercise</h2>
+        <code>git checkout 07-initial-testing-setup</code>
       </Slide>
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
