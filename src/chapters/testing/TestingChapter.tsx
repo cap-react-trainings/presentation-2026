@@ -19,23 +19,31 @@ screen.findByText();
 screen.findByTitle();
 `;
 
-const snippet3 = `beforeEach(() => {
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      ok: true,
-      status: 200,
-      json: () =>
-        Promise.resolve({
-          books: [
-            {
-              "title": "An Introduction to C & GUI Programming, 2nd Edition",
-              ...
-            }
-          ]
-        })
-    } as Response)
-  );
-});
+const snippet3 = `resonseData = {
+  books: [
+    {
+      title: "Snowflake: The Definitive Guide",
+      subtitle:
+        "Architecting, Designing, and Deploying on the Snowflake Data Cloud",
+      isbn13: "9781098103828",
+      price: "$58.90",
+      image: "https://itbook.store/img/books/9781098103828.png",
+      url: "https://itbook.store/books/9781098103828",
+    },
+    ...
+  ]
+};
+
+beforeEach(() => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        status: 200,
+        json: vi.fn().mockResolvedValue(resonseData),
+      }),
+    );
+  });
 `;
 
 const snippet4 = `test("Fetches and displays books", async () => {
@@ -50,10 +58,13 @@ const snippet4 = `test("Fetches and displays books", async () => {
 });
 `;
 
-const snippet5 = `const handleClick = jest.fn()
-render(<Button onClick={handleClick}>Click Me</Button>)
-fireEvent.click(screen.getByText(/click me/i))
-expect(handleClick).toHaveBeenCalledTimes(1)
+const snippet5 = `const handleClick = vi.fn();
+render(<Button onClick={handleClick}>Click Me</Button>);
+
+const button = await screen.findByText("Click Me");
+await user.click(button);
+
+expect(handleClick).toHaveBeenCalledTimes(1);
 `;
 
 const snippet6 = `const user = { name: "John", age: 25 };
@@ -64,20 +75,33 @@ test('user has correct properties', () => {
 });
 `;
 
-const setup1 = `yarn add -D jest jest-environment-jsdom ts-jest`;
+const setup1 = `yarn add -D vitest jsdom`;
 const setup2 = `yarn add -D @testing-library/react @testing-library/jest-dom @testing-library/user-event`;
 const setup21 = `yarn add -D @types/jest @types/testing-library__react @types/testing-library__jest-dom`;
-const setup3 = `//jest.config.js
-/** @type {import('ts-jest/dist/types').JestConfigWithTsJest} */
-module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-};`;
-const setup4 = `// package.json
+const setup3 = `//src/test/setup-test
+import { afterEach, vi } from "vitest";
+import { cleanup } from "@testing-library/react";
+import "@testing-library/jest-dom";
+
+afterEach(() => {
+  cleanup();
+  vi.clearAllMocks();
+});`;
+const setup4 = `//vite.config.ts
+export default defineConfig({
+  ...
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: ["./src/test/setup-test"],
+  },
+});`;
+const setup5 = `// package.json
 ...
 "scripts": {
   ...
-  "test": "jest"
+  "test": "vitest run",
+  "test:watch": "vitest"
 }
 ...`;
 
@@ -103,18 +127,18 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
       </Slide>
       <Slide>
         <h2>Example</h2>
-        <Code className='fragment'>{snippet}</Code>
+        <Code>{snippet}</Code>
       </Slide>
       <Slide>
         <h2>Helper functions</h2>
-        <Code className='fragment'>{snippet2}</Code>
+        <Code>{snippet2}</Code>
       </Slide>
       <Slide>
         <h2>API Mocking</h2>
-        <Code className='fragment'>{snippet3}</Code>
+        <Code>{snippet3}</Code>
       </Slide>
       <Slide>
-        <Code className='fragment'>{snippet4}</Code>
+        <Code>{snippet4}</Code>
       </Slide>
       <Slide>
         <h2>Simulate actions</h2>
@@ -134,29 +158,25 @@ const TestingChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
             </a>
           </li>
           <li>
-            <a href='https://jestjs.io/docs/jest-object' target='_blank' rel='noreferrer'>
-              Jest object
+            <a href='https://vitest.dev/guide/mocking' target='_blank' rel='noreferrer'>
+              Mocking with vitest
             </a>
           </li>
         </ul>
       </Slide>
       <Slide>
-        <h2>
-          <a href='https://jestjs.io/docs/jest-object' target='_blank' rel='noreferrer'>
-            Jest object
-          </a>
-          <Code className='fragment'>{snippet6}</Code>
-        </h2>
-      </Slide>
-      <Slide>
         <p>Usual setup for testing:</p>
         <Code language='bash'>{setup1}</Code>
         <Code language='bash'>{setup2}</Code>
-        <Code language='bash'>{setup21}</Code>
       </Slide>
       <Slide>
         <Code language='bash'>{setup3}</Code>
         <Code language='bash'>{setup4}</Code>
+      </Slide>
+      <Slide>
+        <Code language='bash'>{setup5}</Code>
+      </Slide>
+      <Slide>
         <h2>💪 Exercise</h2>
         <code>git checkout 07-initial-testing-setup</code>
       </Slide>

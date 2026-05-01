@@ -4,7 +4,7 @@ This is the slideshow for Cap Germany's internal React training.
 
 # View it
 
-To view this presentation, just head over to https://cap-react-trainings.github.io/presentation
+To view this presentation, just head over to https://cap-react-trainings.github.io/presentation-2026
 
 Tipp:
 
