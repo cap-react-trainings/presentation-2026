@@ -87,7 +87,7 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
               React Hook Form
             </a>
             <div>
-              <small>(40k stars on github)</small>
+              <small>(45k stars on github)</small>
             </div>
           </li>
         </ul>
@@ -95,18 +95,12 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
       </Slide>
       <Slide>
         <div>
-          <h2>Components based</h2>
-          <Code>{componentBased}</Code>
-        </div>
-      </Slide>
-      <Slide>
-        <div>
-          <h2>Hook based</h2>
+          <h2>React Hook Form</h2>
           <Code>{hookBased}</Code>
         </div>
         <aside className='notes'>
           <ul>
-            <li>Better performance wise. Just updates necessary children.</li>
+            <li>better performance wise: just updates necessary children</li>
             <li>very mighty: we'll focus on the basics here</li>
             <li>register a form by using 'useForm': make it typesafe</li>
             <li>you can add custom logic to submit behaviour, but you need to use useForms handleSubmit Method</li>
@@ -125,10 +119,10 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
               <b>formState: </b>access errors
             </li>
             <li>
-              <b>mode: </b>Validation strategy before submitting
+              <b>mode: </b>validation strategy before submitting
             </li>
             <li>
-              <b>reValidateMode: </b>Validation strategy after submitting
+              <b>reValidateMode: </b>validation strategy after submitting
             </li>
           </ul>
         </div>
@@ -140,8 +134,8 @@ const FormsChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps)
         <div>
           <h2>Validation with useForm-Hook - Error Type</h2>
           <ul>
-            <li>Object containing the name of your registered fields as keys in case they contain errors</li>
-            <li>each field contains the error type, which your're able to react to.</li>
+            <li>object containing the name of your registered fields as keys in case they contain errors</li>
+            <li>each field contains the error type, which you're able to react to</li>
           </ul>
         </div>
         <Code>{errorExample}</Code>
