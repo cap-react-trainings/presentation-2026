@@ -106,31 +106,31 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
           <tbody>
             <tr>
               <td>Stars</td>
-              <td>97k</td>
-              <td>235k</td>
-              <td>50k</td>
+              <td>100k</td>
+              <td>245k</td>
+              <td>53k</td>
             </tr>
             <tr>
               <td>Forks</td>
-              <td>26k</td>
-              <td>48k</td>
+              <td>27k</td>
+              <td>51k</td>
               <td>9k</td>
             </tr>
             <tr>
               <td>Contributers</td>
-              <td>2,000+</td>
+              <td>2,200+</td>
               <td>1,700+</td>
               <td>500+</td>
             </tr>
             <tr>
               <td>Watchers</td>
-              <td>3.1k</td>
-              <td>6.7k</td>
+              <td>2.9k</td>
+              <td>6.6k</td>
               <td>800</td>
             </tr>
           </tbody>
         </table>
-        <small>Github (april 2025)</small>
+        <small>Github (april 2026)</small>
       </Slide>
       <Slide>
         <h2>Github Stars</h2>
@@ -231,7 +231,7 @@ const ComparisonChapter: React.FC<GenericChapterProps> = (props: GenericChapterP
               <td>Mobile</td>
               <td>Ionic (CSS needs adaption)</td>
               <td>React Native (HTML needs adaption)</td>
-              <td>Vue Native (comiled to react native)</td>
+              <td>Vue Native (compiled to React Native)</td>
             </tr>
           </tbody>
         </table>
