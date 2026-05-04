@@ -19,7 +19,7 @@ screen.findByText();
 screen.findByTitle();
 `;
 
-const snippet3 = `resonseData = {
+const snippet3 = `responseData = {
   books: [
     {
       title: "Snowflake: The Definitive Guide",
