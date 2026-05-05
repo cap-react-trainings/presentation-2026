@@ -15,6 +15,7 @@ import TestingChapter from './chapters/testing/TestingChapter';
 import ReactLogo from './components/helper/ReactLogo';
 import RevealWrapper from './components/reveal/RevealWrapper';
 import Slide from './components/reveal/Slide';
+import MicrofrontendsChapter from './chapters/microfrontends/MicrofrontendsChapter';
 
 const App: React.FC = () => {
   const chapter = [
@@ -45,6 +46,10 @@ const App: React.FC = () => {
     {
       title: 'Routing',
       component: RoutingChapter
+    },
+    {
+      title: 'Microfrontends',
+      component: MicrofrontendsChapter
     },
     {
       title: 'Forms',

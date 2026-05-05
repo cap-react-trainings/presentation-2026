@@ -55,6 +55,28 @@ return (
 )
 `;
 
+const zustandStore = `import { create } from 'zustand';
+
+type ThemeState = {
+  darkMode: boolean;
+  toggleDarkMode: () => void;
+};
+
+export const useThemeStore = create<ThemeState>((set) => ({
+  darkMode: false,
+  toggleDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
+}));
+`;
+
+const zustandUsage = `const { darkMode, toggleDarkMode } = useThemeStore();
+
+return (
+  <button onClick={toggleDarkMode}>
+    {darkMode ? '🌙 Dark' : '☀️ Light'}
+  </button>
+);
+`;
+
 const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProps) => {
   return (
     <Chapter
@@ -130,6 +152,34 @@ const ContextChapter: React.FC<GenericChapterProps> = (props: GenericChapterProp
           </ul>
         </ul>
         <aside className='notes'>Recommend Kent C. Dotts blog posts. You won&apos;t need redux anymore!</aside>
+      </Slide>
+      <Slide>
+        <h2>Alternative: Zustand</h2>
+        <ul className='fragment'>
+          <li>Lightweight global state management</li>
+          <li>No Provider required for simple setups</li>
+          <li>Great for shared UI state like theme, filters, auth flags</li>
+        </ul>
+        <aside className='notes'>
+          Zustand is often easier to scale than plain context when state grows.
+        </aside>
+      </Slide>
+
+      <Slide>
+        <h2>Zustand Store</h2>
+        <Code>{zustandStore}</Code>
+      </Slide>
+
+      <Slide>
+        <h2>Use Store in Components</h2>
+        <Code>{zustandUsage}</Code>
+        <ul>
+          <li>
+            <a href='https://zustand-demo.pmnd.rs/' target='_blank' rel='noreferrer'>
+              Zustand Docs
+            </a>
+          </li>
+        </ul>
       </Slide>
       <Slide>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 24 }}>
